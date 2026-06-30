@@ -149,7 +149,7 @@ button[type=submit]:hover{background:#004f8c}
 <tbody><tr><td class="equipo">BANDEJAS (028)</td><td><input type="number" min="0" value="0" id="mBGCP" oninput="recalcTotal(this)" data-eq="BG"></td><td><input type="number" min="0" value="0" id="mBGVA" oninput="recalcTotal(this)" data-eq="BG"></td><td><input type="number" min="0" value="0" id="mBGOT" oninput="recalcTotal(this)" data-eq="BG"></td><td class="total-cell" id="totBG">0</td></tr><tr><td class="equipo">DOLLYS Grandes (031)</td><td><input type="number" min="0" value="0" id="mDOGCP" oninput="recalcTotal(this)" data-eq="DOG"></td><td><input type="number" min="0" value="0" id="mDOGVA" oninput="recalcTotal(this)" data-eq="DOG"></td><td><input type="number" min="0" value="0" id="mDOGOT" oninput="recalcTotal(this)" data-eq="DOG"></td><td class="total-cell" id="totDOG">0</td></tr><tr><td class="equipo">DOLLYS Chicos</td><td><input type="number" min="0" value="0" id="mDOCCP" oninput="recalcTotal(this)" data-eq="DOC"></td><td><input type="number" min="0" value="0" id="mDOCVA" oninput="recalcTotal(this)" data-eq="DOC"></td><td><input type="number" min="0" value="0" id="mDOCOT" oninput="recalcTotal(this)" data-eq="DOC"></td><td class="total-cell" id="totDOC">0</td></tr><tr><td class="equipo">Pallets Madera</td><td><input type="number" min="0" value="0" id="mPMCP" oninput="recalcTotal(this)" data-eq="PM"></td><td><input type="number" min="0" value="0" id="mPMVA" oninput="recalcTotal(this)" data-eq="PM"></td><td><input type="number" min="0" value="0" id="mPMOT" oninput="recalcTotal(this)" data-eq="PM"></td><td class="total-cell" id="totPM">0</td></tr><tr><td class="equipo">Pallets Plástico</td><td><input type="number" min="0" value="0" id="mPPCP" oninput="recalcTotal(this)" data-eq="PP"></td><td><input type="number" min="0" value="0" id="mPPVA" oninput="recalcTotal(this)" data-eq="PP"></td><td><input type="number" min="0" value="0" id="mPPOT" oninput="recalcTotal(this)" data-eq="PP"></td><td class="total-cell" id="totPP">0</td></tr><tr><td class="equipo">Pascualineros</td><td><input type="number" min="0" value="0" id="mPASCCP" oninput="recalcTotal(this)" data-eq="PASC"></td><td><input type="number" min="0" value="0" id="mPASCVA" oninput="recalcTotal(this)" data-eq="PASC"></td><td><input type="number" min="0" value="0" id="mPASCOT" oninput="recalcTotal(this)" data-eq="PASC"></td><td class="total-cell" id="totPASC">0</td></tr></tbody>
 </table>
 
-<div class="section-title">🚛 Ingresos y Egresos del día (página 2)</div>
+<div class="section-title">🚛 Ingresos y Egresos del día</div>
 <div class="info">Cargá acá los remitos / CONEQUIP del día del conteo. Click para abrir cada sección.</div>
 <div class="accordion" data-mov="rd"><div class="acc-header"><span>📥 Recibidas (DENTRO del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('rd')">+ Agregar fila</button></div></div><div class="accordion" data-mov="rf"><div class="acc-header"><span>📥 Recibidas (NO dentro del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('rf')">+ Agregar fila</button></div></div><div class="accordion" data-mov="dd"><div class="acc-header"><span>📤 Despachadas (DENTRO del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('dd')">+ Agregar fila</button></div></div><div class="accordion" data-mov="df"><div class="acc-header"><span>📤 Despachadas (NO dentro del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('df')">+ Agregar fila</button></div></div>
 
@@ -215,12 +215,12 @@ function recalcTotal(input){
   document.getElementById('tot'+eq).textContent=(cp+va+ot).toLocaleString('es-AR');
 }
 
-function agregarFila(s){
+window.agregarFila = function(s){
   const tb=document.querySelector('.accordion[data-mov="'+s+'"] tbody');
   const tr=document.createElement('tr');
   tr.innerHTML='<td><input type="date"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="time"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><button type="button" class="btn-del" onclick="this.closest(' + chr(39) + 'tr' + chr(39) + ').remove()">✕</button></td>';
   tb.appendChild(tr);
-}
+};
 function leerMov(s){
   const f=[];
   document.querySelectorAll('.accordion[data-mov="'+s+'"] tbody tr').forEach(tr=>{
@@ -234,9 +234,8 @@ function msg(id,txt,ok){document.getElementById(id).innerHTML='<div class="msg '
 async function guardar(p,mi,fi,cb){
   try{
     if(p.tipo === 'mensual'){
-      // Inventario mensual → enviar a Formspree para notificar por mail
       const formData = new FormData();
-      formData.append('_subject', '📦 Nuevo Inventario Mensual - ' + p.ceve + ' - ' + p.mes);
+      formData.append('_subject', 'Nuevo Inventario Mensual - ' + p.ceve + ' - ' + p.mes);
       formData.append('CeVe', p.ceve);
       formData.append('Agencia', p.agencia);
       formData.append('Mes', p.mes);
@@ -245,8 +244,7 @@ async function guardar(p,mi,fi,cb){
       formData.append('Supervisor', p.supervisor);
       let invTxt = '';
       Object.values(p.inventario).forEach(e => {
-        invTxt += e.nombre + ': Con producto=' + e.con_producto + ' | Vacios=' + e.vacios + ' | Otros=' + e.otros + ' | TOTAL=' + e.total + '
-';
+        invTxt += e.nombre + ': Con producto=' + e.con_producto + ' | Vacios=' + e.vacios + ' | Otros=' + e.otros + ' | TOTAL=' + e.total + '\n';
       });
       formData.append('Inventario', invTxt);
       formData.append('Firma Op Logistico', p.firma_op_log);
@@ -255,78 +253,23 @@ async function guardar(p,mi,fi,cb){
       formData.append('Firma Administrador', p.firma_admin);
       formData.append('Observaciones', p.observaciones || '-');
       formData.append('Datos completos JSON', JSON.stringify(p, null, 2));
-
       const resp = await fetch('https://formspree.io/f/xbdvawyq', {
         method: 'POST', body: formData, headers: {'Accept': 'application/json'}
       });
       if(!resp.ok) throw new Error('No se pudo enviar el inventario (status ' + resp.status + ')');
-
-      // También lo guardo en localStorage como respaldo local
       const local = JSON.parse(localStorage.getItem('mensuales') || '[]');
       local.push(p);
       localStorage.setItem('mensuales', JSON.stringify(local));
     } else {
-      // Stock diario → guardar solo en localStorage del navegador (no se envía mail)
       const local = JSON.parse(localStorage.getItem('diarios') || '[]');
       local.push(p);
       localStorage.setItem('diarios', JSON.stringify(local));
     }
-
-    msg(mi, '✅ Carga registrada correctamente.', true);
+    msg(mi, 'Carga registrada correctamente.', true);
     if(cb) cb(p);
     else { document.getElementById(fi).reset(); cargar(); }
   } catch(e) {
-    msg(mi, '❌ Error: ' + e.message, false);
-  }
-}
-  try{
-    // Decodificar token
-    const tok = atob('__TOKEN_OBF__');
-    if(!tok) throw new Error('Token no configurado');
-    const repo = '__GITHUB_REPO__';
-    const path = 'data/stock_diario.json';
-    const url = 'https://api.github.com/repos/'+repo+'/contents/'+path;
-    const headers = {'Authorization': 'Bearer '+tok, 'Accept': 'application/vnd.github+json'};
-
-    // 1. Leer el JSON actual
-    const r1 = await fetch(url, {headers});
-    if(!r1.ok) throw new Error('No se pudo leer GitHub: '+r1.status);
-    const data = await r1.json();
-    const sha = data.sha;
-    const contenidoActual = JSON.parse(atob(data.content.replace(/
-/g,'')));
-
-    // 2. Agregar el nuevo registro
-    if(p.tipo === 'diario'){
-      contenidoActual.registros_diarios = contenidoActual.registros_diarios || [];
-      contenidoActual.registros_diarios.push(p);
-    } else {
-      contenidoActual.registros_mensuales = contenidoActual.registros_mensuales || [];
-      contenidoActual.registros_mensuales.push(p);
-    }
-    contenidoActual.actualizado = new Date().toISOString();
-
-    // 3. Subir el JSON actualizado
-    const nuevo = JSON.stringify(contenidoActual, null, 2);
-    const nuevoB64 = btoa(unescape(encodeURIComponent(nuevo)));
-    const r2 = await fetch(url, {
-      method: 'PUT', headers,
-      body: JSON.stringify({
-        message: 'Carga '+p.tipo+' - '+p.ceve+' - '+(p.fecha||p.mes),
-        content: nuevoB64,
-        sha: sha
-      })
-    });
-    if(!r2.ok){
-      const err = await r2.json();
-      throw new Error('No se pudo guardar: '+(err.message||r2.status));
-    }
-
-    msg(mi,'✅ Carga guardada correctamente en GitHub.',true);
-    if(cb) cb(p);
-    else { document.getElementById(fi).reset(); cargar(); }
-  }catch(e){
-    msg(mi,'❌ Error: '+e.message,false);
+    msg(mi, 'Error: ' + e.message, false);
   }
 }
 
