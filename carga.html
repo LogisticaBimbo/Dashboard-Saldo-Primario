@@ -233,12 +233,101 @@ function msg(id,txt,ok){document.getElementById(id).innerHTML='<div class="msg '
 
 async function guardar(p,mi,fi,cb){
   try{
-    const r=await fetch('/guardar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
-    if(!r.ok) throw new Error('Servidor');
-    msg(mi,'✅ Carga guardada correctamente.',true);
+    if(p.tipo === 'mensual'){
+      // Inventario mensual → enviar a Formspree para notificar por mail
+      const formData = new FormData();
+      formData.append('_subject', '📦 Nuevo Inventario Mensual - ' + p.ceve + ' - ' + p.mes);
+      formData.append('CeVe', p.ceve);
+      formData.append('Agencia', p.agencia);
+      formData.append('Mes', p.mes);
+      formData.append('Fecha del conteo', p.fecha_conteo);
+      formData.append('Hora del conteo', p.hora_conteo);
+      formData.append('Supervisor', p.supervisor);
+      let invTxt = '';
+      Object.values(p.inventario).forEach(e => {
+        invTxt += e.nombre + ': Con producto=' + e.con_producto + ' | Vacios=' + e.vacios + ' | Otros=' + e.otros + ' | TOTAL=' + e.total + '
+';
+      });
+      formData.append('Inventario', invTxt);
+      formData.append('Firma Op Logistico', p.firma_op_log);
+      formData.append('Firma Sup Despacho', p.firma_sup_desp);
+      formData.append('Firma Contador', p.firma_contador);
+      formData.append('Firma Administrador', p.firma_admin);
+      formData.append('Observaciones', p.observaciones || '-');
+      formData.append('Datos completos JSON', JSON.stringify(p, null, 2));
+
+      const resp = await fetch('https://formspree.io/f/xbdvawyq', {
+        method: 'POST', body: formData, headers: {'Accept': 'application/json'}
+      });
+      if(!resp.ok) throw new Error('No se pudo enviar el inventario (status ' + resp.status + ')');
+
+      // También lo guardo en localStorage como respaldo local
+      const local = JSON.parse(localStorage.getItem('mensuales') || '[]');
+      local.push(p);
+      localStorage.setItem('mensuales', JSON.stringify(local));
+    } else {
+      // Stock diario → guardar solo en localStorage del navegador (no se envía mail)
+      const local = JSON.parse(localStorage.getItem('diarios') || '[]');
+      local.push(p);
+      localStorage.setItem('diarios', JSON.stringify(local));
+    }
+
+    msg(mi, '✅ Carga registrada correctamente.', true);
     if(cb) cb(p);
     else { document.getElementById(fi).reset(); cargar(); }
-  }catch(e){msg(mi,'❌ Error: '+e.message,false)}
+  } catch(e) {
+    msg(mi, '❌ Error: ' + e.message, false);
+  }
+}
+  try{
+    // Decodificar token
+    const tok = atob('__TOKEN_OBF__');
+    if(!tok) throw new Error('Token no configurado');
+    const repo = '__GITHUB_REPO__';
+    const path = 'data/stock_diario.json';
+    const url = 'https://api.github.com/repos/'+repo+'/contents/'+path;
+    const headers = {'Authorization': 'Bearer '+tok, 'Accept': 'application/vnd.github+json'};
+
+    // 1. Leer el JSON actual
+    const r1 = await fetch(url, {headers});
+    if(!r1.ok) throw new Error('No se pudo leer GitHub: '+r1.status);
+    const data = await r1.json();
+    const sha = data.sha;
+    const contenidoActual = JSON.parse(atob(data.content.replace(/
+/g,'')));
+
+    // 2. Agregar el nuevo registro
+    if(p.tipo === 'diario'){
+      contenidoActual.registros_diarios = contenidoActual.registros_diarios || [];
+      contenidoActual.registros_diarios.push(p);
+    } else {
+      contenidoActual.registros_mensuales = contenidoActual.registros_mensuales || [];
+      contenidoActual.registros_mensuales.push(p);
+    }
+    contenidoActual.actualizado = new Date().toISOString();
+
+    // 3. Subir el JSON actualizado
+    const nuevo = JSON.stringify(contenidoActual, null, 2);
+    const nuevoB64 = btoa(unescape(encodeURIComponent(nuevo)));
+    const r2 = await fetch(url, {
+      method: 'PUT', headers,
+      body: JSON.stringify({
+        message: 'Carga '+p.tipo+' - '+p.ceve+' - '+(p.fecha||p.mes),
+        content: nuevoB64,
+        sha: sha
+      })
+    });
+    if(!r2.ok){
+      const err = await r2.json();
+      throw new Error('No se pudo guardar: '+(err.message||r2.status));
+    }
+
+    msg(mi,'✅ Carga guardada correctamente en GitHub.',true);
+    if(cb) cb(p);
+    else { document.getElementById(fi).reset(); cargar(); }
+  }catch(e){
+    msg(mi,'❌ Error: '+e.message,false);
+  }
 }
 
 document.getElementById('formD').addEventListener('submit',e=>{
