@@ -1,0 +1,21 @@
+﻿{
+  "ceves": [
+    {"agencia": "14117", "nombre": "Tablada", "alias": ["Mercado Central"], "region": "AMBA", "supervisor": "Marcelo Ullua", "inv_inicial_BG": 33410, "inv_inicial_DO": 0},
+    {"agencia": "14118", "nombre": "Bahía Blanca", "alias": [], "region": "Interior", "supervisor": "Juan Manuel García", "inv_inicial_BG": 3452, "inv_inicial_DO": 0},
+    {"agencia": "14120", "nombre": "Córdoba", "alias": [], "region": "Interior", "supervisor": "Ignacio Juarez", "inv_inicial_BG": 771, "inv_inicial_DO": 0},
+    {"agencia": "14122", "nombre": "Mar del Plata", "alias": [], "region": "Interior", "supervisor": "Federico Romeo", "inv_inicial_BG": 6725, "inv_inicial_DO": 0},
+    {"agencia": "14123", "nombre": "Mendoza", "alias": [], "region": "Interior", "supervisor": "Rodrigo Cortez", "inv_inicial_BG": 2533, "inv_inicial_DO": 0},
+    {"agencia": "14125", "nombre": "Rosario", "alias": [], "region": "Interior", "supervisor": "Omar Olivari", "inv_inicial_BG": 3325, "inv_inicial_DO": 0},
+    {"agencia": "14126", "nombre": "Neuquén", "alias": [], "region": "Interior", "supervisor": "Nicolás Delgado", "inv_inicial_BG": 3568, "inv_inicial_DO": 0},
+    {"agencia": "14127", "nombre": "Santa Fe", "alias": [], "region": "Interior", "supervisor": "Diego Grosso", "inv_inicial_BG": 1946, "inv_inicial_DO": 0},
+    {"agencia": "14128", "nombre": "Santa Teresita", "alias": [], "region": "AMBA", "supervisor": "Federico Romeo", "inv_inicial_BG": 0, "inv_inicial_DO": 0},
+    {"agencia": "14129", "nombre": "Tucumán", "alias": [], "region": "Interior", "supervisor": "Andrés Ceballos", "inv_inicial_BG": 1170, "inv_inicial_DO": 0},
+    {"agencia": "14263", "nombre": "Foráneos", "alias": [], "region": "AMBA", "supervisor": "Gustavo Quiñones", "inv_inicial_BG": 2603, "inv_inicial_DO": 0},
+    {"agencia": "14267", "nombre": "La Plata", "alias": [], "region": "AMBA", "supervisor": "Marcelo Ullua", "inv_inicial_BG": 0, "inv_inicial_DO": 0},
+    {"agencia": "14272", "nombre": "Tesei", "alias": [], "region": "AMBA", "supervisor": "Benjamín Schetgel", "inv_inicial_BG": 0, "inv_inicial_DO": 0}
+  ],
+  "equipos": [
+    {"codigo": "028", "nombre": "BG-Bandeja Grande", "abrev": "BG"},
+    {"codigo": "031", "nombre": "DO-Dolly", "abrev": "DO"}
+  ]
+}
