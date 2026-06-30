@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-06-30T09:08:12",
+  "actualizado": "2026-06-30T09:59:18",
   "registros_diarios": [
     {
       "tipo": "diario",
@@ -36,6 +36,18 @@
       "DO": 30,
       "observaciones": "",
       "timestamp": "2026-06-30T09:55:00"
+    },
+    {
+      "tipo": "diario",
+      "agencia": "14125",
+      "ceve": "Rosario",
+      "fecha": "2026-06-30",
+      "hora": "09:57",
+      "supervisor": "Abigail",
+      "BG": 500,
+      "DO": 50,
+      "observaciones": "",
+      "timestamp": "2026-06-30T09:57:00"
     }
   ],
   "registros_mensuales": [
@@ -372,6 +384,73 @@
       "observaciones": "",
       "timestamp": "2026-06-30T12:08:12.394Z",
       "BG": 2000,
+      "DO": 0
+    },
+    {
+      "tipo": "mensual",
+      "agencia": "14117",
+      "ceve": "Tablada",
+      "mes": "2026-06",
+      "fecha_conteo": "2026-06-30",
+      "hora_conteo": "09:57",
+      "supervisor": "Abigail",
+      "inventario": {
+        "BG": {
+          "nombre": "BANDEJAS (028)",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "DOG": {
+          "nombre": "DOLLYS Grandes (031)",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "DOC": {
+          "nombre": "DOLLYS Chicos",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PM": {
+          "nombre": "Pallets Madera",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PP": {
+          "nombre": "Pallets Plástico",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PASC": {
+          "nombre": "Pascualineros",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        }
+      },
+      "firma_op_log": "",
+      "firma_sup_desp": "Abigail",
+      "firma_contador": "",
+      "firma_admin": "",
+      "movimientos": {
+        "recibidas_dentro": [],
+        "recibidas_fuera": [],
+        "despachadas_dentro": [],
+        "despachadas_fuera": []
+      },
+      "observaciones": "",
+      "timestamp": "2026-06-30T12:59:18.673Z",
+      "BG": 0,
       "DO": 0
     }
   ]
