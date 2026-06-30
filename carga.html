@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><title>Carga Stock</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+*{box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{margin:0;background:#f4f6f8;color:#222}
+header{background:linear-gradient(90deg,#0066b3,#003e7e);color:#fff;padding:18px 28px;display:flex;justify-content:space-between;align-items:center}
+header h1{margin:0;font-size:22px}
+header .updated{font-size:12px;opacity:.85}
+.container{padding:20px 28px}
+.nav{display:flex;gap:14px;margin-bottom:18px}
+.nav a{background:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;color:#003e7e;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.nav a:hover,.nav a.active{background:#0066b3;color:#fff}
+.card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:18px}
+.card h3{margin:0 0 12px 0;font-size:14px;color:#003e7e;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#f0f4f8;padding:8px;text-align:left;font-weight:600;border-bottom:2px solid #d0d7de;white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid #eee}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.neg{color:#d93025;font-weight:600}
+.pos{color:#1e8e3e;font-weight:600}
+.sortable{cursor:pointer;user-select:none}
+.sortable:hover{background:#dde6ef}
+.sortable .arrow{opacity:.4;font-size:10px;margin-left:4px}
+.sortable.asc .arrow,.sortable.desc .arrow{opacity:1;color:#003e7e}
+.filters{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.filters label{font-size:11px;font-weight:600;color:#555;text-transform:uppercase;display:block;margin-bottom:4px}
+.filters select,.filters input{width:100%;padding:7px;border:1px solid #d0d7de;border-radius:6px;font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px}
+.kpi{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid #0066b3}
+.kpi .label{font-size:11px;color:#666;text-transform:uppercase;font-weight:600}
+.kpi .value{font-size:24px;font-weight:700;margin-top:4px;color:#003e7e}
+.kpi.negative{border-left-color:#d93025}.kpi.negative .value{color:#d93025}
+.kpi.positive{border-left-color:#1e8e3e}.kpi.positive .value{color:#1e8e3e}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px}
+.resumen-row{display:flex;justify-content:space-between;padding:7px 10px;font-size:13px;border-bottom:1px solid #f0f0f0}
+.resumen-row.header{background:#003e7e;color:#fff;font-weight:700;border-radius:4px 4px 0 0}
+.resumen-row.total{background:#fff3cd;font-weight:700;border-bottom:2px solid #003e7e}
+.resumen-row.final{background:#003e7e;color:#fff;font-weight:700;border-radius:0 0 4px 4px}
+.resumen-row .v{font-variant-numeric:tabular-nums}
+.period-mini{display:inline-flex;align-items:center;gap:8px;background:#f0f4f8;padding:6px 10px;border-radius:6px;font-size:12px}
+.period-mini select{padding:4px 8px;border:1px solid #d0d7de;border-radius:4px;font-size:12px}
+.download-btn{background:#1e8e3e;color:#fff;border:none;padding:10px 16px;border-radius:6px;cursor:pointer;font-weight:600;margin-left:8px}
+.download-btn:hover{background:#176b30}
+.download-btn.blue{background:#0066b3}
+.download-btn.blue:hover{background:#004f8c}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
+.badge.ok{background:#e6f4ea;color:#1e8e3e}
+.badge.warn{background:#fef7e0;color:#b06000}
+.badge.err{background:#fce8e6;color:#d93025}
+.cal-wrap{overflow-x:auto}
+.cal{border-collapse:collapse;font-size:11px}
+.cal th,.cal td{border:1px solid #e0e6ec;padding:4px 6px;min-width:38px;text-align:center;white-space:nowrap}
+.cal th{background:#003e7e;color:#fff}
+.cal td.ceve-name{background:#f0f4f8;font-weight:600;text-align:left;min-width:140px}
+.cal .c-ok{background:#1e8e3e;color:#fff}
+.cal .c-no{background:#fce8e6}
+.cal .c-fut{background:#f8f9fa;color:#bbb}
+.tabs{display:flex;gap:0}
+.tab-btn{flex:1;background:#e9eef3;border:none;padding:14px;cursor:pointer;font-weight:600;color:#555;border-radius:10px 10px 0 0;font-size:14px}
+.tab-btn.active{background:#fff;color:#003e7e;border-bottom:3px solid #0066b3}
+.tab-content{background:#fff;padding:24px;border-radius:0 0 10px 10px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:none}
+.tab-content.active{display:block}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-row.three{grid-template-columns:1fr 1fr 1fr}
+.form-row.four{grid-template-columns:1fr 1fr 1fr 1fr}
+.form-row.full{grid-template-columns:1fr}
+label{font-size:11px;font-weight:600;color:#555;text-transform:uppercase;display:block;margin-bottom:5px}
+input,select,textarea{width:100%;padding:9px;border:1px solid #d0d7de;border-radius:6px;font-size:14px}
+textarea{resize:vertical;min-height:60px}
+button[type=submit]{background:#0066b3;color:#fff;border:none;padding:12px 24px;border-radius:6px;cursor:pointer;font-weight:600;font-size:14px;width:100%}
+button[type=submit]:hover{background:#004f8c}
+.msg{padding:12px;border-radius:6px;margin-bottom:14px;font-size:14px}
+.msg.ok{background:#e6f4ea;color:#1e8e3e;border:1px solid #1e8e3e}
+.msg.err{background:#fce8e6;color:#d93025;border:1px solid #d93025}
+.info{background:#e8f0fe;padding:12px;border-radius:6px;font-size:13px;color:#003e7e;margin-bottom:14px}
+.warning{background:#fef7e0;color:#b06000;padding:14px;border-radius:6px;border-left:4px solid #f9ab00;margin-bottom:14px;font-size:13px}
+.section-title{background:#003e7e;color:#fff;padding:10px 14px;border-radius:6px;margin:18px 0 12px 0;font-size:13px;font-weight:700;text-transform:uppercase}
+.inv-table{width:100%;border-collapse:collapse;margin-bottom:14px;background:#f7f9fb;border-radius:8px;overflow:hidden}
+.inv-table th{background:#003e7e;color:#fff;padding:10px;font-size:12px;text-align:center}
+.inv-table td{padding:6px;border-bottom:1px solid #e0e6ec}
+.inv-table td.equipo{font-weight:600;background:#fff;color:#003e7e;font-size:12px}
+.inv-table input{padding:7px;font-size:13px;text-align:right}
+.inv-table .total-cell{background:#fff3cd;font-weight:700;text-align:right;font-variant-numeric:tabular-nums;padding:8px}
+.accordion{background:#f7f9fb;border:1px solid #e0e6ec;border-radius:8px;margin-bottom:14px}
+.acc-header{padding:12px 16px;cursor:pointer;font-weight:600;color:#003e7e;display:flex;justify-content:space-between;align-items:center}
+.acc-header:hover{background:#eef2f6}
+.acc-body{padding:14px;display:none;border-top:1px solid #e0e6ec}
+.accordion.open .acc-body{display:block}
+.mov-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.mov-table th{background:#003e7e;color:#fff;padding:6px 4px;font-weight:600}
+.mov-table td{padding:3px;border-bottom:1px solid #e0e6ec}
+.mov-table input{padding:5px;font-size:11px}
+.btn-add{background:#1e8e3e;color:#fff;border:none;padding:6px 12px;border-radius:5px;cursor:pointer;font-size:12px;margin-top:8px}
+.btn-del{background:#d93025;color:#fff;border:none;padding:3px 8px;border-radius:4px;cursor:pointer;font-size:11px}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:1000;justify-content:center;align-items:center}
+.modal.show{display:flex}
+.modal-box{background:#fff;padding:24px;border-radius:10px;max-width:700px;width:90%;max-height:90vh;overflow-y:auto;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.modal-box h3{margin:0 0 14px 0}
+.modal-box.warn h3{color:#d93025}
+.modal-box.info h3{color:#0066b3}
+.modal-actions{display:flex;gap:10px;margin-top:18px}
+.modal-actions button{flex:1;padding:10px;border-radius:6px;border:none;cursor:pointer;font-weight:600}
+.btn-confirm{background:#0066b3;color:#fff}
+.btn-confirm.warn{background:#d93025}
+.btn-cancel{background:#e9eef3;color:#555}
+.pdf-summary{font-family:Arial,sans-serif;color:#222;padding:15px;width:760px;max-width:760px;margin:0 auto;background:#fff}
+.pdf-summary h2{color:#003e7e;border-bottom:2px solid #003e7e;padding-bottom:6px;font-size:18px;margin:0 0 10px 0}
+.pdf-summary h3{color:#003e7e;font-size:13px;margin:12px 0 6px 0;padding-bottom:3px;border-bottom:1px solid #ccc}
+.pdf-summary p{margin:4px 0;font-size:12px}
+.pdf-summary table{width:100%;border-collapse:collapse;margin:6px 0;table-layout:fixed}
+.pdf-summary th,.pdf-summary td{border:1px solid #888;padding:4px;font-size:10px;word-wrap:break-word;text-align:left}
+.pdf-summary th{background:#003e7e;color:#fff;font-size:10px}
+.pdf-summary tr{page-break-inside:avoid}
+.success-screen{text-align:center;padding:40px 20px}
+.success-screen .ok-icon{font-size:60px;color:#1e8e3e;margin-bottom:10px}
+.success-screen h2{color:#1e8e3e;margin:10px 0}
+.container{max-width:1100px;margin:0 auto}</style></head><body>
+<header><h1>📝 Carga de Stock - CeVes Argentina</h1></header>
+<div class="container"><div class="nav"><a href="index.html">📊 Dashboard</a><a href="carga.html" class="active">📝 Carga Stock</a><a href="seguimiento.html">✅ Seguimiento</a></div>
+<div class="tabs"><button class="tab-btn active" id="btnD">📅 Carga Stock Diario</button><button class="tab-btn" id="btnM">📆 Carga Inventario Mensual</button></div>
+
+<div id="tab-diario" class="tab-content active">
+<div class="info">📅 Cargá el conteo físico diario de bandejas y dollys en tu CeVe.</div>
+<div id="msgD"></div>
+<form id="formD">
+<div class="form-row"><div><label>CeVe</label><select id="dCeve" required></select></div><div><label>Fecha del conteo</label><input type="date" id="dFecha" required></div></div>
+<div class="form-row"><div><label>Hora del conteo</label><input type="time" id="dHora" required></div><div><label>Supervisor / Responsable del conteo</label><input type="text" id="dSup" required placeholder="Nombre y apellido"></div></div>
+<div class="section-title">📦 Cantidad por equipo</div>
+<div class="form-row"><div><label>BG - Bandeja Grande (028)</label><input type="number" id="dBG" min="0" value="0" required></div><div><label>DO - Dolly (031)</label><input type="number" id="dDO" min="0" value="0" required></div></div>
+<div class="form-row full"><div><label>Observaciones</label><textarea id="dObs"></textarea></div></div>
+<button type="submit">💾 Guardar conteo diario</button>
+</form>
+</div>
+
+<div id="tab-mensual" class="tab-content">
+<div id="formMensualWrap">
+<div class="warning">⚠️ <b>Atención:</b> Este formulario se carga UNA SOLA VEZ por mes y los datos se reportan a Gerencia.</div>
+<div id="msgM"></div>
+<form id="formM">
+<div class="section-title">📍 Datos generales</div>
+<div class="form-row"><div><label>CeVe</label><select id="mCeve" required></select></div><div><label>Mes / Año del inventario</label><input type="month" id="mFecha" required></div></div>
+<div class="form-row three"><div><label>Fecha de toma del inventario</label><input type="date" id="mFC" required></div><div><label>Hora de toma del inventario</label><input type="time" id="mHC" required></div><div><label>Supervisor / Responsable</label><input type="text" id="mSup" required></div></div>
+
+<div class="section-title">📦 Inventario físico</div>
+<table class="inv-table">
+<thead><tr><th>Equipo</th><th>Con producto (B/E o M/E)</th><th>Vacíos (rotos/sanos/color)</th><th>Otros</th><th>TOTAL</th></tr></thead>
+<tbody><tr><td class="equipo">BANDEJAS (028)</td><td><input type="number" min="0" value="0" id="mBGCP" oninput="recalcTotal(this)" data-eq="BG"></td><td><input type="number" min="0" value="0" id="mBGVA" oninput="recalcTotal(this)" data-eq="BG"></td><td><input type="number" min="0" value="0" id="mBGOT" oninput="recalcTotal(this)" data-eq="BG"></td><td class="total-cell" id="totBG">0</td></tr><tr><td class="equipo">DOLLYS Grandes (031)</td><td><input type="number" min="0" value="0" id="mDOGCP" oninput="recalcTotal(this)" data-eq="DOG"></td><td><input type="number" min="0" value="0" id="mDOGVA" oninput="recalcTotal(this)" data-eq="DOG"></td><td><input type="number" min="0" value="0" id="mDOGOT" oninput="recalcTotal(this)" data-eq="DOG"></td><td class="total-cell" id="totDOG">0</td></tr><tr><td class="equipo">DOLLYS Chicos</td><td><input type="number" min="0" value="0" id="mDOCCP" oninput="recalcTotal(this)" data-eq="DOC"></td><td><input type="number" min="0" value="0" id="mDOCVA" oninput="recalcTotal(this)" data-eq="DOC"></td><td><input type="number" min="0" value="0" id="mDOCOT" oninput="recalcTotal(this)" data-eq="DOC"></td><td class="total-cell" id="totDOC">0</td></tr><tr><td class="equipo">Pallets Madera</td><td><input type="number" min="0" value="0" id="mPMCP" oninput="recalcTotal(this)" data-eq="PM"></td><td><input type="number" min="0" value="0" id="mPMVA" oninput="recalcTotal(this)" data-eq="PM"></td><td><input type="number" min="0" value="0" id="mPMOT" oninput="recalcTotal(this)" data-eq="PM"></td><td class="total-cell" id="totPM">0</td></tr><tr><td class="equipo">Pallets Plástico</td><td><input type="number" min="0" value="0" id="mPPCP" oninput="recalcTotal(this)" data-eq="PP"></td><td><input type="number" min="0" value="0" id="mPPVA" oninput="recalcTotal(this)" data-eq="PP"></td><td><input type="number" min="0" value="0" id="mPPOT" oninput="recalcTotal(this)" data-eq="PP"></td><td class="total-cell" id="totPP">0</td></tr><tr><td class="equipo">Pascualineros</td><td><input type="number" min="0" value="0" id="mPASCCP" oninput="recalcTotal(this)" data-eq="PASC"></td><td><input type="number" min="0" value="0" id="mPASCVA" oninput="recalcTotal(this)" data-eq="PASC"></td><td><input type="number" min="0" value="0" id="mPASCOT" oninput="recalcTotal(this)" data-eq="PASC"></td><td class="total-cell" id="totPASC">0</td></tr></tbody>
+</table>
+
+<div class="section-title">🚛 Ingresos y Egresos del día (página 2)</div>
+<div class="info">Cargá acá los remitos / CONEQUIP del día del conteo. Click para abrir cada sección.</div>
+<div class="accordion" data-mov="rd"><div class="acc-header"><span>📥 Recibidas (DENTRO del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('rd')">+ Agregar fila</button></div></div><div class="accordion" data-mov="rf"><div class="acc-header"><span>📥 Recibidas (NO dentro del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('rf')">+ Agregar fila</button></div></div><div class="accordion" data-mov="dd"><div class="acc-header"><span>📤 Despachadas (DENTRO del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('dd')">+ Agregar fila</button></div></div><div class="accordion" data-mov="df"><div class="acc-header"><span>📤 Despachadas (NO dentro del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('df')">+ Agregar fila</button></div></div>
+
+<div class="section-title">✍️ Firmas y observaciones</div>
+<div class="form-row four"><div><label>Firma Op. Logístico</label><input type="text" id="mF1"></div><div><label>Firma Sup. Despacho</label><input type="text" id="mF2"></div><div><label>Firma Contador</label><input type="text" id="mF3"></div><div><label>Firma Administrador</label><input type="text" id="mF4"></div></div>
+<div class="form-row full"><div><label>Observaciones / Novedades</label><textarea id="mObs"></textarea></div></div>
+<button type="submit">💾 Guardar inventario mensual</button>
+</form>
+</div>
+
+<div id="postSave" style="display:none">
+<div class="success-screen">
+<div class="ok-icon">✓</div>
+<h2>Inventario mensual guardado</h2>
+<p>El inventario se registró correctamente y será enviado a Gerencia.</p>
+<div style="display:flex;gap:10px;justify-content:center;margin-top:20px">
+<button type="button" class="download-btn blue" onclick="descargarPDF()">⬇ Descargar Inventario Mensual en PDF</button>
+<button type="button" class="btn-cancel" style="padding:10px 20px;border:none;border-radius:6px;cursor:pointer;font-weight:600" onclick="location.reload()">Volver</button>
+</div>
+</div>
+<div style="display:flex;justify-content:center"><div id="pdfArea" class="pdf-summary"></div></div>
+</div>
+
+</div>
+</div>
+
+<div class="modal" id="modD"><div class="modal-box info"><h3>📅 Carga de Stock Diario</h3><p>Estás por ingresar el stock de bandejas y dollys el día de hoy.</p><p>¿Estás seguro que deseas continuar?</p><div class="modal-actions"><button type="button" class="btn-cancel" onclick="cerrar('modD')">Cancelar</button><button type="button" class="btn-confirm" onclick="enviarD()">Sí, continuar</button></div></div></div>
+<div class="modal" id="modM"><div class="modal-box warn"><h3>⚠️ Carga de Inventario Mensual</h3><p><b>Estás por ingresar a la Carga de Inventario Mensual</b>, ¿estás seguro que deseas completar la tarea?</p><p>Prestar mucha atención ya que <b>no se puede volver a repetir el formulario</b>.</p><p>Este dato se releva de todos los CeVes una vez por mes y se pasa a Gerencia.</p><div class="modal-actions"><button type="button" class="btn-cancel" onclick="cerrar('modM')">Cancelar</button><button type="button" class="btn-confirm warn" onclick="confirmarM()">Sí, continuar</button></div></div></div>
+
+<script>
+const SUBAG = ['14267','14128'];
+const EQUIPOS = [['BG','BANDEJAS (028)'],['DOG','DOLLYS Grandes (031)'],['DOC','DOLLYS Chicos'],['PM','Pallets Madera'],['PP','Pallets Plástico'],['PASC','Pascualineros']];
+let MAESTRO=null;
+
+async function cargar(){
+  const raw=await fetch('data/ceves_maestro.json').then(r=>r.json());
+  MAESTRO={...raw, ceves: raw.ceves.filter(c=>!SUBAG.includes(c.agencia))};
+  ['dCeve','mCeve'].forEach(id=>{const s=document.getElementById(id);MAESTRO.ceves.forEach(c=>s.innerHTML+='<option value="'+c.agencia+'">'+c.nombre+'</option>')});
+  const h=new Date();
+  document.getElementById('dFecha').value=h.toISOString().slice(0,10);
+  document.getElementById('dHora').value=h.toTimeString().slice(0,5);
+  document.getElementById('mFecha').value=h.toISOString().slice(0,7);
+  document.getElementById('mFC').value=h.toISOString().slice(0,10);
+  document.getElementById('mHC').value=h.toTimeString().slice(0,5);
+}
+document.getElementById('btnD').addEventListener('click',()=>activar('D'));
+document.getElementById('btnM').addEventListener('click',()=>document.getElementById('modM').classList.add('show'));
+function activar(t){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-'+(t==='D'?'diario':'mensual')).classList.add('active');
+  document.getElementById('btn'+t).classList.add('active');
+}
+function cerrar(id){document.getElementById(id).classList.remove('show')}
+function confirmarM(){cerrar('modM');activar('M')}
+document.querySelectorAll('.acc-header').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
+
+function recalcTotal(input){
+  const eq=input.dataset.eq;
+  const cp=parseInt(document.getElementById('m'+eq+'CP').value)||0;
+  const va=parseInt(document.getElementById('m'+eq+'VA').value)||0;
+  const ot=parseInt(document.getElementById('m'+eq+'OT').value)||0;
+  document.getElementById('tot'+eq).textContent=(cp+va+ot).toLocaleString('es-AR');
+}
+
+function agregarFila(s){
+  const tb=document.querySelector('.accordion[data-mov="'+s+'"] tbody');
+  const tr=document.createElement('tr');
+  tr.innerHTML='<td><input type="date"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="time"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><button type="button" class="btn-del" onclick="this.closest(' + chr(39) + 'tr' + chr(39) + ').remove()">✕</button></td>';
+  tb.appendChild(tr);
+}
+function leerMov(s){
+  const f=[];
+  document.querySelectorAll('.accordion[data-mov="'+s+'"] tbody tr').forEach(tr=>{
+    const i=tr.querySelectorAll('input');
+    f.push({fecha:i[0].value,chofer:i[1].value,conequip:i[2].value,remito:i[3].value,destino:i[4].value,hora:i[5].value,band:+i[6].value||0,pasc:+i[7].value||0,dolly_gr:+i[8].value||0,dolly_ch:+i[9].value||0,madera:+i[10].value||0,plastico:+i[11].value||0});
+  });
+  return f;
+}
+function msg(id,txt,ok){document.getElementById(id).innerHTML='<div class="msg '+(ok?'ok':'err')+'">'+txt+'</div>';setTimeout(()=>document.getElementById(id).innerHTML='',6000)}
+
+async function guardar(p,mi,fi,cb){
+  try{
+    const r=await fetch('/guardar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
+    if(!r.ok) throw new Error('Servidor');
+    msg(mi,'✅ Carga guardada correctamente.',true);
+    if(cb) cb(p);
+    else { document.getElementById(fi).reset(); cargar(); }
+  }catch(e){msg(mi,'❌ Error: '+e.message,false)}
+}
+
+document.getElementById('formD').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!document.getElementById('formD').checkValidity()) return;
+  document.getElementById('modD').classList.add('show');
+});
+function enviarD(){
+  cerrar('modD');
+  const a=document.getElementById('dCeve').value, c=MAESTRO.ceves.find(x=>x.agencia===a);
+  const fecha=document.getElementById('dFecha').value, hora=document.getElementById('dHora').value;
+  const ts = fecha+'T'+hora+':00';
+  guardar({tipo:'diario',agencia:c.agencia,ceve:c.nombre,fecha:fecha,hora:hora,supervisor:document.getElementById('dSup').value,BG:+document.getElementById('dBG').value||0,DO:+document.getElementById('dDO').value||0,observaciones:document.getElementById('dObs').value,timestamp:ts},'msgD','formD');
+}
+
+document.getElementById('formM').addEventListener('submit',e=>{
+  e.preventDefault();
+  const a=document.getElementById('mCeve').value, c=MAESTRO.ceves.find(x=>x.agencia===a);
+  const payload={
+    tipo:'mensual',agencia:c.agencia,ceve:c.nombre,
+    mes:document.getElementById('mFecha').value,
+    fecha_conteo:document.getElementById('mFC').value,
+    hora_conteo:document.getElementById('mHC').value,
+    supervisor:document.getElementById('mSup').value,
+    inventario:{},
+    firma_op_log:document.getElementById('mF1').value,
+    firma_sup_desp:document.getElementById('mF2').value,
+    firma_contador:document.getElementById('mF3').value,
+    firma_admin:document.getElementById('mF4').value,
+    movimientos:{recibidas_dentro:leerMov('rd'),recibidas_fuera:leerMov('rf'),despachadas_dentro:leerMov('dd'),despachadas_fuera:leerMov('df')},
+    observaciones:document.getElementById('mObs').value,
+    timestamp:new Date().toISOString()
+  };
+  EQUIPOS.forEach(([cod,nom])=>{
+    const cp=+document.getElementById('m'+cod+'CP').value||0;
+    const va=+document.getElementById('m'+cod+'VA').value||0;
+    const ot=+document.getElementById('m'+cod+'OT').value||0;
+    payload.inventario[cod]={nombre:nom, con_producto:cp, vacios:va, otros:ot, total:cp+va+ot};
+  });
+  payload.BG = payload.inventario.BG.total;
+  payload.DO = payload.inventario.DOG.total;
+  guardar(payload,'msgM','formM',mostrarExito);
+});
+
+function mostrarExito(p){
+  document.getElementById('formMensualWrap').style.display='none';
+  document.getElementById('postSave').style.display='block';
+  let html = '<h2>Inventario Mensual — '+p.ceve+'</h2>';
+  html += '<p><b>Mes:</b> '+p.mes+' &nbsp; <b>Fecha conteo:</b> '+p.fecha_conteo+' '+p.hora_conteo+'</p>';
+  html += '<p><b>Supervisor:</b> '+p.supervisor+'</p>';
+  html += '<h3>Inventario físico</h3><table><tr><th>Equipo</th><th>Con prod.</th><th>Vacíos</th><th>Otros</th><th>TOTAL</th></tr>';
+  Object.values(p.inventario).forEach(e=>{
+    html += '<tr><td>'+e.nombre+'</td><td>'+e.con_producto+'</td><td>'+e.vacios+'</td><td>'+e.otros+'</td><td><b>'+e.total+'</b></td></tr>';
+  });
+  html += '</table>';
+  const titulos = {recibidas_dentro:'Recibidas (DENTRO del conteo)', recibidas_fuera:'Recibidas (NO dentro del conteo)', despachadas_dentro:'Despachadas (DENTRO del conteo)', despachadas_fuera:'Despachadas (NO dentro del conteo)'};
+  ['recibidas_dentro','recibidas_fuera','despachadas_dentro','despachadas_fuera'].forEach(k=>{
+    const movs = p.movimientos[k];
+    if(!movs.length) return;
+    html += '<h3>'+titulos[k]+'</h3><table><tr><th>Fecha</th><th>Chofer</th><th>CONEQ</th><th>Remito</th><th>Dest</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th></tr>';
+    movs.forEach(m=>{ html += '<tr><td>'+m.fecha+'</td><td>'+m.chofer+'</td><td>'+m.conequip+'</td><td>'+m.remito+'</td><td>'+m.destino+'</td><td>'+m.hora+'</td><td>'+m.band+'</td><td>'+m.pasc+'</td><td>'+m.dolly_gr+'</td><td>'+m.dolly_ch+'</td><td>'+m.madera+'</td><td>'+m.plastico+'</td></tr>'; });
+    html += '</table>';
+  });
+  html += '<h3>Firmas</h3>';
+  html += '<table><tr><th>Op. Logístico</th><th>Sup. Despacho</th><th>Contador</th><th>Administrador</th></tr><tr><td>'+p.firma_op_log+'</td><td>'+p.firma_sup_desp+'</td><td>'+p.firma_contador+'</td><td>'+p.firma_admin+'</td></tr></table>';
+  if(p.observaciones) html += '<h3>Observaciones</h3><p>'+p.observaciones+'</p>';
+  document.getElementById('pdfArea').innerHTML = html;
+  window._pdfPayload = p;
+}
+
+function descargarPDF(){
+  const el = document.getElementById('pdfArea');
+  const p = window._pdfPayload;
+  const w = window.open('', '_blank', 'width=900,height=900');
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Inventario Mensual - '+p.ceve+' - '+p.mes+'</title>');
+  w.document.write('<style>body{font-family:Arial,sans-serif;color:#222;padding:20px;max-width:800px;margin:0 auto}'+
+    'h2{color:#003e7e;border-bottom:2px solid #003e7e;padding-bottom:6px;font-size:18px}'+
+    'h3{color:#003e7e;font-size:13px;margin-top:16px;border-bottom:1px solid #ccc;padding-bottom:3px}'+
+    'p{font-size:12px;margin:4px 0}'+
+    'table{width:100%;border-collapse:collapse;margin:8px 0}'+
+    'th{background:#003e7e;color:#fff;padding:6px;font-size:11px;text-align:left}'+
+    'td{border:1px solid #999;padding:5px;font-size:11px}'+
+    '@media print{body{padding:10px}}</style>');
+  w.document.write('</head><body>');
+  w.document.write(el.innerHTML);
+  w.document.write('<p style="text-align:center;margin-top:20px;font-size:11px;color:#666">Usá Ctrl+P para guardar como PDF</p>');
+  w.document.write('</body></html>');
+  w.document.close();
+  setTimeout(()=>{ w.focus(); w.print(); }, 500);
+}
+
+cargar();
+</script></body></html>
