@@ -1,0 +1,378 @@
+{
+  "actualizado": "2026-06-30T09:08:12",
+  "registros_diarios": [
+    {
+      "tipo": "diario",
+      "agencia": "14117",
+      "ceve": "Tablada",
+      "fecha": "2026-06-29",
+      "supervisor": "Abigail",
+      "turno": "Mañana",
+      "BG": 33500,
+      "DO": 100,
+      "observaciones": "",
+      "timestamp": "2026-06-29T20:45:24.843Z"
+    },
+    {
+      "tipo": "diario",
+      "agencia": "14120",
+      "ceve": "Córdoba",
+      "fecha": "2026-06-29",
+      "hora": "20:16",
+      "supervisor": "Abigail",
+      "BG": 300,
+      "DO": 30,
+      "observaciones": "",
+      "timestamp": "2026-06-29T20:16:00"
+    },
+    {
+      "tipo": "diario",
+      "agencia": "14129",
+      "ceve": "Tucumán",
+      "fecha": "2026-06-30",
+      "hora": "09:55",
+      "supervisor": "Abigail",
+      "BG": 2000,
+      "DO": 30,
+      "observaciones": "",
+      "timestamp": "2026-06-30T09:55:00"
+    }
+  ],
+  "registros_mensuales": [
+    {
+      "tipo": "mensual",
+      "agencia": "14117",
+      "ceve": "Tablada",
+      "mes": "2026-06",
+      "fecha_conteo": "2026-06-29",
+      "hora_conteo": "20:16",
+      "supervisor": "Abigail",
+      "inventario": {
+        "BG": {
+          "nombre": "BANDEJAS (028)",
+          "con_producto": 1000,
+          "vacios": 200,
+          "otros": 0,
+          "total": 1200
+        },
+        "DOG": {
+          "nombre": "DOLLYS Grandes (031)",
+          "con_producto": 10,
+          "vacios": 20,
+          "otros": 10,
+          "total": 40
+        },
+        "DOC": {
+          "nombre": "DOLLYS Chicos",
+          "con_producto": 0,
+          "vacios": 10,
+          "otros": 0,
+          "total": 10
+        },
+        "PM": {
+          "nombre": "Pallets Madera",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PP": {
+          "nombre": "Pallets Plástico",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PASC": {
+          "nombre": "Pascualineros",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        }
+      },
+      "firma_op_log": "",
+      "firma_sup_desp": "",
+      "firma_contador": "",
+      "firma_admin": "",
+      "movimientos": {
+        "recibidas_dentro": [],
+        "recibidas_fuera": [],
+        "despachadas_dentro": [],
+        "despachadas_fuera": []
+      },
+      "observaciones": "",
+      "timestamp": "2026-06-29T23:18:17.708Z",
+      "BG": 1200,
+      "DO": 40
+    },
+    {
+      "tipo": "mensual",
+      "agencia": "14129",
+      "ceve": "Tucumán",
+      "mes": "2026-06",
+      "fecha_conteo": "2026-06-29",
+      "hora_conteo": "21:00",
+      "supervisor": "Abigail",
+      "inventario": {
+        "BG": {
+          "nombre": "BANDEJAS (028)",
+          "con_producto": 100,
+          "vacios": 50,
+          "otros": 0,
+          "total": 150
+        },
+        "DOG": {
+          "nombre": "DOLLYS Grandes (031)",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "DOC": {
+          "nombre": "DOLLYS Chicos",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PM": {
+          "nombre": "Pallets Madera",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PP": {
+          "nombre": "Pallets Plástico",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PASC": {
+          "nombre": "Pascualineros",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        }
+      },
+      "firma_op_log": "",
+      "firma_sup_desp": "Abigail",
+      "firma_contador": "",
+      "firma_admin": "",
+      "movimientos": {
+        "recibidas_dentro": [],
+        "recibidas_fuera": [],
+        "despachadas_dentro": [],
+        "despachadas_fuera": []
+      },
+      "observaciones": "",
+      "timestamp": "2026-06-30T00:00:29.758Z",
+      "BG": 150,
+      "DO": 0
+    },
+    {
+      "tipo": "mensual",
+      "agencia": "14129",
+      "ceve": "Tucumán",
+      "mes": "2026-06",
+      "fecha_conteo": "2026-06-30",
+      "hora_conteo": "08:50",
+      "supervisor": "Abigail",
+      "inventario": {
+        "BG": {
+          "nombre": "BANDEJAS (028)",
+          "con_producto": 2000,
+          "vacios": 0,
+          "otros": 0,
+          "total": 2000
+        },
+        "DOG": {
+          "nombre": "DOLLYS Grandes (031)",
+          "con_producto": 100,
+          "vacios": 0,
+          "otros": 0,
+          "total": 100
+        },
+        "DOC": {
+          "nombre": "DOLLYS Chicos",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PM": {
+          "nombre": "Pallets Madera",
+          "con_producto": 5,
+          "vacios": 0,
+          "otros": 0,
+          "total": 5
+        },
+        "PP": {
+          "nombre": "Pallets Plástico",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PASC": {
+          "nombre": "Pascualineros",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        }
+      },
+      "firma_op_log": "",
+      "firma_sup_desp": "Abigail",
+      "firma_contador": "",
+      "firma_admin": "",
+      "movimientos": {
+        "recibidas_dentro": [],
+        "recibidas_fuera": [],
+        "despachadas_dentro": [],
+        "despachadas_fuera": []
+      },
+      "observaciones": "",
+      "timestamp": "2026-06-30T11:52:22.985Z",
+      "BG": 2000,
+      "DO": 100
+    },
+    {
+      "tipo": "mensual",
+      "agencia": "14117",
+      "ceve": "Tablada",
+      "mes": "2026-06",
+      "fecha_conteo": "2026-06-30",
+      "hora_conteo": "08:56",
+      "supervisor": "Abigail",
+      "inventario": {
+        "BG": {
+          "nombre": "BANDEJAS (028)",
+          "con_producto": 31000,
+          "vacios": 0,
+          "otros": 0,
+          "total": 31000
+        },
+        "DOG": {
+          "nombre": "DOLLYS Grandes (031)",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "DOC": {
+          "nombre": "DOLLYS Chicos",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PM": {
+          "nombre": "Pallets Madera",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PP": {
+          "nombre": "Pallets Plástico",
+          "con_producto": 500,
+          "vacios": 0,
+          "otros": 0,
+          "total": 500
+        },
+        "PASC": {
+          "nombre": "Pascualineros",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        }
+      },
+      "firma_op_log": "",
+      "firma_sup_desp": "Abigail",
+      "firma_contador": "",
+      "firma_admin": "",
+      "movimientos": {
+        "recibidas_dentro": [],
+        "recibidas_fuera": [],
+        "despachadas_dentro": [],
+        "despachadas_fuera": []
+      },
+      "observaciones": "",
+      "timestamp": "2026-06-30T11:58:52.279Z",
+      "BG": 31000,
+      "DO": 0
+    },
+    {
+      "tipo": "mensual",
+      "agencia": "14127",
+      "ceve": "Santa Fe",
+      "mes": "2026-06",
+      "fecha_conteo": "2026-06-30",
+      "hora_conteo": "09:04",
+      "supervisor": "Abigail",
+      "inventario": {
+        "BG": {
+          "nombre": "BANDEJAS (028)",
+          "con_producto": 2000,
+          "vacios": 0,
+          "otros": 0,
+          "total": 2000
+        },
+        "DOG": {
+          "nombre": "DOLLYS Grandes (031)",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "DOC": {
+          "nombre": "DOLLYS Chicos",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PM": {
+          "nombre": "Pallets Madera",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        },
+        "PP": {
+          "nombre": "Pallets Plástico",
+          "con_producto": 500,
+          "vacios": 0,
+          "otros": 0,
+          "total": 500
+        },
+        "PASC": {
+          "nombre": "Pascualineros",
+          "con_producto": 0,
+          "vacios": 0,
+          "otros": 0,
+          "total": 0
+        }
+      },
+      "firma_op_log": "",
+      "firma_sup_desp": "Abigail",
+      "firma_contador": "",
+      "firma_admin": "",
+      "movimientos": {
+        "recibidas_dentro": [],
+        "recibidas_fuera": [],
+        "despachadas_dentro": [],
+        "despachadas_fuera": []
+      },
+      "observaciones": "",
+      "timestamp": "2026-06-30T12:08:12.394Z",
+      "BG": 2000,
+      "DO": 0
+    }
+  ]
+}
