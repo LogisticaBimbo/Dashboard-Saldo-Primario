@@ -206,6 +206,12 @@ function activar(t){
 function cerrar(id){document.getElementById(id).classList.remove('show')}
 function confirmarM(){cerrar('modM');activar('M')}
 document.querySelectorAll('.acc-header').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
+document.querySelectorAll('.btn-add').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const seccion=b.parentElement.closest('.accordion').dataset.mov;
+    agregarFila(seccion);
+  });
+});
 
 function recalcTotal(input){
   const eq=input.dataset.eq;
@@ -215,12 +221,12 @@ function recalcTotal(input){
   document.getElementById('tot'+eq).textContent=(cp+va+ot).toLocaleString('es-AR');
 }
 
-window.agregarFila = function(s){
+function agregarFila(s){
   const tb=document.querySelector('.accordion[data-mov="'+s+'"] tbody');
   const tr=document.createElement('tr');
-  tr.innerHTML='<td><input type="date"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="time"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><button type="button" class="btn-del" onclick="this.closest(' + chr(39) + 'tr' + chr(39) + ').remove()">✕</button></td>';
+  tr.innerHTML='<td><input type="date"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="time"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><input type="number" min="0" value="0"></td><td><button type="button" class="btn-del" onclick="this.closest(\'tr\').remove()">✕</button></td>';
   tb.appendChild(tr);
-};
+}
 function leerMov(s){
   const f=[];
   document.querySelectorAll('.accordion[data-mov="'+s+'"] tbody tr').forEach(tr=>{
