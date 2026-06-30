@@ -144,11 +144,18 @@ button[type=submit]:hover{background:#004f8c}
 <div class="card">
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:10px">
 <h3 style="margin:0">📈 Variación Semanal del % Saldo / Flujo</h3>
+<div class="period-mini">
+<span>Comparar:</span>
+<select id="fSemanaTipo">
+<option value="lunes" selected>Lunes vs Lunes anterior</option>
+<option value="sabado">Sábado vs Sábado anterior</option>
+<option value="personalizado">Fecha personalizada</option>
+</select>
+<input type="date" id="fSemanaCustom" style="display:none">
+</div>
 <button class="download-btn" onclick="exportarSemanal()">⬇ Excel</button>
 </div>
-<table id="tablaSemanal"><thead><tr>
-<th>Semana</th><th class="num">Ingresos</th><th class="num">Egresos</th><th class="num">Saldo Bruto</th><th class="num">Saldo Neto</th><th class="num">% Saldo/Flujo</th><th class="num">Variación vs sem. anterior</th>
-</tr></thead><tbody></tbody></table>
+<table id="tablaSemanal"><thead></thead><tbody></tbody></table>
 </div>
 
 <div class="card">
@@ -169,7 +176,7 @@ button[type=submit]:hover{background:#004f8c}
 <th class="sortable num" data-col="sb">Saldo<span class="arrow">⇅</span></th>
 <th class="sortable num" data-col="sn">Saldo Neto<span class="arrow">⇅</span></th>
 <th class="sortable num" data-col="fl">% Flujo<span class="arrow">⇅</span></th>
-</tr></thead><tbody></tbody><tfoot id="tablaFoot"></tfoot></table></div>
+</tr></thead><tbody></tbody><tfoot id="tablaFoot"></tfoot></table>
 </div>
 
 <div class="modal" id="modMov"><div class="modal-box info">
@@ -187,7 +194,7 @@ button[type=submit]:hover{background:#004f8c}
 const SUBAG = ['14267','14128'];
 let MAESTRO=null, MOVS=[], STOCK={registros_diarios:[]};
 let sortCol='sn', sortDir='asc';
-
+let sortColSem='variacion', sortDirSem='asc';
 async function cargar(){
   const raw = await fetch('data/ceves_maestro.json').then(r=>r.json());
   MAESTRO = {...raw, ceves: raw.ceves.filter(c=>!SUBAG.includes(c.agencia))};
@@ -203,7 +210,7 @@ async function cargar(){
   document.getElementById('fHasta').value=new Date().toISOString().slice(0,10);
   document.getElementById('movDesde').value='2026-01-01';
   document.getElementById('movHasta').value=new Date().toISOString().slice(0,10);
-  document.querySelectorAll('.filters select,.filters input,.period-mini select').forEach(el=>el.addEventListener('change',render));
+  document.querySelectorAll('.filters select,.filters input,.period-mini select,#fSemanaCustom').forEach(el=>el.addEventListener('change',render));
   document.querySelectorAll('.sortable').forEach(th=>th.addEventListener('click',()=>{
     const col=th.dataset.col;
     if(sortCol===col) sortDir = sortDir==='asc'?'desc':'asc';
@@ -332,18 +339,36 @@ function renderResumen(data){
 }
 
 function renderSemanal(data){
-  // Calcular cierre de semana actual y anterior (Sábado)
-  const hoy = new Date();
-  const dow = hoy.getDay(); // 0=Dom, 6=Sáb
-  const sabActual = new Date(hoy); sabActual.setDate(hoy.getDate() + (6 - dow));
-  const sabAnterior = new Date(sabActual); sabAnterior.setDate(sabActual.getDate() - 7);
-  const fmtFecha = d => d.toISOString().slice(0,10);
-  const finActual = fmtFecha(sabActual);
-  const finAnterior = fmtFecha(sabAnterior);
-  const lblActual = String(sabActual.getDate()).padStart(2,'0')+'-'+String(sabActual.getMonth()+1).padStart(2,'0');
-  const lblAnterior = String(sabAnterior.getDate()).padStart(2,'0')+'-'+String(sabAnterior.getMonth()+1).padStart(2,'0');
+  // Determinar fechas de comparación según selector
+  const tipo = document.getElementById('fSemanaTipo').value;
+  const custom = document.getElementById('fSemanaCustom');
+  custom.style.display = tipo === 'personalizado' ? 'inline-block' : 'none';
 
-  // Calcular por CeVe
+  const hoy = new Date();
+  let fechaActual, fechaAnterior;
+
+if(tipo === 'personalizado' && custom.value){
+    fechaActual = new Date(custom.value + 'T12:00:00');
+    fechaAnterior = new Date(custom.value + 'T12:00:00');
+    fechaAnterior.setDate(fechaAnterior.getDate() - 7);
+  } else if(tipo === 'sabado'){
+    const dow = hoy.getDay();
+    fechaActual = new Date(hoy); fechaActual.setDate(hoy.getDate() + (6 - dow));
+    fechaAnterior = new Date(fechaActual); fechaAnterior.setDate(fechaActual.getDate() - 7);
+  } else {
+    // Lunes: el último lunes pasado (si hoy es lunes, usar el de hace 7 días)
+    const dow = hoy.getDay();
+    const diasAlLunes = dow === 0 ? 6 : dow - 1;
+    fechaActual = new Date(hoy); fechaActual.setDate(hoy.getDate() - diasAlLunes);
+    fechaAnterior = new Date(fechaActual); fechaAnterior.setDate(fechaActual.getDate() - 7);
+  }
+
+  const fmtFecha = d => d.toISOString().slice(0,10);
+  const finActual = fmtFecha(fechaActual);
+  const finAnterior = fmtFecha(fechaAnterior);
+  const lblActual = String(fechaActual.getDate()).padStart(2,'0')+'-'+String(fechaActual.getMonth()+1).padStart(2,'0');
+  const lblAnterior = String(fechaAnterior.getDate()).padStart(2,'0')+'-'+String(fechaAnterior.getMonth()+1).padStart(2,'0');
+
   const eqF = document.getElementById('fEquipo').value || '028';
   const filas = MAESTRO.ceves.filter(c=>{
     const r=document.getElementById('fRegion').value, cf=document.getElementById('fCeve').value;
@@ -352,50 +377,70 @@ function renderSemanal(data){
     return true;
   }).map(c=>{
     const ms = data.filter(m=>m.agencia===c.agencia && m.equipo===eqF);
-    // YTD a la fecha actual
-    const ing26 = ms.reduce((s,m)=>s+m.ingresos_planta,0);
-    const egr26 = ms.reduce((s,m)=>s+m.egresos_planta,0);
+    const msAct = ms.filter(m=>m.fecha <= finActual);
+    const ing26 = msAct.reduce((s,m)=>s+m.ingresos_planta,0);
+    const egr26 = msAct.reduce((s,m)=>s+m.egresos_planta,0);
     const inv = eqF==='028' ? c.inv_inicial_BG : c.inv_inicial_DO;
     const sa = stockAct(c.agencia, eqF);
     const vs = sa!==null ? sa - inv : 0;
     const sn26 = (egr26 - ing26) + vs;
     const fl26 = ing26 ? sn26/ing26 : 0;
-    // YTD al sábado anterior
     const msAnt = ms.filter(m=>m.fecha <= finAnterior);
     const ingAnt = msAnt.reduce((s,m)=>s+m.ingresos_planta,0);
     const egrAnt = msAnt.reduce((s,m)=>s+m.egresos_planta,0);
-    const snAnt = (egrAnt - ingAnt) + vs; // mismo VS por no tener histórico semanal
+    const snAnt = (egrAnt - ingAnt) + vs;
     const flAnt = ingAnt ? snAnt/ingAnt : 0;
     const variacion = fl26 - flAnt;
     return {region:c.region, ceve:c.nombre, fl26, flAnt, variacion};
   });
-  // Ordenar de peor a mejor
-  filas.sort((a,b)=> a.fl26 - b.fl26);
+
+  // Ordenar según columna activa
+  filas.sort((a,b)=>{
+    let av=a[sortColSem], bv=b[sortColSem];
+    if(typeof av==='string') return sortDirSem==='asc'?av.localeCompare(bv):bv.localeCompare(av);
+    return sortDirSem==='asc'?av-bv:bv-av;
+  });
 
   // Totales
-  const totalEqF = document.getElementById('fEquipo').value || '028';
-  const allMs = data.filter(m=>m.equipo===totalEqF);
-  const tI = allMs.reduce((s,m)=>s+m.ingresos_planta,0);
-  const tE = allMs.reduce((s,m)=>s+m.egresos_planta,0);
+  const allMs = data.filter(m=>m.equipo===eqF);
+  const allMsAct = allMs.filter(m=>m.fecha <= finActual);
+  const allMsAnt = allMs.filter(m=>m.fecha <= finAnterior);
+  const tI = allMsAct.reduce((s,m)=>s+m.ingresos_planta,0);
+  const tE = allMsAct.reduce((s,m)=>s+m.egresos_planta,0);
   const tVS = MAESTRO.ceves.reduce((s,c)=>{
-    const sa=stockAct(c.agencia,totalEqF);
-    const inv=totalEqF==='028'?c.inv_inicial_BG:c.inv_inicial_DO;
+    const sa=stockAct(c.agencia,eqF);
+    const inv=eqF==='028'?c.inv_inicial_BG:c.inv_inicial_DO;
     return s + (sa!==null?sa-inv:0);
   },0);
   const tSN = (tE - tI) + tVS;
   const tFl = tI ? tSN/tI : 0;
-  const allMsAnt = allMs.filter(m=>m.fecha <= finAnterior);
   const tIA = allMsAnt.reduce((s,m)=>s+m.ingresos_planta,0);
   const tEA = allMsAnt.reduce((s,m)=>s+m.egresos_planta,0);
   const tSNA = (tEA - tIA) + tVS;
   const tFlA = tIA ? tSNA/tIA : 0;
   const tVar = tFl - tFlA;
 
+  // Helper para flecha en cabecera
+  const arr = c => c===sortColSem ? (sortDirSem==='asc' ? '▲' : '▼') : '⇅';
+
   document.querySelector('#tablaSemanal thead').innerHTML =
-    '<tr><th>Región</th><th>Centro de venta</th>'+
-    '<th class="num">Saldo/Flujo 2026<br>(al '+lblActual+')</th>'+
-    '<th class="num">Saldo/Flujo<br>(al '+lblAnterior+')</th>'+
-    '<th class="num">Variación semanal</th></tr>';
+    '<tr>'+
+    '<th class="sortableSem" data-col="region" style="cursor:pointer">Región <span style="font-size:10px">'+arr('region')+'</span></th>'+
+    '<th class="sortableSem" data-col="ceve" style="cursor:pointer">Centro de venta <span style="font-size:10px">'+arr('ceve')+'</span></th>'+
+    '<th class="sortableSem num" data-col="fl26" style="cursor:pointer">Saldo/Flujo 2026<br>(al '+lblActual+') <span style="font-size:10px">'+arr('fl26')+'</span></th>'+
+    '<th class="sortableSem num" data-col="flAnt" style="cursor:pointer">Saldo/Flujo<br>(al '+lblAnterior+') <span style="font-size:10px">'+arr('flAnt')+'</span></th>'+
+    '<th class="sortableSem num" data-col="variacion" style="cursor:pointer">Variación semanal <span style="font-size:10px">'+arr('variacion')+'</span></th>'+
+    '</tr>';
+
+  // Vincular click a los nuevos headers
+  document.querySelectorAll('.sortableSem').forEach(th=>{
+    th.addEventListener('click',()=>{
+      const col=th.dataset.col;
+      if(sortColSem===col) sortDirSem = sortDirSem==='asc'?'desc':'asc';
+      else { sortColSem=col; sortDirSem='asc'; }
+      renderSemanal(data);
+    });
+  });
 
   document.querySelector('#tablaSemanal tbody').innerHTML = filas.map(f=>
     '<tr><td>'+f.region+'</td><td>'+f.ceve+'</td>'+
