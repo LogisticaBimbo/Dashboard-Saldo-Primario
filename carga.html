@@ -259,10 +259,16 @@ async function guardar(p,mi,fi,cb){
       formData.append('Firma Administrador', p.firma_admin);
       formData.append('Observaciones', p.observaciones || '-');
       formData.append('Datos completos JSON', JSON.stringify(p, null, 2));
-      const resp = await fetch('https://formspree.io/f/xbdvawyq', {
-        method: 'POST', body: formData, headers: {'Accept': 'application/json'}
-      });
-      if(!resp.ok) throw new Error('No se pudo enviar el inventario (status ' + resp.status + ')');
+const endpoints = ['https://formspree.io/f/xbdvawyq', 'https://formspree.io/f/xrewanng'];
+const resultados = await Promise.all(endpoints.map(url =>
+  fetch(url, {method: 'POST', body: formData, headers: {'Accept': 'application/json'}})
+));
+const fallidos = resultados.filter(r => !r.ok);
+if(fallidos.length === endpoints.length){
+  throw new Error('No se pudo enviar el inventario a ningún destinatario.');
+} else if(fallidos.length > 0){
+  console.warn('Algunos destinatarios fallaron, pero al menos uno recibió el envío.');
+}
       const local = JSON.parse(localStorage.getItem('mensuales') || '[]');
       local.push(p);
       localStorage.setItem('mensuales', JSON.stringify(local));
