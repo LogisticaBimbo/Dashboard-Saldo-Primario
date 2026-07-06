@@ -179,6 +179,47 @@ button[type=submit]:hover{background:#004f8c}
 </tr></thead><tbody></tbody><tfoot id="tablaFoot"></tfoot></table>
 </div>
 
+<div class="card">
+<div style="display:flex;align-items:center;margin-bottom:10px;gap:10px;flex-wrap:wrap">
+<h3 style="margin:0">📋 Detalle de Movimientos con Planta</h3>
+<button class="download-btn" onclick="exportarDetalle()">⬇ Descargar Excel</button>
+<span id="detalleContador" style="margin-left:auto;font-size:12px;color:#666"></span>
+</div>
+<div class="period-mini" style="margin-bottom:10px;flex-wrap:wrap">
+<span>CeVe:</span>
+<select id="detCeve"><option value="">Todos</option></select>
+<span>Desde:</span><input type="date" id="detDesde">
+<span>Hasta:</span><input type="date" id="detHasta">
+</div>
+<div style="max-height:500px;overflow:auto">
+<table id="tablaDetalle">
+<thead>
+<tr>
+<th class="sortableDet" data-col="fecha" style="cursor:pointer">Fecha ⇅</th>
+<th class="sortableDet" data-col="ceve" style="cursor:pointer">CeVe ⇅</th>
+<th class="sortableDet" data-col="motivo" style="cursor:pointer">Motivo ⇅</th>
+<th class="sortableDet" data-col="remito" style="cursor:pointer">Nº Remito ⇅</th>
+<th class="sortableDet" data-col="origen" style="cursor:pointer">Origen ⇅</th>
+<th class="sortableDet" data-col="destino" style="cursor:pointer">Destino ⇅</th>
+<th class="sortableDet num" data-col="bg" style="cursor:pointer">Bandejas (BG) ⇅</th>
+<th class="sortableDet num" data-col="doll" style="cursor:pointer">Dollys (DO) ⇅</th>
+</tr>
+<tr style="background:#f7f9fb">
+<th style="padding:4px"></th>
+<th style="padding:4px"></th>
+<th style="padding:4px"><select id="fltMotivo" style="width:100%;padding:4px;font-size:11px"><option value="">Todos</option></select></th>
+<th style="padding:4px"><input type="text" id="fltRemito" placeholder="Filtrar..." style="width:100%;padding:4px;font-size:11px"></th>
+<th style="padding:4px"><select id="fltOrigen" style="width:100%;padding:4px;font-size:11px"><option value="">Todos</option></select></th>
+<th style="padding:4px"><select id="fltDestino" style="width:100%;padding:4px;font-size:11px"><option value="">Todos</option></select></th>
+<th style="padding:4px"></th>
+<th style="padding:4px"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+</div>
+
 <div class="modal" id="modMov"><div class="modal-box info">
 <h3>📥 Descargar Movimientos</h3>
 <p>Filtrá los movimientos a exportar:</p>
@@ -192,24 +233,41 @@ button[type=submit]:hover{background:#004f8c}
 
 <script>
 const SUBAG = ['14267','14128'];
-let MAESTRO=null, MOVS=[], STOCK={registros_diarios:[]};
+let MAESTRO=null, MOVS=[], DETALLE=[], STOCK={registros_diarios:[]};
 let sortCol='sn', sortDir='asc';
+let sortColDet='fecha', sortDirDet='asc';
 let sortColSem='variacion', sortDirSem='asc';
 async function cargar(){
   const raw = await fetch('data/ceves_maestro.json').then(r=>r.json());
   MAESTRO = {...raw, ceves: raw.ceves.filter(c=>!SUBAG.includes(c.agencia))};
   const m = await fetch('data/movimientos_mc1.json').then(r=>r.json());
   MOVS = m.movimientos.filter(x=>!SUBAG.includes(x.agencia));
+  try {
+    const det = await fetch('data/movimientos_detalle.json').then(r=>r.json());
+    DETALLE = det.movimientos.filter(x=>!SUBAG.includes(x.agencia));
+  } catch(e){ DETALLE = []; }
   try{STOCK=await fetch('data/stock_diario.json').then(r=>r.json())}catch(e){}
   document.getElementById('lastUpdate').textContent='Actualizado: '+new Date(m.actualizado).toLocaleString('es-AR');
   MAESTRO.ceves.forEach(c=>{
     document.getElementById('fCeve').innerHTML += '<option value="'+c.agencia+'">'+c.nombre+'</option>';
     document.getElementById('movCeve').innerHTML += '<option value="'+c.agencia+'">'+c.nombre+'</option>';
+    document.getElementById('detCeve').innerHTML += '<option value="'+c.agencia+'">'+c.nombre+'</option>';
   });
   document.getElementById('fDesde').value='2026-01-01';
   document.getElementById('fHasta').value=new Date().toISOString().slice(0,10);
   document.getElementById('movDesde').value='2026-01-01';
   document.getElementById('movHasta').value=new Date().toISOString().slice(0,10);
+  document.getElementById('detDesde').value='2026-01-01';
+     document.getElementById('detHasta').value=new Date().toISOString().slice(0,10);
+     document.querySelectorAll('#detCeve, #detDesde, #detHasta').forEach(el=>el.addEventListener('change', renderDetalle));
+  document.addEventListener('click', e => {
+    if(e.target.classList.contains('sortableDet')){
+      const col = e.target.dataset.col;
+      if(sortColDet===col) sortDirDet = sortDirDet==='asc'?'desc':'asc';
+      else { sortColDet=col; sortDirDet='asc'; }
+      renderDetalle();
+    }
+  });
   document.querySelectorAll('.filters select,.filters input,.period-mini select,#fSemanaCustom').forEach(el=>el.addEventListener('change',render));
   document.querySelectorAll('.sortable').forEach(th=>th.addEventListener('click',()=>{
     const col=th.dataset.col;
@@ -277,6 +335,7 @@ function render(){
     '<div class="kpi '+(tF<0?'negative':'positive')+'"><div class="label">% Flujo</div><div class="value">'+fmtP(tF)+'</div></div>';
   renderResumen(data);
   renderSemanal(data);
+  renderDetalle();
 
   const eqF = document.getElementById('fEquipo').value;
   const filas = MAESTRO.ceves.filter(c=>{
@@ -313,7 +372,7 @@ function render(){
   ).join('');
   const sm=k=>filas.reduce((s,x)=>s+(x[k]||0),0);
   const sI=sm('ing'),sE=sm('egr'),sN=sm('sn'),sF=sI?sN/sI:0;
-  document.getElementById('tablaFoot').innerHTML='<tr style="background:#003e7e;color:#fff;font-weight:700"><td colspan="2">TOTAL</td><td class="num">'+fmt(sm('inv'))+'</td><td class="num">—</td><td class="num">'+fmt(sm('vs'))+'</td><td class="num">'+fmt(sI)+'</td><td class="num">'+fmt(sE)+'</td><td class="num">'+fmt(sm('sb'))+'</td><td class="num">'+fmt(sN)+'</td><td class="num">'+fmtP(sF)+'</td></tr>';
+  document.getElementById('tablaFoot').innerHTML='<tr style="background:#003e7e;color:#fff;font-weight:700"><td colspan="2">TOTAL</td><td class="num">'+fmt(sm('inv'))+'</td><td class="num">'+fmt(filas.reduce((s,x)=>s+(x.sa||0),0))+'</td><td class="num">'+fmt(sm('vs'))+'</td><td class="num">'+fmt(sI)+'</td><td class="num">'+fmt(sE)+'</td><td class="num">'+fmt(sm('sb'))+'</td><td class="num">'+fmt(sN)+'</td><td class="num">'+fmtP(sF)+'</td></tr>';
   renderCharts(filas,data);
   window._filas=filas;
 }
@@ -485,6 +544,190 @@ function exportarSemanal(){
   const wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,ws,'Variacion Semanal');
   XLSX.writeFile(wb,'VariacionSemanal_'+new Date().toISOString().slice(0,10)+'.xlsx');
+}
+function ceveLabel(codigo){
+  const c = (codigo||'').toString().toUpperCase().trim();
+  if(!MAESTRO || !MAESTRO.ceves) return codigo;
+  // Buscar en el maestro por agencia
+  const ceve = MAESTRO.ceves.find(x => x.agencia === c);
+  if(ceve) return ceve.nombre;
+  // Algunos casos especiales que no están en el maestro (subagencias filtradas u otros)
+  const especiales = {
+    '14117': 'Tablada',
+    '14134': 'Valente',
+    '14267': 'La Plata',
+    '14128': 'Santa Teresita',
+    '14272': 'Villa Tesei'
+  };
+  return especiales[c] || codigo;
+}
+
+function nodoLabel(codigo){
+  const c = (codigo||'').toString().toUpperCase().trim();
+  if(!c) return '—';
+  // Si empieza con "HI" es una planta (letra + código)
+  if(/^HI[A-Z]/.test(c)) return plantaLabel(c);
+  // Si es todo números, es un CeVe/agencia
+  if(/^\d+$/.test(c)) return ceveLabel(c);
+  return codigo;
+}
+function plantaLabel(codigo){
+  const c = (codigo||'').toUpperCase().trim();
+  const plantas = {
+    'HIZ': 'Planta Pilar',
+    'HID': 'Planta Tesei',
+    'HIR': 'Planta Córdoba',
+    'HIG': 'Cedis Moreno',
+    'HIN': 'Valente'
+  };
+  return plantas[c] || codigo;
+}
+function motivoLabel(motivo){
+  const m = (motivo||'').toUpperCase();
+  if(m === 'ENTRADA ESTOQUE - ASN AUTOMATICA' || m === 'ENTRADA ESTOQUE - AJUSTE MANUAL'){
+    return 'ENTRADA ESTOQUE';
+  }
+  return motivo;
+}
+
+function renderDetalle(){
+  // Poblar dropdowns de los filtros por columna (una sola vez)
+  if(!window._dropdownsPobladosDet){
+    const motivosSet = new Set();
+    const origenesSet = new Set();
+    const destinosSet = new Set();
+    DETALLE.forEach(m=>{
+      motivosSet.add(motivoLabel(m.motivo));
+      if(m.origen) origenesSet.add(nodoLabel(m.origen));
+      if(m.destino) destinosSet.add(nodoLabel(m.destino));
+    });
+    const orderStr = (a,b) => a.localeCompare(b);
+    const opts = (set, id) => {
+      const sel = document.getElementById(id);
+      Array.from(set).sort(orderStr).forEach(v => sel.innerHTML += '<option value="'+v+'">'+v+'</option>');
+    };
+    opts(motivosSet, 'fltMotivo');
+    opts(origenesSet, 'fltOrigen');
+    opts(destinosSet, 'fltDestino');
+    document.querySelectorAll('#fltMotivo, #fltRemito, #fltOrigen, #fltDestino').forEach(el => {
+      el.addEventListener('input', renderDetalle);
+      el.addEventListener('change', renderDetalle);
+    });
+    window._dropdownsPobladosDet = true;
+  }
+
+  const ag = document.getElementById('detCeve').value;
+  const d = document.getElementById('detDesde').value;
+  const h = document.getElementById('detHasta').value;
+  const fltMotivo = document.getElementById('fltMotivo')?.value || '';
+  const fltRemito = (document.getElementById('fltRemito')?.value || '').toUpperCase().trim();
+  const fltOrigen = document.getElementById('fltOrigen')?.value || '';
+  const fltDestino = document.getElementById('fltDestino')?.value || '';
+
+  const filtradas = DETALLE.filter(m=>{
+    if(ag && m.agencia!==ag) return false;
+    if(d && m.fecha<d) return false;
+    if(h && m.fecha>h) return false;
+    return true;
+  });
+
+  // Agrupar por (fecha+ceve+remito) o (fecha+ceve+motivo si no hay remito)
+  const grupos = {};
+  filtradas.forEach(m=>{
+    const key = m.remito
+      ? m.fecha+'|'+m.agencia+'|'+m.remito
+      : m.fecha+'|'+m.agencia+'|SIN_REMITO|'+m.motivo;
+    if(!grupos[key]){
+      grupos[key] = {
+        fecha: m.fecha, ceve: m.ceve, tipo: m.tipo,
+        remito: m.remito, origen: m.origen, destino: m.destino,
+        motivos: new Set([motivoLabel(m.motivo)]),
+        bg: 0, doll: 0
+      };
+    } else {
+      grupos[key].motivos.add(motivoLabel(m.motivo));
+      if(!grupos[key].origen && m.origen) grupos[key].origen = m.origen;
+      if(!grupos[key].destino && m.destino) grupos[key].destino = m.destino;
+    }
+    if(m.equipo === '028') grupos[key].bg += m.cantidad;
+    else if(m.equipo === '031') grupos[key].doll += m.cantidad;
+  });
+
+  let filas = Object.values(grupos);
+
+  // Aplicar filtros de columnas
+  if(fltMotivo){
+    filas = filas.filter(f => f.motivos.has(fltMotivo));
+  }
+  if(fltRemito){
+    filas = filas.filter(f => (f.remito||'').toUpperCase().includes(fltRemito));
+  }
+  if(fltOrigen){
+    filas = filas.filter(f => nodoLabel(f.origen) === fltOrigen);
+  }
+  if(fltDestino){
+    filas = filas.filter(f => nodoLabel(f.destino) === fltDestino);
+  }
+
+  // Ordenar
+  filas.sort((a,b)=>{
+    let av, bv;
+    if(sortColDet==='motivo'){
+      av = Array.from(a.motivos).join('+');
+      bv = Array.from(b.motivos).join('+');
+    } else {
+      av = a[sortColDet];
+      bv = b[sortColDet];
+    }
+    if(av==null) av='';
+    if(bv==null) bv='';
+    if(typeof av==='string') return sortDirDet==='asc'?av.localeCompare(bv):bv.localeCompare(av);
+    return sortDirDet==='asc'?av-bv:bv-av;
+  });
+
+  document.getElementById('detalleContador').textContent = filas.length.toLocaleString('es-AR') + ' movimientos';
+  const MAX = 500;
+  const mostrar = filas.slice(0, MAX);
+  document.querySelector('#tablaDetalle tbody').innerHTML = mostrar.map(f=>{
+    const tipoColor = f.tipo==='ingreso_planta' ? '#1e8e3e' : '#d93025';
+    const motivosArr = Array.from(f.motivos);
+    let motivo = motivosArr.join(' + ');
+    if(motivo.length>40) motivo = motivo.slice(0,40)+'…';
+    const fechaFmt = f.fecha.split('-').reverse().join('/');
+    return '<tr>'+
+      '<td>'+fechaFmt+'</td>'+
+      '<td>'+f.ceve+'</td>'+
+      '<td style="font-size:11px;color:'+tipoColor+'">'+motivo+'</td>'+
+      '<td>'+(f.remito||'—')+'</td>'+
+      '<td>'+nodoLabel(f.origen)+'</td>'+
+      '<td>'+nodoLabel(f.destino)+'</td>'+
+      '<td class="num">'+(f.bg?fmt(f.bg):'')+'</td>'+
+      '<td class="num">'+(f.doll?fmt(f.doll):'')+'</td>'+
+    '</tr>';
+  }).join('');
+  if(filas.length > MAX){
+    document.querySelector('#tablaDetalle tbody').innerHTML += '<tr><td colspan="8" style="text-align:center;background:#fef7e0;padding:10px">⚠️ Mostrando los primeros '+MAX+' de '+filas.length.toLocaleString('es-AR')+' movimientos. Descargá el Excel para ver todos.</td></tr>';
+  }
+  window._detalle = filas;
+}
+function exportarDetalle(){
+  const filas = window._detalle || [];
+  if(!filas.length){ alert('No hay movimientos para exportar.'); return; }
+  const out = filas.map(f=>({
+    Fecha: f.fecha.split('-').reverse().join('/'),
+    CeVe: f.ceve,
+    Tipo: f.tipo==='ingreso_planta' ? 'Ingreso' : 'Egreso',
+    Motivo: Array.from(f.motivos).join(' + '),
+    Remito: f.remito,
+    Origen: nodoLabel(f.origen),
+           Destino: nodoLabel(f.destino),
+    Bandejas_BG: f.bg,
+    Dollys_DO: f.doll
+  }));
+  const ws=XLSX.utils.json_to_sheet(out);
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,'Detalle Movimientos');
+  XLSX.writeFile(wb,'DetalleMovimientos_'+new Date().toISOString().slice(0,10)+'.xlsx');
 }
 function abrirModalMov(){ document.getElementById('modMov').classList.add('show'); }
 function descargarMov(){
