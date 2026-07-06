@@ -154,7 +154,7 @@ button[type=submit]:hover{background:#004f8c}
 <div class="accordion" data-mov="rd"><div class="acc-header"><span>📥 Recibidas (DENTRO del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('rd')">+ Agregar fila</button></div></div><div class="accordion" data-mov="rf"><div class="acc-header"><span>📥 Recibidas (NO dentro del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('rf')">+ Agregar fila</button></div></div><div class="accordion" data-mov="dd"><div class="acc-header"><span>📤 Despachadas (DENTRO del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('dd')">+ Agregar fila</button></div></div><div class="accordion" data-mov="df"><div class="acc-header"><span>📤 Despachadas (NO dentro del conteo)</span><span>▶</span></div><div class="acc-body"><table class="mov-table"><thead><tr><th>Fecha</th><th>Chofer</th><th>Nº CONEQUIP</th><th>Nº Remito</th><th>Destino/Origen</th><th>Hora</th><th>Band</th><th>Pasc</th><th>D.Gr</th><th>D.Ch</th><th>Mad</th><th>Plast</th><th></th></tr></thead><tbody></tbody></table><button type="button" class="btn-add" onclick="agregarFila('df')">+ Agregar fila</button></div></div>
 
 <div class="section-title">✍️ Firmas y observaciones</div>
-<div class="form-row four"><div><label>Firma Op. Logístico</label><input type="text" id="mF1"></div><div><label>Firma Sup. Despacho</label><input type="text" id="mF2"></div><div><label>Firma Contador</label><input type="text" id="mF3"></div><div><label>Firma Administrador</label><input type="text" id="mF4"></div></div>
+<div class="form-row four"><div><label>Firma Op. Logístico</label><input type="text" id="mF1"></div><div><label>Firma Sup. Despacho</label><input type="text" id="mF2"></div><div><label>Firma Contador/Despacho</label><input type="text" id="mF3"></div><div><label>Firma Administrador</label><input type="text" id="mF4"></div></div>
 <div class="form-row full"><div><label>Observaciones / Novedades</label><textarea id="mObs"></textarea></div></div>
 <button type="submit">💾 Guardar inventario mensual</button>
 </form>
@@ -240,25 +240,16 @@ function msg(id,txt,ok){document.getElementById(id).innerHTML='<div class="msg '
 async function guardar(p,mi,fi,cb){
   try{
     if(p.tipo === 'mensual'){
-      const formData = new FormData();
-      formData.append('_subject', 'Nuevo Inventario Mensual - ' + p.ceve + ' - ' + p.mes);
+const formData = new FormData();
+      formData.append('_subject', '📦 Inventario Mensual - ' + p.ceve + ' - ' + p.mes);
       formData.append('CeVe', p.ceve);
-      formData.append('Agencia', p.agencia);
+      formData.append('Reportado por', p.supervisor);
       formData.append('Mes', p.mes);
-      formData.append('Fecha del conteo', p.fecha_conteo);
-      formData.append('Hora del conteo', p.hora_conteo);
-      formData.append('Supervisor', p.supervisor);
-      let invTxt = '';
-      Object.values(p.inventario).forEach(e => {
-        invTxt += e.nombre + ': Con producto=' + e.con_producto + ' | Vacios=' + e.vacios + ' | Otros=' + e.otros + ' | TOTAL=' + e.total + '\n';
-      });
-      formData.append('Inventario', invTxt);
-      formData.append('Firma Op Logistico', p.firma_op_log);
-      formData.append('Firma Sup Despacho', p.firma_sup_desp);
-      formData.append('Firma Contador', p.firma_contador);
-      formData.append('Firma Administrador', p.firma_admin);
-      formData.append('Observaciones', p.observaciones || '-');
-      formData.append('Datos completos JSON', JSON.stringify(p, null, 2));
+      const bg = p.inventario.BG ? p.inventario.BG.total : 0;
+      const doG = p.inventario.DOG ? p.inventario.DOG.total : 0;
+      formData.append('Bandejas (BG-028)', bg.toLocaleString('es-AR'));
+      formData.append('Dollys (DO-031)', doG.toLocaleString('es-AR'));
+      formData.append('Ver detalle completo', 'https://logisticabimbo.github.io/Dashboard-Saldo-Primario/seguimiento.html');
 const endpoints = ['https://formspree.io/f/xbdvawyq', 'https://formspree.io/f/xrewanng'];
 const resultados = await Promise.all(endpoints.map(url =>
   fetch(url, {method: 'POST', body: formData, headers: {'Accept': 'application/json'}})
