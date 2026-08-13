@@ -2,6 +2,7 @@
 <html lang="es"><head><meta charset="UTF-8"><title>Dashboard Saldo Primario</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *{box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
 body{margin:0;background:#f4f6f8;color:#222}
@@ -233,6 +234,12 @@ button[type=submit]:hover{background:#004f8c}
 
 <script>
 const SUBAG = ['14267','14128'];
+const SUPABASE_URL = 'https://chdteugdydnftkysgfmo.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_yrrkBwZ_N6m1WEKID0AqTg_pZLPFwRX';
+const supabaseClient = window.supabase.createClient(
+   SUPABASE_URL,
+   SUPABASE_KEY
+);
 let MAESTRO=null, MOVS=[], DETALLE=[], STOCK={registros_diarios:[]};
 let sortCol='sn', sortDir='asc';
 let sortColDet='fecha', sortDirDet='asc';
@@ -246,7 +253,37 @@ async function cargar(){
     const det = await fetch('data/movimientos_detalle.json').then(r=>r.json());
     DETALLE = det.movimientos.filter(x=>!SUBAG.includes(x.agencia));
   } catch(e){ DETALLE = []; }
-  try{STOCK=await fetch('data/stock_diario.json').then(r=>r.json())}catch(e){}
+try {
+  const { data: stockSupabase, error } = await supabaseClient
+    .from('stock_diario')
+    .select('agencia, ceve, fecha_conteo, bg, do_stock, observaciones, usuario, created_at')
+    .order('fecha_conteo', { ascending: false })
+    .order('created_at', { ascending: false });
+
+  if(error) throw error;
+
+  STOCK = {
+    registros_diarios: (stockSupabase || []).map(r => ({
+      tipo: 'diario',
+      agencia: String(r.agencia),
+      ceve: r.ceve,
+      fecha: r.fecha_conteo,
+      BG: Number(r.bg) || 0,
+      DO: Number(r.do_stock) || 0,
+      observaciones: r.observaciones || '',
+      supervisor: r.usuario || '',
+      timestamp: r.created_at
+    }))
+  };
+
+  console.log(
+    'Stock cargado desde Supabase:',
+    STOCK.registros_diarios.length
+  );
+} catch(e) {
+  console.error('Error cargando stock desde Supabase:', e);
+  STOCK = { registros_diarios: [] };
+}
   document.getElementById('lastUpdate').textContent='Actualizado: '+new Date(m.actualizado).toLocaleString('es-AR');
   MAESTRO.ceves.forEach(c=>{
     document.getElementById('fCeve').innerHTML += '<option value="'+c.agencia+'">'+c.nombre+'</option>';
@@ -276,6 +313,27 @@ async function cargar(){
     render();
   }));
   render();
+
+  // Actualizar automáticamente cuando un supervisor carga stock.
+  if(!window._stockRealtime){
+    window._stockRealtime = supabaseClient
+      .channel('stock-diario-dashboard')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'stock_diario'
+        },
+        payload => {
+          console.log('Nueva carga recibida:', payload.new);
+          location.reload();
+        }
+      )
+      .subscribe(status => {
+        console.log('Estado Realtime:', status);
+      });
+  }
 }
 function filtrar(){
   const r=document.getElementById('fRegion').value, c=document.getElementById('fCeve').value, e=document.getElementById('fEquipo').value;
@@ -295,10 +353,20 @@ function fmt(n){return(n||0).toLocaleString('es-AR')}
 function fmtP(n){return(n*100).toFixed(2)+'%'}
 function fmtPSigned(n){const v=(n*100).toFixed(2);return (n>=0?'+':'')+v+'%'}
 function stockAct(ag,eq){
-  const r=(STOCK.registros_diarios||[]).filter(s=>s.agencia===ag);
-  if(!r.length)return null;
-  r.sort((a,b)=>b.fecha.localeCompare(a.fecha));
-  return eq==='028'?r[0].BG:r[0].DO;
+  const r=(STOCK.registros_diarios||[])
+    .filter(s=>String(s.agencia)===String(ag));
+
+  if(!r.length) return null;
+
+  r.sort((a,b)=>{
+    const ka=(a.fecha||'')+'|'+(a.timestamp||'');
+    const kb=(b.fecha||'')+'|'+(b.timestamp||'');
+    return kb.localeCompare(ka);
+  });
+
+  return eq==='028'
+    ? Number(r[0].BG)||0
+    : Number(r[0].DO)||0;
 }
 function calc(ag,eq,d){
   const c=MAESTRO.ceves.find(x=>x.agencia===ag);
