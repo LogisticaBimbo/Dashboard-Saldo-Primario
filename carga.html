@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8"><title>Carga Stock</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *{box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
 body{margin:0;background:#f4f6f8;color:#222}
@@ -181,6 +182,14 @@ button[type=submit]:hover{background:#004f8c}
 
 <script>
 const SUBAG = ['14267','14128'];
+
+const SUPABASE_URL = 'https://chdteugdydnftkysgfmo.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_yrrkBwZ_N6m1WEKID0AqTg_pZLPFwRX';
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
 const EQUIPOS = [['BG','BANDEJAS (028)'],['DOG','DOLLYS Grandes (031)'],['DOC','DOLLYS Chicos'],['PM','Pallets Madera'],['PP','Pallets Plástico'],['PASC','Pascualineros']];
 let MAESTRO=null;
 
@@ -264,9 +273,19 @@ if(fallidos.length === endpoints.length){
       local.push(p);
       localStorage.setItem('mensuales', JSON.stringify(local));
     } else {
-      const local = JSON.parse(localStorage.getItem('diarios') || '[]');
-      local.push(p);
-      localStorage.setItem('diarios', JSON.stringify(local));
+      const { error } = await supabaseClient
+        .from('stock_diario')
+        .insert({
+          ceve: p.ceve,
+          agencia: String(p.agencia),
+          fecha_conteo: p.fecha,
+          bg: Number(p.BG) || 0,
+          do_stock: Number(p.DO) || 0,
+          observaciones: p.observaciones || '',
+          usuario: p.supervisor || ''
+        });
+
+      if(error) throw error;
     }
     msg(mi, 'Carga registrada correctamente.', true);
     if(cb) cb(p);
@@ -322,7 +341,7 @@ function mostrarExito(p){
   document.getElementById('formMensualWrap').style.display='none';
   document.getElementById('postSave').style.display='block';
   let html = '<h2>Inventario Mensual — '+p.ceve+'</h2>';
-  html += '<p><b>Mes:</b> '+p.mes+' &nbsp; <b>Fecha conteo:</b> '+p.fecha_conteo+' '+p.hora_conteo+'</p>';
+  html += '<p><b>Mes:</b> '+p.mes+'   <b>Fecha conteo:</b> '+p.fecha_conteo+' '+p.hora_conteo+'</p>';
   html += '<p><b>Supervisor:</b> '+p.supervisor+'</p>';
   html += '<h3>Inventario físico</h3><table><tr><th>Equipo</th><th>Con prod.</th><th>Vacíos</th><th>Otros</th><th>TOTAL</th></tr>';
   Object.values(p.inventario).forEach(e=>{
