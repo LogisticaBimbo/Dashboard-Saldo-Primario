@@ -384,10 +384,30 @@ let sortColSem='variacion', sortDirSem='asc';
 async function cargar(){
   const raw = await fetch('data/ceves_maestro.json').then(r=>r.json());
   MAESTRO = {...raw, ceves: raw.ceves.filter(c=>!SUBAG.includes(c.agencia))};
-  const m = await fetch('data/movimientos_mc1.json').then(r=>r.json());
+  const m = await fetch(
+  'data/movimientos_mc1.json?ts=' + Date.now(),
+  { cache: 'no-store' }
+).then(r => {
+  if(!r.ok) {
+    throw new Error(
+      'No se pudo cargar movimientos_mc1.json: ' + r.status
+    );
+  }
+  return r.json();
+});
   MOVS = m.movimientos.filter(x=>!SUBAG.includes(x.agencia));
   try {
-    const det = await fetch('data/movimientos_detalle.json').then(r=>r.json());
+    const det = await fetch(
+  'data/movimientos_detalle.json?ts=' + Date.now(),
+  { cache: 'no-store' }
+).then(r => {
+  if(!r.ok) {
+    throw new Error(
+      'No se pudo cargar movimientos_detalle.json: ' + r.status
+    );
+  }
+  return r.json();
+});
     DETALLE = det.movimientos.filter(x=>!SUBAG.includes(x.agencia));
   } catch(e){ DETALLE = []; }
 try {
