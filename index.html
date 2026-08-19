@@ -118,6 +118,143 @@ button[type=submit]:hover{background:#004f8c}
 .success-screen{text-align:center;padding:40px 20px}
 .success-screen .ok-icon{font-size:60px;color:#1e8e3e;margin-bottom:10px}
 .success-screen h2{color:#1e8e3e;margin:10px 0}
+.operativo-kpis{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.25fr;
+  gap:18px;
+  margin-bottom:18px
+}
+.operativo-kpi{
+  background:#fff;
+  padding:22px;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  border-top:5px solid #0066b3;
+  text-align:center
+}
+.operativo-kpi .label{
+  font-size:12px;
+  font-weight:700;
+  color:#555;
+  text-transform:uppercase;
+  letter-spacing:.4px
+}
+.operativo-kpi .value{
+  font-size:32px;
+  font-weight:750;
+  margin-top:8px;
+  color:#003e7e;
+  font-variant-numeric:tabular-nums
+}
+.operativo-kpi.principal{
+  background:linear-gradient(135deg,#0066b3,#003e7e);
+  border-top-color:#003e7e;
+  transform:scale(1.02)
+}
+.operativo-kpi.principal .label,
+.operativo-kpi.principal .value{
+  color:#fff
+}
+.operativo-kpi.negativo{
+  border-top-color:#d93025
+}
+.operativo-kpi.negativo .value{
+  color:#d93025
+}
+.operativo-kpi.positivo{
+  border-top-color:#1e8e3e
+}
+.operativo-kpi.positivo .value{
+  color:#1e8e3e
+}
+.operativo-kpi.principal.negativo{
+  background:linear-gradient(135deg,#d93025,#a32018)
+}
+.operativo-kpi.principal.positivo{
+  background:linear-gradient(135deg,#1e8e3e,#126b2b)
+}
+.lectura-flujo{
+  background:#fff;
+  border-left:4px solid #0066b3;
+  padding:12px 16px;
+  border-radius:8px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  margin-bottom:20px;
+  font-size:13px;
+  color:#444;
+  text-align:center
+}
+.analisis-toggle{
+  width:100%;
+  border:none;
+  background:#fff;
+  color:#003e7e;
+  padding:14px 18px;
+  border-radius:10px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  margin-bottom:14px
+}
+.analisis-toggle:hover{
+  background:#eef5fb
+}
+.analisis-panel{
+  display:none;
+  margin-bottom:18px
+}
+.analisis-panel.open{
+  display:block
+}
+.analisis-bloques{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:18px
+}
+.analisis-bloque{
+  background:#fff;
+  padding:16px;
+  border-radius:10px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06)
+}
+.analisis-bloque h4{
+  margin:0 0 12px;
+  color:#003e7e;
+  font-size:13px;
+  text-transform:uppercase
+}
+.analisis-fila{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  border-bottom:1px solid #eee;
+  padding:7px 0;
+  font-size:12px
+}
+.analisis-fila:last-child{
+  border-bottom:none
+}
+.analisis-fila .valor{
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  text-align:right
+}
+.sin-dato-periodo{
+  color:#b06000;
+  font-size:11px;
+  margin-top:8px
+}
+@media(max-width:900px){
+  .operativo-kpis,
+  .analisis-bloques{
+    grid-template-columns:1fr
+  }
+  .operativo-kpi.principal{
+    transform:none
+  }
+}
 </style></head><body>
 <header><h1>📊 Dashboard Saldo Primario - CeVes Argentina</h1><div class="updated" id="lastUpdate">Cargando…</div></header>
 <div class="container"><div class="nav"><a href="index.html" class="active">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="seguimiento.html">✅ Seguimiento</a></div>
