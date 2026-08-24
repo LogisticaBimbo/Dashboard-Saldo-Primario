@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carga Facturaciones</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+
+*{box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{margin:0;background:#f4f6f8;color:#222}
+header{background:linear-gradient(90deg,#0066b3,#003e7e);color:#fff;padding:18px 28px;display:flex;justify-content:space-between;align-items:center}
+header h1{margin:0;font-size:22px}
+header .updated{font-size:12px;opacity:.85}
+.container{padding:20px 28px}
+.nav{display:flex;gap:14px;margin-bottom:18px}
+.nav a{background:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;color:#003e7e;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.nav a:hover,.nav a.active{background:#0066b3;color:#fff}
+.card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:18px}
+.card h3{margin:0 0 12px 0;font-size:14px;color:#003e7e;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#f0f4f8;padding:8px;text-align:left;font-weight:600;border-bottom:2px solid #d0d7de;white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid #eee}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.neg{color:#d93025;font-weight:600}
+.pos{color:#1e8e3e;font-weight:600}
+.sortable{cursor:pointer;user-select:none}
+.sortable:hover{background:#dde6ef}
+.sortable .arrow{opacity:.4;font-size:10px;margin-left:4px}
+.sortable.asc .arrow,.sortable.desc .arrow{opacity:1;color:#003e7e}
+.filters{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.filters label{font-size:11px;font-weight:600;color:#555;text-transform:uppercase;display:block;margin-bottom:4px}
+.filters select,.filters input{width:100%;padding:7px;border:1px solid #d0d7de;border-radius:6px;font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px}
+.kpi{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid #0066b3}
+.kpi .label{font-size:11px;color:#666;text-transform:uppercase;font-weight:600}
+.kpi .value{font-size:24px;font-weight:700;margin-top:4px;color:#003e7e}
+.kpi.negative{border-left-color:#d93025}.kpi.negative .value{color:#d93025}
+.kpi.positive{border-left-color:#1e8e3e}.kpi.positive .value{color:#1e8e3e}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px}
+.resumen-row{display:flex;justify-content:space-between;padding:7px 10px;font-size:13px;border-bottom:1px solid #f0f0f0}
+.resumen-row.header{background:#003e7e;color:#fff;font-weight:700;border-radius:4px 4px 0 0}
+.resumen-row.total{background:#fff3cd;font-weight:700;border-bottom:2px solid #003e7e}
+.resumen-row.final{background:#003e7e;color:#fff;font-weight:700;border-radius:0 0 4px 4px}
+.resumen-row .v{font-variant-numeric:tabular-nums}
+.period-mini{display:inline-flex;align-items:center;gap:8px;background:#f0f4f8;padding:6px 10px;border-radius:6px;font-size:12px}
+.period-mini select{padding:4px 8px;border:1px solid #d0d7de;border-radius:4px;font-size:12px}
+.download-btn{background:#1e8e3e;color:#fff;border:none;padding:10px 16px;border-radius:6px;cursor:pointer;font-weight:600;margin-left:8px}
+.download-btn:hover{background:#176b30}
+.download-btn.blue{background:#0066b3}
+.download-btn.blue:hover{background:#004f8c}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
+.badge.ok{background:#e6f4ea;color:#1e8e3e}
+.badge.warn{background:#fef7e0;color:#b06000}
+.badge.err{background:#fce8e6;color:#d93025}
+.cal-wrap{overflow-x:auto}
+.cal{border-collapse:collapse;font-size:11px}
+.cal th,.cal td{border:1px solid #e0e6ec;padding:4px 6px;min-width:38px;text-align:center;white-space:nowrap}
+.cal th{background:#003e7e;color:#fff}
+.cal td.ceve-name{background:#f0f4f8;font-weight:600;text-align:left;min-width:140px}
+.cal .c-ok{background:#1e8e3e;color:#fff}
+.cal .c-no{background:#fce8e6}
+.cal .c-fut{background:#f8f9fa;color:#bbb}
+.tabs{display:flex;gap:0}
+.tab-btn{flex:1;background:#e9eef3;border:none;padding:14px;cursor:pointer;font-weight:600;color:#555;border-radius:10px 10px 0 0;font-size:14px}
+.tab-btn.active{background:#fff;color:#003e7e;border-bottom:3px solid #0066b3}
+.tab-content{background:#fff;padding:24px;border-radius:0 0 10px 10px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:none}
+.tab-content.active{display:block}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-row.three{grid-template-columns:1fr 1fr 1fr}
+.form-row.four{grid-template-columns:1fr 1fr 1fr 1fr}
+.form-row.full{grid-template-columns:1fr}
+label{font-size:11px;font-weight:600;color:#555;text-transform:uppercase;display:block;margin-bottom:5px}
+input,select,textarea{width:100%;padding:9px;border:1px solid #d0d7de;border-radius:6px;font-size:14px}
+textarea{resize:vertical;min-height:60px}
+button[type=submit]{background:#0066b3;color:#fff;border:none;padding:12px 24px;border-radius:6px;cursor:pointer;font-weight:600;font-size:14px;width:100%}
+button[type=submit]:hover{background:#004f8c}
+.msg{padding:12px;border-radius:6px;margin-bottom:14px;font-size:14px}
+.msg.ok{background:#e6f4ea;color:#1e8e3e;border:1px solid #1e8e3e}
+.msg.err{background:#fce8e6;color:#d93025;border:1px solid #d93025}
+.info{background:#e8f0fe;padding:12px;border-radius:6px;font-size:13px;color:#003e7e;margin-bottom:14px}
+.warning{background:#fef7e0;color:#b06000;padding:14px;border-radius:6px;border-left:4px solid #f9ab00;margin-bottom:14px;font-size:13px}
+.section-title{background:#003e7e;color:#fff;padding:10px 14px;border-radius:6px;margin:18px 0 12px 0;font-size:13px;font-weight:700;text-transform:uppercase}
+.inv-table{width:100%;border-collapse:collapse;margin-bottom:14px;background:#f7f9fb;border-radius:8px;overflow:hidden}
+.inv-table th{background:#003e7e;color:#fff;padding:10px;font-size:12px;text-align:center}
+.inv-table td{padding:6px;border-bottom:1px solid #e0e6ec}
+.inv-table td.equipo{font-weight:600;background:#fff;color:#003e7e;font-size:12px}
+.inv-table input{padding:7px;font-size:13px;text-align:right}
+.inv-table .total-cell{background:#fff3cd;font-weight:700;text-align:right;font-variant-numeric:tabular-nums;padding:8px}
+.accordion{background:#f7f9fb;border:1px solid #e0e6ec;border-radius:8px;margin-bottom:14px}
+.acc-header{padding:12px 16px;cursor:pointer;font-weight:600;color:#003e7e;display:flex;justify-content:space-between;align-items:center}
+.acc-header:hover{background:#eef2f6}
+.acc-body{padding:14px;display:none;border-top:1px solid #e0e6ec}
+.accordion.open .acc-body{display:block}
+.mov-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.mov-table th{background:#003e7e;color:#fff;padding:6px 4px;font-weight:600}
+.mov-table td{padding:3px;border-bottom:1px solid #e0e6ec}
+.mov-table input{padding:5px;font-size:11px}
+.btn-add{background:#1e8e3e;color:#fff;border:none;padding:6px 12px;border-radius:5px;cursor:pointer;font-size:12px;margin-top:8px}
+.btn-del{background:#d93025;color:#fff;border:none;padding:3px 8px;border-radius:4px;cursor:pointer;font-size:11px}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:1000;justify-content:center;align-items:center}
+.modal.show{display:flex}
+.modal-box{background:#fff;padding:24px;border-radius:10px;max-width:700px;width:90%;max-height:90vh;overflow-y:auto;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.modal-box h3{margin:0 0 14px 0}
+.modal-box.warn h3{color:#d93025}
+.modal-box.info h3{color:#0066b3}
+.modal-actions{display:flex;gap:10px;margin-top:18px}
+.modal-actions button{flex:1;padding:10px;border-radius:6px;border:none;cursor:pointer;font-weight:600}
+.btn-confirm{background:#0066b3;color:#fff}
+.btn-confirm.warn{background:#d93025}
+.btn-cancel{background:#e9eef3;color:#555}
+.pdf-summary{font-family:Arial,sans-serif;color:#222;padding:15px;width:760px;max-width:760px;margin:0 auto;background:#fff}
+.pdf-summary h2{color:#003e7e;border-bottom:2px solid #003e7e;padding-bottom:6px;font-size:18px;margin:0 0 10px 0}
+.pdf-summary h3{color:#003e7e;font-size:13px;margin:12px 0 6px 0;padding-bottom:3px;border-bottom:1px solid #ccc}
+.pdf-summary p{margin:4px 0;font-size:12px}
+.pdf-summary table{width:100%;border-collapse:collapse;margin:6px 0;table-layout:fixed}
+.pdf-summary th,.pdf-summary td{border:1px solid #888;padding:4px;font-size:10px;word-wrap:break-word;text-align:left}
+.pdf-summary th{background:#003e7e;color:#fff;font-size:10px}
+.pdf-summary tr{page-break-inside:avoid}
+.success-screen{text-align:center;padding:40px 20px}
+.success-screen .ok-icon{font-size:60px;color:#1e8e3e;margin-bottom:10px}
+.success-screen h2{color:#1e8e3e;margin:10px 0}
+.operativo-kpis{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.25fr;
+  gap:18px;
+  margin-bottom:18px
+}
+.operativo-kpi{
+  background:#fff;
+  padding:22px;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  border-top:5px solid #0066b3;
+  text-align:center
+}
+.operativo-kpi .label{
+  font-size:12px;
+  font-weight:700;
+  color:#555;
+  text-transform:uppercase;
+  letter-spacing:.4px
+}
+.operativo-kpi .value{
+  font-size:32px;
+  font-weight:750;
+  margin-top:8px;
+  color:#003e7e;
+  font-variant-numeric:tabular-nums
+}
+.operativo-kpi.principal{
+  background:linear-gradient(135deg,#0066b3,#003e7e);
+  border-top-color:#003e7e;
+  transform:scale(1.02)
+}
+.operativo-kpi.principal .label,
+.operativo-kpi.principal .value{
+  color:#fff
+}
+.operativo-kpi.negativo{
+  border-top-color:#d93025
+}
+.operativo-kpi.negativo .value{
+  color:#d93025
+}
+.operativo-kpi.positivo{
+  border-top-color:#1e8e3e
+}
+.operativo-kpi.positivo .value{
+  color:#1e8e3e
+}
+.operativo-kpi.principal.negativo{
+  background:linear-gradient(135deg,#d93025,#a32018)
+}
+.operativo-kpi.principal.positivo{
+  background:linear-gradient(135deg,#1e8e3e,#126b2b)
+}
+.lectura-flujo{
+  background:#fff;
+  border-left:4px solid #0066b3;
+  padding:12px 16px;
+  border-radius:8px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  margin-bottom:20px;
+  font-size:13px;
+  color:#444;
+  text-align:center
+}
+.analisis-toggle{
+  width:100%;
+  border:none;
+  background:#fff;
+  color:#003e7e;
+  padding:14px 18px;
+  border-radius:10px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  margin-bottom:14px
+}
+.analisis-toggle:hover{
+  background:#eef5fb
+}
+.analisis-panel{
+  display:none;
+  margin-bottom:18px
+}
+.analisis-panel.open{
+  display:block
+}
+.analisis-bloques{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:18px
+}
+.analisis-bloque{
+  background:#fff;
+  padding:16px;
+  border-radius:10px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06)
+}
+.analisis-bloque h4{
+  margin:0 0 12px;
+  color:#003e7e;
+  font-size:13px;
+  text-transform:uppercase
+}
+.analisis-fila{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  border-bottom:1px solid #eee;
+  padding:7px 0;
+  font-size:12px
+}
+.analisis-fila:last-child{
+  border-bottom:none
+}
+.analisis-fila .valor{
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  text-align:right
+}
+.sin-dato-periodo{
+  color:#b06000;
+  font-size:11px;
+  margin-top:8px
+}
+@media(max-width:900px){
+  .operativo-kpis,
+  .analisis-bloques{
+    grid-template-columns:1fr
+  }
+  .operativo-kpi.principal{
+    transform:none
+  }
+}
+
+.container{
+  max-width:1100px;
+  margin:0 auto
+}
+.fact-summary{
+  background:#e8f0fe;
+  color:#003e7e;
+  padding:14px;
+  border-radius:8px;
+  margin-bottom:16px;
+  font-size:13px
+}
+.fact-summary strong{
+  color:#003e7e
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🧾 Carga de Facturaciones - Saldo Primario</h1>
+</header>
+
+<div class="container">
+<div class="nav"><a href="index.html">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html" class="active">🧾 Carga Facturaciones</a><a href="seguimiento.html">✅ Seguimiento</a></div>
+
+<div class="card">
+
+  <h3>🧾 Carga Facturaciones</h3>
+
+  <div class="info">
+    Registrá las bandejas o dollys facturados a clientes,
+    QSR o transportes.
+  </div>
+
+  <div class="warning">
+    ⚠️ <b>Importante:</b>
+    la cantidad facturada será incorporada al Saldo Primario
+    como una devolución manual a Planta Pilar y se sumará a
+    los egresos del CeVe seleccionado. Verificá cuidadosamente
+    el CeVe, el número de factura, el código y la cantidad.
+  </div>
+
+  <div id="msgF"></div>
+
+  <form id="formF">
+
+    <div class="section-title">
+      📍 Datos de la facturación
+    </div>
+
+    <div class="form-row">
+
+      <div>
+        <label>CeVe</label>
+        <select id="fFacCeve" required></select>
+      </div>
+
+      <div>
+        <label>Fecha de facturación</label>
+        <input
+          type="date"
+          id="fFacFecha"
+          required
+        >
+      </div>
+
+    </div>
+
+    <div class="form-row">
+
+      <div>
+        <label>Nº de factura</label>
+        <input
+          type="text"
+          id="fFacNumero"
+          required
+          placeholder="Ej.: 0005-00012345"
+        >
+      </div>
+
+      <div>
+        <label>Cliente</label>
+        <input
+          type="text"
+          id="fFacCliente"
+          required
+          placeholder="Cliente, QSR o transporte"
+        >
+      </div>
+
+    </div>
+
+    <div class="section-title">
+      📦 Equipo facturado
+    </div>
+
+    <div class="form-row">
+
+      <div>
+        <label>Cód. facturado</label>
+        <select id="fFacCodigo" required>
+          <option value="028">
+            028 - BG Bandeja Grande
+          </option>
+          <option value="031">
+            031 - DO Dolly
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label>Cantidad facturada</label>
+        <input
+          type="number"
+          id="fFacCantidad"
+          min="1"
+          step="1"
+          required
+          placeholder="0"
+        >
+      </div>
+
+    </div>
+
+    <div class="fact-summary" id="resumenFacturacion">
+      Completá los datos para registrar la facturación.
+    </div>
+
+    <button type="submit">
+      💾 Guardar facturación
+    </button>
+
+  </form>
+
+</div>
+</div>
+
+<div class="modal" id="modFacturacion">
+  <div class="modal-box info">
+
+    <h3>🧾 Confirmar facturación</h3>
+
+    <p>
+      Esta carga será incorporada al Saldo Primario
+      como egreso manual a Planta Pilar.
+    </p>
+
+    <div id="confirmacionFacturacion"></div>
+
+    <p>
+      <b>¿Querés continuar?</b>
+    </p>
+
+    <div class="modal-actions">
+      <button
+        type="button"
+        class="btn-cancel"
+        onclick="cerrarFacturacion()"
+      >
+        Cancelar
+      </button>
+
+      <button
+        type="button"
+        class="btn-confirm"
+        id="btnConfirmarFacturacion"
+      >
+        Sí, guardar
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+const SUBAG = ['14267','14128'];
+
+const SUPABASE_URL = 'https://chdteugdydnftkysgfmo.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_yrrkBwZ_N6m1WEKID0AqTg_pZLPFwRX';
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+let MAESTRO = null;
+let FACTURA_PENDIENTE = null;
+
+
+async function cargar(){
+  const raw = await fetch(
+    'data/ceves_maestro.json?ts=' + Date.now(),
+    { cache: 'no-store' }
+  ).then(r => r.json());
+
+  const cevesBase = raw.ceves.map(
+    c => ({...c})
+  );
+
+  const mdp = cevesBase.find(
+    c =>
+      String(c.nombre)
+        .trim()
+        .toLowerCase() === 'mar del plata'
+  );
+
+  if(mdp){
+    mdp.nombre = 'Mar del Plata + ST';
+  }
+
+  MAESTRO = {
+    ...raw,
+    ceves: cevesBase.filter(
+      c =>
+        !SUBAG.includes(
+          String(c.agencia)
+        )
+    )
+  };
+
+  const selector =
+    document.getElementById('fFacCeve');
+
+  selector.innerHTML = '';
+
+  MAESTRO.ceves.forEach(c => {
+    selector.innerHTML +=
+      '<option value="' +
+      c.agencia +
+      '">' +
+      c.nombre +
+      '</option>';
+  });
+
+  document.getElementById(
+    'fFacFecha'
+  ).value =
+    new Date()
+      .toISOString()
+      .slice(0,10);
+
+  actualizarResumen();
+}
+
+
+function datosFormulario(){
+  const agencia =
+    document.getElementById(
+      'fFacCeve'
+    ).value;
+
+  const ceve =
+    MAESTRO.ceves.find(
+      c =>
+        String(c.agencia) ===
+        String(agencia)
+    );
+
+  return {
+    agencia: String(agencia),
+    ceve: ceve ? ceve.nombre : '',
+    fecha_facturacion:
+      document.getElementById(
+        'fFacFecha'
+      ).value,
+    numero_factura:
+      document.getElementById(
+        'fFacNumero'
+      ).value.trim(),
+    cliente:
+      document.getElementById(
+        'fFacCliente'
+      ).value.trim(),
+    codigo_facturado:
+      document.getElementById(
+        'fFacCodigo'
+      ).value,
+    cantidad_facturada:
+      Number(
+        document.getElementById(
+          'fFacCantidad'
+        ).value
+      ) || 0
+  };
+}
+
+
+function nombreEquipo(codigo){
+  return codigo === '028'
+    ? 'BG - Bandeja Grande'
+    : 'DO - Dolly';
+}
+
+
+function actualizarResumen(){
+  if(!MAESTRO) return;
+
+  const factura = datosFormulario();
+
+  document.getElementById(
+    'resumenFacturacion'
+  ).innerHTML =
+    '<strong>CeVe:</strong> ' +
+    (factura.ceve || '—') +
+    '   |   ' +
+    '<strong>Equipo:</strong> ' +
+    nombreEquipo(
+      factura.codigo_facturado
+    ) +
+    '   |   ' +
+    '<strong>Cantidad:</strong> ' +
+    factura.cantidad_facturada
+      .toLocaleString('es-AR');
+}
+
+
+document.querySelectorAll(
+  '#fFacCeve, #fFacFecha, ' +
+  '#fFacNumero, #fFacCliente, ' +
+  '#fFacCodigo, #fFacCantidad'
+).forEach(elemento => {
+  elemento.addEventListener(
+    'input',
+    actualizarResumen
+  );
+
+  elemento.addEventListener(
+    'change',
+    actualizarResumen
+  );
+});
+
+
+document
+  .getElementById('formF')
+  .addEventListener(
+    'submit',
+    evento => {
+      evento.preventDefault();
+
+      const formulario =
+        document.getElementById('formF');
+
+      if(!formulario.checkValidity()){
+        formulario.reportValidity();
+        return;
+      }
+
+      FACTURA_PENDIENTE =
+        datosFormulario();
+
+      document.getElementById(
+        'confirmacionFacturacion'
+      ).innerHTML =
+        '<div class="fact-summary">' +
+
+        '<div><b>CeVe:</b> ' +
+        FACTURA_PENDIENTE.ceve +
+        '</div>' +
+
+        '<div><b>Fecha:</b> ' +
+        FACTURA_PENDIENTE
+          .fecha_facturacion
+          .split('-')
+          .reverse()
+          .join('/') +
+        '</div>' +
+
+        '<div><b>Factura:</b> ' +
+        FACTURA_PENDIENTE.numero_factura +
+        '</div>' +
+
+        '<div><b>Cliente:</b> ' +
+        FACTURA_PENDIENTE.cliente +
+        '</div>' +
+
+        '<div><b>Equipo:</b> ' +
+        nombreEquipo(
+          FACTURA_PENDIENTE
+            .codigo_facturado
+        ) +
+        '</div>' +
+
+        '<div><b>Cantidad:</b> ' +
+        FACTURA_PENDIENTE
+          .cantidad_facturada
+          .toLocaleString('es-AR') +
+        '</div>' +
+
+        '<div><b>Destino:</b> ' +
+        'Planta Pilar' +
+        '</div>' +
+
+        '</div>';
+
+      document.getElementById(
+        'modFacturacion'
+      ).classList.add('show');
+    }
+  );
+
+
+function cerrarFacturacion(){
+  document.getElementById(
+    'modFacturacion'
+  ).classList.remove('show');
+
+  FACTURA_PENDIENTE = null;
+}
+
+
+function mostrarMensaje(texto, correcto){
+  document.getElementById(
+    'msgF'
+  ).innerHTML =
+    '<div class="msg ' +
+    (correcto ? 'ok' : 'err') +
+    '">' +
+    texto +
+    '</div>';
+}
+
+
+document.getElementById(
+  'btnConfirmarFacturacion'
+).addEventListener(
+  'click',
+  async () => {
+    if(!FACTURA_PENDIENTE) return;
+
+    const boton =
+      document.getElementById(
+        'btnConfirmarFacturacion'
+      );
+
+    boton.disabled = true;
+    boton.textContent =
+      'Guardando...';
+
+    try {
+      const { error } =
+        await supabaseClient
+          .from('facturaciones')
+          .insert({
+            agencia:
+              FACTURA_PENDIENTE.agencia,
+
+            ceve:
+              FACTURA_PENDIENTE.ceve,
+
+            fecha_facturacion:
+              FACTURA_PENDIENTE
+                .fecha_facturacion,
+
+            numero_factura:
+              FACTURA_PENDIENTE
+                .numero_factura,
+
+            cliente:
+              FACTURA_PENDIENTE.cliente,
+
+            codigo_facturado:
+              FACTURA_PENDIENTE
+                .codigo_facturado,
+
+            cantidad_facturada:
+              FACTURA_PENDIENTE
+                .cantidad_facturada
+          });
+
+      if(error) throw error;
+
+      document.getElementById(
+        'modFacturacion'
+      ).classList.remove('show');
+
+      mostrarMensaje(
+        '✅ Facturación registrada ' +
+        'correctamente.',
+        true
+      );
+
+      document.getElementById(
+        'formF'
+      ).reset();
+
+      document.getElementById(
+        'fFacFecha'
+      ).value =
+        new Date()
+          .toISOString()
+          .slice(0,10);
+
+      FACTURA_PENDIENTE = null;
+
+      cargar();
+
+    } catch(error) {
+      console.error(
+        'Error guardando facturación:',
+        error
+      );
+
+      document.getElementById(
+        'modFacturacion'
+      ).classList.remove('show');
+
+      const duplicada =
+        String(error.message || '')
+          .toLowerCase()
+          .includes('duplicate');
+
+      mostrarMensaje(
+        duplicada
+          ? '❌ Esta factura ya fue ' +
+            'registrada para el CeVe ' +
+            'y el equipo seleccionados.'
+          : '❌ No se pudo guardar: ' +
+            error.message,
+        false
+      );
+
+    } finally {
+      boton.disabled = false;
+      boton.textContent =
+        'Sí, guardar';
+    }
+  }
+);
+
+
+cargar();
+
+</script>
+</body>
+</html>
