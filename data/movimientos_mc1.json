@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-21T10:28:23",
-  "total_registros": 4198,
+  "actualizado": "2026-08-24T09:31:45",
+  "total_registros": 4011,
   "movimientos": [
     {
       "agencia": "14120",
@@ -112,21 +112,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-02",
       "equipo": "028",
-      "ingresos_planta": 1107,
+      "ingresos_planta": 3974,
       "egresos_planta": 3960,
-      "saldo_bruto": 2853
+      "saldo_bruto": -14
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-02",
       "equipo": "031",
-      "ingresos_planta": 33,
+      "ingresos_planta": 78,
       "egresos_planta": 66,
-      "saldo_bruto": 33
+      "saldo_bruto": -12
     },
     {
       "agencia": "14123",
@@ -181,24 +181,6 @@
       "ingresos_planta": 39,
       "egresos_planta": 12,
       "saldo_bruto": -27
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-02",
-      "equipo": "028",
-      "ingresos_planta": 2867,
-      "egresos_planta": 0,
-      "saldo_bruto": -2867
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-02",
-      "equipo": "031",
-      "ingresos_planta": 45,
-      "egresos_planta": 0,
-      "saldo_bruto": -45
     },
     {
       "agencia": "14117",
@@ -292,21 +274,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-03",
       "equipo": "028",
-      "ingresos_planta": 2328,
-      "egresos_planta": 1440,
-      "saldo_bruto": -888
+      "ingresos_planta": 4440,
+      "egresos_planta": 2857,
+      "saldo_bruto": -1583
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-03",
       "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 114,
-      "saldo_bruto": 114
+      "ingresos_planta": 53,
+      "egresos_planta": 150,
+      "saldo_bruto": 97
     },
     {
       "agencia": "14123",
@@ -379,24 +361,6 @@
       "ingresos_planta": 40,
       "egresos_planta": 18,
       "saldo_bruto": -22
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-03",
-      "equipo": "028",
-      "ingresos_planta": 2112,
-      "egresos_planta": 1417,
-      "saldo_bruto": -695
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-03",
-      "equipo": "031",
-      "ingresos_planta": 53,
-      "egresos_planta": 36,
-      "saldo_bruto": -17
     },
     {
       "agencia": "14117",
@@ -562,21 +526,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-05",
       "equipo": "028",
-      "ingresos_planta": 3156,
+      "ingresos_planta": 6004,
       "egresos_planta": 1980,
-      "saldo_bruto": -1176
+      "saldo_bruto": -4024
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-05",
       "equipo": "031",
-      "ingresos_planta": 131,
+      "ingresos_planta": 186,
       "egresos_planta": 33,
-      "saldo_bruto": -98
+      "saldo_bruto": -153
     },
     {
       "agencia": "14126",
@@ -631,24 +595,6 @@
       "ingresos_planta": 40,
       "egresos_planta": 0,
       "saldo_bruto": -40
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-05",
-      "equipo": "028",
-      "ingresos_planta": 2848,
-      "egresos_planta": 0,
-      "saldo_bruto": -2848
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-05",
-      "equipo": "031",
-      "ingresos_planta": 55,
-      "egresos_planta": 0,
-      "saldo_bruto": -55
     },
     {
       "agencia": "14272",
@@ -733,21 +679,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-06",
       "equipo": "028",
-      "ingresos_planta": 2688,
+      "ingresos_planta": 5966,
       "egresos_planta": 3420,
-      "saldo_bruto": 732
+      "saldo_bruto": -2546
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-06",
       "equipo": "031",
-      "ingresos_planta": 80,
+      "ingresos_planta": 141,
       "egresos_planta": 147,
-      "saldo_bruto": 67
+      "saldo_bruto": 6
     },
     {
       "agencia": "14123",
@@ -820,24 +766,6 @@
       "ingresos_planta": 82,
       "egresos_planta": 33,
       "saldo_bruto": -49
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-06",
-      "equipo": "028",
-      "ingresos_planta": 3278,
-      "egresos_planta": 0,
-      "saldo_bruto": -3278
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-06",
-      "equipo": "031",
-      "ingresos_planta": 61,
-      "egresos_planta": 0,
-      "saldo_bruto": -61
     },
     {
       "agencia": "14117",
@@ -922,21 +850,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-07",
       "equipo": "028",
-      "ingresos_planta": 2138,
+      "ingresos_planta": 4727,
       "egresos_planta": 1980,
-      "saldo_bruto": -158
+      "saldo_bruto": -2747
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-07",
       "equipo": "031",
-      "ingresos_planta": 79,
+      "ingresos_planta": 119,
       "egresos_planta": 33,
-      "saldo_bruto": -46
+      "saldo_bruto": -86
     },
     {
       "agencia": "14123",
@@ -1009,24 +937,6 @@
       "ingresos_planta": 42,
       "egresos_planta": 117,
       "saldo_bruto": 75
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-07",
-      "equipo": "028",
-      "ingresos_planta": 2589,
-      "egresos_planta": 0,
-      "saldo_bruto": -2589
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-07",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 0,
-      "saldo_bruto": -40
     },
     {
       "agencia": "14117",
@@ -1129,21 +1039,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-08",
       "equipo": "028",
-      "ingresos_planta": 2049,
-      "egresos_planta": 4140,
-      "saldo_bruto": 2091
+      "ingresos_planta": 4025,
+      "egresos_planta": 12723,
+      "saldo_bruto": 8698
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-08",
       "equipo": "031",
-      "ingresos_planta": 64,
-      "egresos_planta": 221,
-      "saldo_bruto": 157
+      "ingresos_planta": 109,
+      "egresos_planta": 526,
+      "saldo_bruto": 417
     },
     {
       "agencia": "14123",
@@ -1216,24 +1126,6 @@
       "ingresos_planta": 77,
       "egresos_planta": 39,
       "saldo_bruto": -38
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-08",
-      "equipo": "028",
-      "ingresos_planta": 1976,
-      "egresos_planta": 8583,
-      "saldo_bruto": 6607
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-08",
-      "equipo": "031",
-      "ingresos_planta": 45,
-      "egresos_planta": 305,
-      "saldo_bruto": 260
     },
     {
       "agencia": "14117",
@@ -1336,21 +1228,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-09",
       "equipo": "028",
-      "ingresos_planta": 1400,
+      "ingresos_planta": 3180,
       "egresos_planta": 1980,
-      "saldo_bruto": 580
+      "saldo_bruto": -1200
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-09",
       "equipo": "031",
-      "ingresos_planta": 40,
+      "ingresos_planta": 101,
       "egresos_planta": 33,
-      "saldo_bruto": -7
+      "saldo_bruto": -68
     },
     {
       "agencia": "14123",
@@ -1425,24 +1317,6 @@
       "saldo_bruto": 22
     },
     {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-09",
-      "equipo": "028",
-      "ingresos_planta": 1780,
-      "egresos_planta": 0,
-      "saldo_bruto": -1780
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-09",
-      "equipo": "031",
-      "ingresos_planta": 61,
-      "egresos_planta": 0,
-      "saldo_bruto": -61
-    },
-    {
       "agencia": "14117",
       "ceve": "Tablada",
       "fecha": "2026-01-09",
@@ -1507,21 +1381,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-10",
       "equipo": "028",
-      "ingresos_planta": 2882,
-      "egresos_planta": 1980,
-      "saldo_bruto": -902
+      "ingresos_planta": 5083,
+      "egresos_planta": 2856,
+      "saldo_bruto": -2227
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-10",
       "equipo": "031",
-      "ingresos_planta": 91,
-      "egresos_planta": 33,
-      "saldo_bruto": -58
+      "ingresos_planta": 142,
+      "egresos_planta": 72,
+      "saldo_bruto": -70
     },
     {
       "agencia": "14123",
@@ -1594,24 +1468,6 @@
       "ingresos_planta": 40,
       "egresos_planta": 71,
       "saldo_bruto": 31
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-10",
-      "equipo": "028",
-      "ingresos_planta": 2201,
-      "egresos_planta": 876,
-      "saldo_bruto": -1325
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-10",
-      "equipo": "031",
-      "ingresos_planta": 51,
-      "egresos_planta": 39,
-      "saldo_bruto": -12
     },
     {
       "agencia": "14117",
@@ -1750,21 +1606,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-12",
       "equipo": "028",
-      "ingresos_planta": 3581,
-      "egresos_planta": 1980,
-      "saldo_bruto": -1601
+      "ingresos_planta": 5496,
+      "egresos_planta": 2584,
+      "saldo_bruto": -2912
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-12",
       "equipo": "031",
-      "ingresos_planta": 103,
-      "egresos_planta": 33,
-      "saldo_bruto": -70
+      "ingresos_planta": 138,
+      "egresos_planta": 44,
+      "saldo_bruto": -94
     },
     {
       "agencia": "14123",
@@ -1837,24 +1693,6 @@
       "ingresos_planta": 71,
       "egresos_planta": 13,
       "saldo_bruto": -58
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-12",
-      "equipo": "028",
-      "ingresos_planta": 1915,
-      "egresos_planta": 604,
-      "saldo_bruto": -1311
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-12",
-      "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 11,
-      "saldo_bruto": -24
     },
     {
       "agencia": "14117",
@@ -1939,21 +1777,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-13",
       "equipo": "028",
-      "ingresos_planta": 2296,
+      "ingresos_planta": 3749,
       "egresos_planta": 5940,
-      "saldo_bruto": 3644
+      "saldo_bruto": 2191
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-13",
       "equipo": "031",
-      "ingresos_planta": 69,
+      "ingresos_planta": 109,
       "egresos_planta": 259,
-      "saldo_bruto": 190
+      "saldo_bruto": 150
     },
     {
       "agencia": "14123",
@@ -2026,24 +1864,6 @@
       "ingresos_planta": 84,
       "egresos_planta": 57,
       "saldo_bruto": -27
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-13",
-      "equipo": "028",
-      "ingresos_planta": 1453,
-      "egresos_planta": 0,
-      "saldo_bruto": -1453
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-13",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 0,
-      "saldo_bruto": -40
     },
     {
       "agencia": "14117",
@@ -2146,21 +1966,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-14",
       "equipo": "028",
-      "ingresos_planta": 3116,
-      "egresos_planta": 3240,
-      "saldo_bruto": 124
+      "ingresos_planta": 4977,
+      "egresos_planta": 3780,
+      "saldo_bruto": -1197
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-14",
       "equipo": "031",
-      "ingresos_planta": 115,
-      "egresos_planta": 54,
-      "saldo_bruto": -61
+      "ingresos_planta": 151,
+      "egresos_planta": 63,
+      "saldo_bruto": -88
     },
     {
       "agencia": "14123",
@@ -2233,24 +2053,6 @@
       "ingresos_planta": 37,
       "egresos_planta": 108,
       "saldo_bruto": 71
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-14",
-      "equipo": "028",
-      "ingresos_planta": 1861,
-      "egresos_planta": 540,
-      "saldo_bruto": -1321
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-14",
-      "equipo": "031",
-      "ingresos_planta": 36,
-      "egresos_planta": 9,
-      "saldo_bruto": -27
     },
     {
       "agencia": "14117",
@@ -2353,21 +2155,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-15",
       "equipo": "028",
-      "ingresos_planta": 2963,
-      "egresos_planta": 3960,
-      "saldo_bruto": 997
+      "ingresos_planta": 4698,
+      "egresos_planta": 7200,
+      "saldo_bruto": 2502
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-15",
       "equipo": "031",
-      "ingresos_planta": 50,
-      "egresos_planta": 66,
-      "saldo_bruto": 16
+      "ingresos_planta": 90,
+      "egresos_planta": 158,
+      "saldo_bruto": 68
     },
     {
       "agencia": "14123",
@@ -2440,24 +2242,6 @@
       "ingresos_planta": 80,
       "egresos_planta": 33,
       "saldo_bruto": -47
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-15",
-      "equipo": "028",
-      "ingresos_planta": 1735,
-      "egresos_planta": 3240,
-      "saldo_bruto": 1505
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-15",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 92,
-      "saldo_bruto": 52
     },
     {
       "agencia": "14117",
@@ -2560,21 +2344,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-16",
       "equipo": "028",
-      "ingresos_planta": 1204,
-      "egresos_planta": 2520,
-      "saldo_bruto": 1316
+      "ingresos_planta": 3684,
+      "egresos_planta": 3420,
+      "saldo_bruto": -264
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-16",
       "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 222,
-      "saldo_bruto": 187
+      "ingresos_planta": 106,
+      "egresos_planta": 237,
+      "saldo_bruto": 131
     },
     {
       "agencia": "14126",
@@ -2631,24 +2415,6 @@
       "saldo_bruto": 41
     },
     {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-16",
-      "equipo": "028",
-      "ingresos_planta": 2480,
-      "egresos_planta": 900,
-      "saldo_bruto": -1580
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-16",
-      "equipo": "031",
-      "ingresos_planta": 71,
-      "egresos_planta": 15,
-      "saldo_bruto": -56
-    },
-    {
       "agencia": "14117",
       "ceve": "Tablada",
       "fecha": "2026-01-16",
@@ -2695,21 +2461,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-17",
       "equipo": "028",
-      "ingresos_planta": 991,
+      "ingresos_planta": 2871,
       "egresos_planta": 1777,
-      "saldo_bruto": 786
+      "saldo_bruto": -1094
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-17",
       "equipo": "031",
-      "ingresos_planta": 26,
+      "ingresos_planta": 67,
       "egresos_planta": 30,
-      "saldo_bruto": 4
+      "saldo_bruto": -37
     },
     {
       "agencia": "14123",
@@ -2782,24 +2548,6 @@
       "ingresos_planta": 40,
       "egresos_planta": 69,
       "saldo_bruto": 29
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-17",
-      "equipo": "028",
-      "ingresos_planta": 1880,
-      "egresos_planta": 0,
-      "saldo_bruto": -1880
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-17",
-      "equipo": "031",
-      "ingresos_planta": 41,
-      "egresos_planta": 0,
-      "saldo_bruto": -41
     },
     {
       "agencia": "14117",
@@ -2965,21 +2713,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-19",
       "equipo": "028",
-      "ingresos_planta": 2042,
-      "egresos_planta": 0,
-      "saldo_bruto": -2042
+      "ingresos_planta": 4176,
+      "egresos_planta": 2710,
+      "saldo_bruto": -1466
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-19",
       "equipo": "031",
-      "ingresos_planta": 85,
-      "egresos_planta": 0,
-      "saldo_bruto": -85
+      "ingresos_planta": 140,
+      "egresos_planta": 85,
+      "saldo_bruto": -55
     },
     {
       "agencia": "14123",
@@ -3052,24 +2800,6 @@
       "ingresos_planta": 80,
       "egresos_planta": 12,
       "saldo_bruto": -68
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-19",
-      "equipo": "028",
-      "ingresos_planta": 2134,
-      "egresos_planta": 2710,
-      "saldo_bruto": 576
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-19",
-      "equipo": "031",
-      "ingresos_planta": 55,
-      "egresos_planta": 85,
-      "saldo_bruto": 30
     },
     {
       "agencia": "14117",
@@ -3172,21 +2902,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-20",
       "equipo": "028",
-      "ingresos_planta": 1519,
+      "ingresos_planta": 2630,
       "egresos_planta": 1980,
-      "saldo_bruto": 461
+      "saldo_bruto": -650
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-20",
       "equipo": "031",
-      "ingresos_planta": 45,
+      "ingresos_planta": 70,
       "egresos_planta": 33,
-      "saldo_bruto": -12
+      "saldo_bruto": -37
     },
     {
       "agencia": "14123",
@@ -3259,24 +2989,6 @@
       "ingresos_planta": 73,
       "egresos_planta": 33,
       "saldo_bruto": -40
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-20",
-      "equipo": "028",
-      "ingresos_planta": 1111,
-      "egresos_planta": 0,
-      "saldo_bruto": -1111
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-20",
-      "equipo": "031",
-      "ingresos_planta": 25,
-      "egresos_planta": 0,
-      "saldo_bruto": -25
     },
     {
       "agencia": "14117",
@@ -3379,21 +3091,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-21",
       "equipo": "028",
-      "ingresos_planta": 2378,
-      "egresos_planta": 4500,
-      "saldo_bruto": 2122
+      "ingresos_planta": 4602,
+      "egresos_planta": 11280,
+      "saldo_bruto": 6678
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-21",
       "equipo": "031",
-      "ingresos_planta": 92,
-      "egresos_planta": 148,
-      "saldo_bruto": 56
+      "ingresos_planta": 97,
+      "egresos_planta": 364,
+      "saldo_bruto": 267
     },
     {
       "agencia": "14123",
@@ -3466,24 +3178,6 @@
       "ingresos_planta": 42,
       "egresos_planta": 96,
       "saldo_bruto": 54
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-21",
-      "equipo": "028",
-      "ingresos_planta": 2224,
-      "egresos_planta": 6780,
-      "saldo_bruto": 4556
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-21",
-      "equipo": "031",
-      "ingresos_planta": 5,
-      "egresos_planta": 216,
-      "saldo_bruto": 211
     },
     {
       "agencia": "14117",
@@ -3586,21 +3280,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-22",
       "equipo": "028",
-      "ingresos_planta": 2834,
+      "ingresos_planta": 5071,
       "egresos_planta": 3780,
-      "saldo_bruto": 946
+      "saldo_bruto": -1291
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-22",
       "equipo": "031",
-      "ingresos_planta": 74,
+      "ingresos_planta": 119,
       "egresos_planta": 63,
-      "saldo_bruto": -11
+      "saldo_bruto": -56
     },
     {
       "agencia": "14123",
@@ -3673,24 +3367,6 @@
       "ingresos_planta": 37,
       "egresos_planta": 33,
       "saldo_bruto": -4
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-22",
-      "equipo": "028",
-      "ingresos_planta": 2237,
-      "egresos_planta": 0,
-      "saldo_bruto": -2237
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-22",
-      "equipo": "031",
-      "ingresos_planta": 45,
-      "egresos_planta": 0,
-      "saldo_bruto": -45
     },
     {
       "agencia": "14117",
@@ -3784,21 +3460,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-23",
       "equipo": "028",
-      "ingresos_planta": 2209,
-      "egresos_planta": 1980,
-      "saldo_bruto": -229
+      "ingresos_planta": 4830,
+      "egresos_planta": 2520,
+      "saldo_bruto": -2310
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-23",
       "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 33,
-      "saldo_bruto": 33
+      "ingresos_planta": 45,
+      "egresos_planta": 69,
+      "saldo_bruto": 24
     },
     {
       "agencia": "14126",
@@ -3853,24 +3529,6 @@
       "ingresos_planta": 39,
       "egresos_planta": 71,
       "saldo_bruto": 32
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-23",
-      "equipo": "028",
-      "ingresos_planta": 2621,
-      "egresos_planta": 540,
-      "saldo_bruto": -2081
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-23",
-      "equipo": "031",
-      "ingresos_planta": 45,
-      "egresos_planta": 36,
-      "saldo_bruto": -9
     },
     {
       "agencia": "14117",
@@ -3937,21 +3595,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-24",
       "equipo": "028",
-      "ingresos_planta": 1146,
+      "ingresos_planta": 3496,
       "egresos_planta": 1620,
-      "saldo_bruto": 474
+      "saldo_bruto": -1876
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-24",
       "equipo": "031",
-      "ingresos_planta": 33,
+      "ingresos_planta": 93,
       "egresos_planta": 89,
-      "saldo_bruto": 56
+      "saldo_bruto": -4
     },
     {
       "agencia": "14123",
@@ -4006,24 +3664,6 @@
       "ingresos_planta": 40,
       "egresos_planta": 89,
       "saldo_bruto": 49
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-24",
-      "equipo": "028",
-      "ingresos_planta": 2350,
-      "egresos_planta": 0,
-      "saldo_bruto": -2350
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-24",
-      "equipo": "031",
-      "ingresos_planta": 60,
-      "egresos_planta": 0,
-      "saldo_bruto": -60
     },
     {
       "agencia": "14117",
@@ -4189,21 +3829,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-26",
       "equipo": "028",
-      "ingresos_planta": 2825,
-      "egresos_planta": 1860,
-      "saldo_bruto": -965
+      "ingresos_planta": 5084,
+      "egresos_planta": 10920,
+      "saldo_bruto": 5836
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-26",
       "equipo": "031",
-      "ingresos_planta": 109,
-      "egresos_planta": 31,
-      "saldo_bruto": -78
+      "ingresos_planta": 149,
+      "egresos_planta": 369,
+      "saldo_bruto": 220
     },
     {
       "agencia": "14123",
@@ -4276,24 +3916,6 @@
       "ingresos_planta": 81,
       "egresos_planta": 11,
       "saldo_bruto": -70
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-26",
-      "equipo": "028",
-      "ingresos_planta": 2259,
-      "egresos_planta": 9060,
-      "saldo_bruto": 6801
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-26",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 338,
-      "saldo_bruto": 298
     },
     {
       "agencia": "14117",
@@ -4396,21 +4018,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-27",
       "equipo": "028",
-      "ingresos_planta": 1682,
-      "egresos_planta": 1980,
-      "saldo_bruto": 298
+      "ingresos_planta": 3707,
+      "egresos_planta": 4440,
+      "saldo_bruto": 733
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-27",
       "equipo": "031",
-      "ingresos_planta": 50,
-      "egresos_planta": 33,
-      "saldo_bruto": -17
+      "ingresos_planta": 105,
+      "egresos_planta": 116,
+      "saldo_bruto": 11
     },
     {
       "agencia": "14123",
@@ -4483,24 +4105,6 @@
       "ingresos_planta": 32,
       "egresos_planta": 0,
       "saldo_bruto": -32
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-27",
-      "equipo": "028",
-      "ingresos_planta": 2025,
-      "egresos_planta": 2460,
-      "saldo_bruto": 435
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-27",
-      "equipo": "031",
-      "ingresos_planta": 55,
-      "egresos_planta": 83,
-      "saldo_bruto": 28
     },
     {
       "agencia": "14117",
@@ -4603,21 +4207,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-28",
       "equipo": "028",
-      "ingresos_planta": 1756,
+      "ingresos_planta": 3453,
       "egresos_planta": 1980,
-      "saldo_bruto": 224
+      "saldo_bruto": -1473
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-28",
       "equipo": "031",
-      "ingresos_planta": 67,
+      "ingresos_planta": 102,
       "egresos_planta": 33,
-      "saldo_bruto": -34
+      "saldo_bruto": -69
     },
     {
       "agencia": "14123",
@@ -4690,24 +4294,6 @@
       "ingresos_planta": 38,
       "egresos_planta": 99,
       "saldo_bruto": 61
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-28",
-      "equipo": "028",
-      "ingresos_planta": 1697,
-      "egresos_planta": 0,
-      "saldo_bruto": -1697
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-28",
-      "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 0,
-      "saldo_bruto": -35
     },
     {
       "agencia": "14117",
@@ -4810,21 +4396,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-29",
       "equipo": "028",
-      "ingresos_planta": 2517,
-      "egresos_planta": 1260,
-      "saldo_bruto": -1257
+      "ingresos_planta": 4182,
+      "egresos_planta": 2328,
+      "saldo_bruto": -1854
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-29",
       "equipo": "031",
-      "ingresos_planta": 22,
-      "egresos_planta": 171,
-      "saldo_bruto": 149
+      "ingresos_planta": 70,
+      "egresos_planta": 224,
+      "saldo_bruto": 154
     },
     {
       "agencia": "14123",
@@ -4896,24 +4482,6 @@
       "equipo": "031",
       "ingresos_planta": 68,
       "egresos_planta": 73,
-      "saldo_bruto": 5
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-29",
-      "equipo": "028",
-      "ingresos_planta": 1665,
-      "egresos_planta": 1068,
-      "saldo_bruto": -597
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-29",
-      "equipo": "031",
-      "ingresos_planta": 48,
-      "egresos_planta": 53,
       "saldo_bruto": 5
     },
     {
@@ -4999,21 +4567,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-30",
       "equipo": "028",
-      "ingresos_planta": 1831,
-      "egresos_planta": 5850,
-      "saldo_bruto": 4019
+      "ingresos_planta": 3581,
+      "egresos_planta": 7284,
+      "saldo_bruto": 3703
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-30",
       "equipo": "031",
-      "ingresos_planta": 18,
-      "egresos_planta": 97,
-      "saldo_bruto": 79
+      "ingresos_planta": 76,
+      "egresos_planta": 135,
+      "saldo_bruto": 59
     },
     {
       "agencia": "14126",
@@ -5068,24 +4636,6 @@
       "ingresos_planta": 35,
       "egresos_planta": 35,
       "saldo_bruto": 0
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-30",
-      "equipo": "028",
-      "ingresos_planta": 1750,
-      "egresos_planta": 1434,
-      "saldo_bruto": -316
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-30",
-      "equipo": "031",
-      "ingresos_planta": 58,
-      "egresos_planta": 38,
-      "saldo_bruto": -20
     },
     {
       "agencia": "14117",
@@ -5161,21 +4711,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-31",
       "equipo": "028",
-      "ingresos_planta": 1982,
-      "egresos_planta": 1260,
-      "saldo_bruto": -722
+      "ingresos_planta": 3421,
+      "egresos_planta": 2340,
+      "saldo_bruto": -1081
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-01-31",
       "equipo": "031",
-      "ingresos_planta": 63,
-      "egresos_planta": 111,
-      "saldo_bruto": 48
+      "ingresos_planta": 105,
+      "egresos_planta": 129,
+      "saldo_bruto": 24
     },
     {
       "agencia": "14123",
@@ -5248,24 +4798,6 @@
       "ingresos_planta": 37,
       "egresos_planta": 87,
       "saldo_bruto": 50
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-31",
-      "equipo": "028",
-      "ingresos_planta": 1439,
-      "egresos_planta": 1080,
-      "saldo_bruto": -359
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-01-31",
-      "equipo": "031",
-      "ingresos_planta": 42,
-      "egresos_planta": 18,
-      "saldo_bruto": -24
     },
     {
       "agencia": "14272",
@@ -5413,21 +4945,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-02",
       "equipo": "028",
-      "ingresos_planta": 2888,
-      "egresos_planta": 1890,
-      "saldo_bruto": -998
+      "ingresos_planta": 4189,
+      "egresos_planta": 2868,
+      "saldo_bruto": -1321
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-02",
       "equipo": "031",
-      "ingresos_planta": 91,
-      "egresos_planta": 31,
-      "saldo_bruto": -60
+      "ingresos_planta": 131,
+      "egresos_planta": 50,
+      "saldo_bruto": -81
     },
     {
       "agencia": "14123",
@@ -5482,24 +5014,6 @@
       "ingresos_planta": 72,
       "egresos_planta": 14,
       "saldo_bruto": -58
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-02",
-      "equipo": "028",
-      "ingresos_planta": 1301,
-      "egresos_planta": 978,
-      "saldo_bruto": -323
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-02",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 19,
-      "saldo_bruto": -21
     },
     {
       "agencia": "14117",
@@ -5602,21 +5116,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-03",
       "equipo": "028",
-      "ingresos_planta": 1007,
-      "egresos_planta": 0,
-      "saldo_bruto": -1007
+      "ingresos_planta": 2602,
+      "egresos_planta": 817,
+      "saldo_bruto": -1785
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-03",
       "equipo": "031",
-      "ingresos_planta": 33,
-      "egresos_planta": 0,
-      "saldo_bruto": -33
+      "ingresos_planta": 85,
+      "egresos_planta": 32,
+      "saldo_bruto": -53
     },
     {
       "agencia": "14123",
@@ -5689,24 +5203,6 @@
       "ingresos_planta": 85,
       "egresos_planta": 29,
       "saldo_bruto": -56
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-03",
-      "equipo": "028",
-      "ingresos_planta": 1595,
-      "egresos_planta": 817,
-      "saldo_bruto": -778
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-03",
-      "equipo": "031",
-      "ingresos_planta": 52,
-      "egresos_planta": 32,
-      "saldo_bruto": -20
     },
     {
       "agencia": "14117",
@@ -5809,21 +5305,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-04",
       "equipo": "028",
-      "ingresos_planta": 1483,
-      "egresos_planta": 1800,
-      "saldo_bruto": 317
+      "ingresos_planta": 2812,
+      "egresos_planta": 4500,
+      "saldo_bruto": 1688
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-04",
       "equipo": "031",
-      "ingresos_planta": 14,
-      "egresos_planta": 30,
-      "saldo_bruto": 16
+      "ingresos_planta": 58,
+      "egresos_planta": 130,
+      "saldo_bruto": 72
     },
     {
       "agencia": "14123",
@@ -5896,24 +5392,6 @@
       "ingresos_planta": 74,
       "egresos_planta": 99,
       "saldo_bruto": 25
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-04",
-      "equipo": "028",
-      "ingresos_planta": 1329,
-      "egresos_planta": 2700,
-      "saldo_bruto": 1371
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-04",
-      "equipo": "031",
-      "ingresos_planta": 44,
-      "egresos_planta": 100,
-      "saldo_bruto": 56
     },
     {
       "agencia": "14117",
@@ -6016,21 +5494,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-05",
       "equipo": "028",
-      "ingresos_planta": 2410,
-      "egresos_planta": 3240,
-      "saldo_bruto": 830
+      "ingresos_planta": 4279,
+      "egresos_planta": 5040,
+      "saldo_bruto": 761
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-05",
       "equipo": "031",
-      "ingresos_planta": 58,
-      "egresos_planta": 54,
-      "saldo_bruto": -4
+      "ingresos_planta": 119,
+      "egresos_planta": 124,
+      "saldo_bruto": 5
     },
     {
       "agencia": "14123",
@@ -6103,24 +5581,6 @@
       "ingresos_planta": 32,
       "egresos_planta": 33,
       "saldo_bruto": 1
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-05",
-      "equipo": "028",
-      "ingresos_planta": 1869,
-      "egresos_planta": 1800,
-      "saldo_bruto": -69
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-05",
-      "equipo": "031",
-      "ingresos_planta": 61,
-      "egresos_planta": 70,
-      "saldo_bruto": 9
     },
     {
       "agencia": "14117",
@@ -6205,21 +5665,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-06",
       "equipo": "028",
-      "ingresos_planta": 1312,
-      "egresos_planta": 1980,
-      "saldo_bruto": 668
+      "ingresos_planta": 3471,
+      "egresos_planta": 5460,
+      "saldo_bruto": 1989
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-06",
       "equipo": "031",
-      "ingresos_planta": 38,
-      "egresos_planta": 33,
-      "saldo_bruto": -5
+      "ingresos_planta": 96,
+      "egresos_planta": 99,
+      "saldo_bruto": 3
     },
     {
       "agencia": "14126",
@@ -6274,24 +5734,6 @@
       "ingresos_planta": 42,
       "egresos_planta": 59,
       "saldo_bruto": 17
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-06",
-      "equipo": "028",
-      "ingresos_planta": 2159,
-      "egresos_planta": 3480,
-      "saldo_bruto": 1321
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-06",
-      "equipo": "031",
-      "ingresos_planta": 58,
-      "egresos_planta": 66,
-      "saldo_bruto": 8
     },
     {
       "agencia": "14117",
@@ -6376,16 +5818,16 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-07",
       "equipo": "028",
-      "ingresos_planta": 1793,
+      "ingresos_planta": 2660,
       "egresos_planta": 3960,
-      "saldo_bruto": 2167
+      "saldo_bruto": 1300
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-07",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -6463,15 +5905,6 @@
       "ingresos_planta": 38,
       "egresos_planta": 126,
       "saldo_bruto": 88
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-07",
-      "equipo": "028",
-      "ingresos_planta": 867,
-      "egresos_planta": 0,
-      "saldo_bruto": -867
     },
     {
       "agencia": "14272",
@@ -6601,21 +6034,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-09",
       "equipo": "028",
-      "ingresos_planta": 2311,
-      "egresos_planta": 0,
-      "saldo_bruto": -2311
+      "ingresos_planta": 3743,
+      "egresos_planta": 3468,
+      "saldo_bruto": -275
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-09",
       "equipo": "031",
-      "ingresos_planta": 75,
-      "egresos_planta": 0,
-      "saldo_bruto": -75
+      "ingresos_planta": 122,
+      "egresos_planta": 81,
+      "saldo_bruto": -41
     },
     {
       "agencia": "14123",
@@ -6688,24 +6121,6 @@
       "ingresos_planta": 75,
       "egresos_planta": 18,
       "saldo_bruto": -57
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-09",
-      "equipo": "028",
-      "ingresos_planta": 1432,
-      "egresos_planta": 3468,
-      "saldo_bruto": 2036
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-09",
-      "equipo": "031",
-      "ingresos_planta": 47,
-      "egresos_planta": 81,
-      "saldo_bruto": 34
     },
     {
       "agencia": "14117",
@@ -6808,21 +6223,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-10",
       "equipo": "028",
-      "ingresos_planta": 1230,
-      "egresos_planta": 3600,
-      "saldo_bruto": 2370
+      "ingresos_planta": 2636,
+      "egresos_planta": 3840,
+      "saldo_bruto": 1204
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-10",
       "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 61,
-      "saldo_bruto": 26
+      "ingresos_planta": 81,
+      "egresos_planta": 75,
+      "saldo_bruto": -6
     },
     {
       "agencia": "14123",
@@ -6895,24 +6310,6 @@
       "ingresos_planta": 73,
       "egresos_planta": 73,
       "saldo_bruto": 0
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-10",
-      "equipo": "028",
-      "ingresos_planta": 1406,
-      "egresos_planta": 240,
-      "saldo_bruto": -1166
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-10",
-      "equipo": "031",
-      "ingresos_planta": 46,
-      "egresos_planta": 14,
-      "saldo_bruto": -32
     },
     {
       "agencia": "14117",
@@ -7015,21 +6412,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-11",
       "equipo": "028",
-      "ingresos_planta": 1985,
-      "egresos_planta": 1980,
-      "saldo_bruto": -5
+      "ingresos_planta": 4309,
+      "egresos_planta": 4800,
+      "saldo_bruto": 491
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-11",
       "equipo": "031",
-      "ingresos_planta": 63,
-      "egresos_planta": 33,
-      "saldo_bruto": -30
+      "ingresos_planta": 139,
+      "egresos_planta": 147,
+      "saldo_bruto": 8
     },
     {
       "agencia": "14123",
@@ -7102,24 +6499,6 @@
       "ingresos_planta": 68,
       "egresos_planta": 69,
       "saldo_bruto": 1
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-11",
-      "equipo": "028",
-      "ingresos_planta": 2324,
-      "egresos_planta": 2820,
-      "saldo_bruto": 496
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-11",
-      "equipo": "031",
-      "ingresos_planta": 76,
-      "egresos_planta": 114,
-      "saldo_bruto": 38
     },
     {
       "agencia": "14117",
@@ -7222,21 +6601,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-12",
       "equipo": "028",
-      "ingresos_planta": 2915,
+      "ingresos_planta": 5275,
       "egresos_planta": 3060,
-      "saldo_bruto": 145
+      "saldo_bruto": -2215
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-12",
       "equipo": "031",
-      "ingresos_planta": 86,
+      "ingresos_planta": 164,
       "egresos_planta": 231,
-      "saldo_bruto": 145
+      "saldo_bruto": 67
     },
     {
       "agencia": "14123",
@@ -7309,24 +6688,6 @@
       "ingresos_planta": 80,
       "egresos_planta": 32,
       "saldo_bruto": -48
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-12",
-      "equipo": "028",
-      "ingresos_planta": 2360,
-      "egresos_planta": 0,
-      "saldo_bruto": -2360
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-12",
-      "equipo": "031",
-      "ingresos_planta": 78,
-      "egresos_planta": 0,
-      "saldo_bruto": -78
     },
     {
       "agencia": "14117",
@@ -7429,21 +6790,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-13",
       "equipo": "028",
-      "ingresos_planta": 3593,
-      "egresos_planta": 5400,
-      "saldo_bruto": 1807
+      "ingresos_planta": 5588,
+      "egresos_planta": 9822,
+      "saldo_bruto": 4234
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-13",
       "equipo": "031",
-      "ingresos_planta": 64,
-      "egresos_planta": 150,
-      "saldo_bruto": 86
+      "ingresos_planta": 129,
+      "egresos_planta": 296,
+      "saldo_bruto": 167
     },
     {
       "agencia": "14123",
@@ -7516,24 +6877,6 @@
       "ingresos_planta": 77,
       "egresos_planta": 50,
       "saldo_bruto": -27
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-13",
-      "equipo": "028",
-      "ingresos_planta": 1995,
-      "egresos_planta": 4422,
-      "saldo_bruto": 2427
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-13",
-      "equipo": "031",
-      "ingresos_planta": 65,
-      "egresos_planta": 146,
-      "saldo_bruto": 81
     },
     {
       "agencia": "14117",
@@ -7636,12 +6979,12 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-14",
       "equipo": "028",
-      "ingresos_planta": 1508,
+      "ingresos_planta": 2200,
       "egresos_planta": 0,
-      "saldo_bruto": -1508
+      "saldo_bruto": -2200
     },
     {
       "agencia": "14123",
@@ -7714,15 +7057,6 @@
       "ingresos_planta": 38,
       "egresos_planta": 102,
       "saldo_bruto": 64
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-14",
-      "equipo": "028",
-      "ingresos_planta": 692,
-      "egresos_planta": 0,
-      "saldo_bruto": -692
     },
     {
       "agencia": "14117",
@@ -7861,21 +7195,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-17",
       "equipo": "028",
-      "ingresos_planta": 1116,
+      "ingresos_planta": 3247,
       "egresos_planta": 0,
-      "saldo_bruto": -1116
+      "saldo_bruto": -3247
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-17",
       "equipo": "031",
-      "ingresos_planta": 22,
+      "ingresos_planta": 91,
       "egresos_planta": 0,
-      "saldo_bruto": -22
+      "saldo_bruto": -91
     },
     {
       "agencia": "14123",
@@ -7948,24 +7282,6 @@
       "ingresos_planta": 34,
       "egresos_planta": 0,
       "saldo_bruto": -34
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-17",
-      "equipo": "028",
-      "ingresos_planta": 2131,
-      "egresos_planta": 0,
-      "saldo_bruto": -2131
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-17",
-      "equipo": "031",
-      "ingresos_planta": 69,
-      "egresos_planta": 0,
-      "saldo_bruto": -69
     },
     {
       "agencia": "14117",
@@ -8068,7 +7384,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-18",
       "equipo": "028",
       "ingresos_planta": 859,
@@ -8077,7 +7393,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-18",
       "equipo": "031",
       "ingresos_planta": 28,
@@ -8220,6 +7536,15 @@
       "saldo_bruto": 32
     },
     {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-02-19",
+      "equipo": "028",
+      "ingresos_planta": 1233,
+      "egresos_planta": 0,
+      "saldo_bruto": -1233
+    },
+    {
       "agencia": "14123",
       "ceve": "Mendoza",
       "fecha": "2026-02-19",
@@ -8272,15 +7597,6 @@
       "ingresos_planta": 83,
       "egresos_planta": 45,
       "saldo_bruto": -38
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-19",
-      "equipo": "028",
-      "ingresos_planta": 1233,
-      "egresos_planta": 0,
-      "saldo_bruto": -1233
     },
     {
       "agencia": "14117",
@@ -8365,7 +7681,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-20",
       "equipo": "028",
       "ingresos_planta": 2496,
@@ -8374,7 +7690,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-20",
       "equipo": "031",
       "ingresos_planta": 62,
@@ -8500,7 +7816,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-21",
       "equipo": "028",
       "ingresos_planta": 2630,
@@ -8509,7 +7825,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-21",
       "equipo": "031",
       "ingresos_planta": 82,
@@ -8743,21 +8059,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-23",
       "equipo": "028",
       "ingresos_planta": 1875,
-      "egresos_planta": 1980,
-      "saldo_bruto": 105
+      "egresos_planta": 7390,
+      "saldo_bruto": 5515
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-23",
       "equipo": "031",
       "ingresos_planta": 62,
-      "egresos_planta": 33,
-      "saldo_bruto": -29
+      "egresos_planta": 235,
+      "saldo_bruto": 173
     },
     {
       "agencia": "14123",
@@ -8830,24 +8146,6 @@
       "ingresos_planta": 96,
       "egresos_planta": 14,
       "saldo_bruto": -82
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-23",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 5410,
-      "saldo_bruto": 5410
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-23",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 202,
-      "saldo_bruto": 202
     },
     {
       "agencia": "14272",
@@ -8932,21 +8230,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-24",
       "equipo": "028",
-      "ingresos_planta": 1090,
+      "ingresos_planta": 2874,
       "egresos_planta": 1932,
-      "saldo_bruto": 842
+      "saldo_bruto": -942
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-24",
       "equipo": "031",
-      "ingresos_planta": 37,
+      "ingresos_planta": 77,
       "egresos_planta": 46,
-      "saldo_bruto": 9
+      "saldo_bruto": -31
     },
     {
       "agencia": "14123",
@@ -9019,24 +8317,6 @@
       "ingresos_planta": 75,
       "egresos_planta": 33,
       "saldo_bruto": -42
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-24",
-      "equipo": "028",
-      "ingresos_planta": 1784,
-      "egresos_planta": 0,
-      "saldo_bruto": -1784
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-24",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 0,
-      "saldo_bruto": -40
     },
     {
       "agencia": "14117",
@@ -9139,21 +8419,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-25",
       "equipo": "028",
       "ingresos_planta": 2352,
-      "egresos_planta": 1980,
-      "saldo_bruto": -372
+      "egresos_planta": 3780,
+      "saldo_bruto": 1428
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-25",
       "equipo": "031",
       "ingresos_planta": 32,
-      "egresos_planta": 33,
-      "saldo_bruto": 1
+      "egresos_planta": 63,
+      "saldo_bruto": 31
     },
     {
       "agencia": "14123",
@@ -9226,24 +8506,6 @@
       "ingresos_planta": 38,
       "egresos_planta": 105,
       "saldo_bruto": 67
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-25",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 1800,
-      "saldo_bruto": 1800
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-25",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 30,
-      "saldo_bruto": 30
     },
     {
       "agencia": "14117",
@@ -9346,21 +8608,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-26",
       "equipo": "028",
-      "ingresos_planta": 2492,
-      "egresos_planta": 4401,
-      "saldo_bruto": 1909
+      "ingresos_planta": 5054,
+      "egresos_planta": 6201,
+      "saldo_bruto": 1147
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-26",
       "equipo": "031",
-      "ingresos_planta": 80,
-      "egresos_planta": 94,
-      "saldo_bruto": 14
+      "ingresos_planta": 130,
+      "egresos_planta": 139,
+      "saldo_bruto": 9
     },
     {
       "agencia": "14123",
@@ -9433,24 +8695,6 @@
       "ingresos_planta": 37,
       "egresos_planta": 33,
       "saldo_bruto": -4
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-26",
-      "equipo": "028",
-      "ingresos_planta": 2562,
-      "egresos_planta": 1800,
-      "saldo_bruto": -762
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-26",
-      "equipo": "031",
-      "ingresos_planta": 50,
-      "egresos_planta": 45,
-      "saldo_bruto": -5
     },
     {
       "agencia": "14117",
@@ -9552,6 +8796,24 @@
       "saldo_bruto": -66
     },
     {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-02-27",
+      "equipo": "028",
+      "ingresos_planta": 0,
+      "egresos_planta": 1401,
+      "saldo_bruto": 1401
+    },
+    {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-02-27",
+      "equipo": "031",
+      "ingresos_planta": 0,
+      "egresos_planta": 48,
+      "saldo_bruto": 48
+    },
+    {
       "agencia": "14126",
       "ceve": "Neuquén",
       "fecha": "2026-02-27",
@@ -9604,24 +8866,6 @@
       "ingresos_planta": 79,
       "egresos_planta": 51,
       "saldo_bruto": -28
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-27",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 1401,
-      "saldo_bruto": 1401
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-02-27",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 48,
-      "saldo_bruto": 48
     },
     {
       "agencia": "14117",
@@ -9688,7 +8932,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-28",
       "equipo": "028",
       "ingresos_planta": 1142,
@@ -9697,7 +8941,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-02-28",
       "equipo": "031",
       "ingresos_planta": 34,
@@ -9868,7 +9112,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-02",
       "equipo": "028",
       "ingresos_planta": 1222,
@@ -9877,7 +9121,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-02",
       "equipo": "031",
       "ingresos_planta": 50,
@@ -10057,21 +9301,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-03",
       "equipo": "028",
-      "ingresos_planta": 1581,
+      "ingresos_planta": 3151,
       "egresos_planta": 0,
-      "saldo_bruto": -1581
+      "saldo_bruto": -3151
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-03",
       "equipo": "031",
-      "ingresos_planta": 30,
+      "ingresos_planta": 65,
       "egresos_planta": 0,
-      "saldo_bruto": -30
+      "saldo_bruto": -65
     },
     {
       "agencia": "14123",
@@ -10144,24 +9388,6 @@
       "ingresos_planta": 65,
       "egresos_planta": 29,
       "saldo_bruto": -36
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-03",
-      "equipo": "028",
-      "ingresos_planta": 1570,
-      "egresos_planta": 0,
-      "saldo_bruto": -1570
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-03",
-      "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 0,
-      "saldo_bruto": -35
     },
     {
       "agencia": "14117",
@@ -10264,7 +9490,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-04",
       "equipo": "028",
       "ingresos_planta": 1910,
@@ -10273,7 +9499,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-04",
       "equipo": "031",
       "ingresos_planta": 25,
@@ -10435,21 +9661,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-05",
       "equipo": "028",
-      "ingresos_planta": 1268,
+      "ingresos_planta": 2637,
       "egresos_planta": 1620,
-      "saldo_bruto": 352
+      "saldo_bruto": -1017
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-05",
       "equipo": "031",
-      "ingresos_planta": 40,
+      "ingresos_planta": 115,
       "egresos_planta": 87,
-      "saldo_bruto": 47
+      "saldo_bruto": -28
     },
     {
       "agencia": "14123",
@@ -10522,24 +9748,6 @@
       "ingresos_planta": 63,
       "egresos_planta": 33,
       "saldo_bruto": -30
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-05",
-      "equipo": "028",
-      "ingresos_planta": 1369,
-      "egresos_planta": 0,
-      "saldo_bruto": -1369
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-05",
-      "equipo": "031",
-      "ingresos_planta": 75,
-      "egresos_planta": 0,
-      "saldo_bruto": -75
     },
     {
       "agencia": "14117",
@@ -10642,7 +9850,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-06",
       "equipo": "028",
       "ingresos_planta": 0,
@@ -10651,7 +9859,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-06",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -10777,21 +9985,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-07",
       "equipo": "028",
       "ingresos_planta": 1393,
-      "egresos_planta": 0,
-      "saldo_bruto": -1393
+      "egresos_planta": 1980,
+      "saldo_bruto": 587
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-07",
       "equipo": "031",
       "ingresos_planta": 28,
-      "egresos_planta": 0,
-      "saldo_bruto": -28
+      "egresos_planta": 33,
+      "saldo_bruto": 5
     },
     {
       "agencia": "14123",
@@ -10864,24 +10072,6 @@
       "ingresos_planta": 85,
       "egresos_planta": 62,
       "saldo_bruto": -23
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-07",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 1980,
-      "saldo_bruto": 1980
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-07",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 33,
-      "saldo_bruto": 33
     },
     {
       "agencia": "14117",
@@ -11011,7 +10201,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-09",
       "equipo": "028",
       "ingresos_planta": 1039,
@@ -11020,7 +10210,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-09",
       "equipo": "031",
       "ingresos_planta": 65,
@@ -11200,21 +10390,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-10",
       "equipo": "028",
-      "ingresos_planta": 1220,
+      "ingresos_planta": 2308,
       "egresos_planta": 1260,
-      "saldo_bruto": 40
+      "saldo_bruto": -1048
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-10",
       "equipo": "031",
-      "ingresos_planta": 30,
+      "ingresos_planta": 64,
       "egresos_planta": 21,
-      "saldo_bruto": -9
+      "saldo_bruto": -43
     },
     {
       "agencia": "14123",
@@ -11287,24 +10477,6 @@
       "ingresos_planta": 72,
       "egresos_planta": 33,
       "saldo_bruto": -39
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-10",
-      "equipo": "028",
-      "ingresos_planta": 1088,
-      "egresos_planta": 0,
-      "saldo_bruto": -1088
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-10",
-      "equipo": "031",
-      "ingresos_planta": 34,
-      "egresos_planta": 0,
-      "saldo_bruto": -34
     },
     {
       "agencia": "14117",
@@ -11407,7 +10579,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-11",
       "equipo": "028",
       "ingresos_planta": 1921,
@@ -11416,7 +10588,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-11",
       "equipo": "031",
       "ingresos_planta": 35,
@@ -11596,21 +10768,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-12",
       "equipo": "028",
-      "ingresos_planta": 1617,
+      "ingresos_planta": 2801,
       "egresos_planta": 1980,
-      "saldo_bruto": 363
+      "saldo_bruto": -821
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-12",
       "equipo": "031",
-      "ingresos_planta": 0,
+      "ingresos_planta": 50,
       "egresos_planta": 33,
-      "saldo_bruto": 33
+      "saldo_bruto": -17
     },
     {
       "agencia": "14123",
@@ -11683,24 +10855,6 @@
       "ingresos_planta": 79,
       "egresos_planta": 35,
       "saldo_bruto": -44
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-12",
-      "equipo": "028",
-      "ingresos_planta": 1184,
-      "egresos_planta": 0,
-      "saldo_bruto": -1184
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-12",
-      "equipo": "031",
-      "ingresos_planta": 50,
-      "egresos_planta": 0,
-      "saldo_bruto": -50
     },
     {
       "agencia": "14117",
@@ -11803,7 +10957,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-13",
       "equipo": "028",
       "ingresos_planta": 43,
@@ -11812,7 +10966,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-13",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -11938,7 +11092,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-14",
       "equipo": "028",
       "ingresos_planta": 2391,
@@ -11947,7 +11101,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-14",
       "equipo": "031",
       "ingresos_planta": 46,
@@ -12145,7 +11299,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-16",
       "equipo": "028",
       "ingresos_planta": 1135,
@@ -12154,7 +11308,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-16",
       "equipo": "031",
       "ingresos_planta": 70,
@@ -12325,21 +11479,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-17",
       "equipo": "028",
-      "ingresos_planta": 324,
+      "ingresos_planta": 1365,
       "egresos_planta": 0,
-      "saldo_bruto": -324
+      "saldo_bruto": -1365
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-17",
       "equipo": "031",
-      "ingresos_planta": 15,
+      "ingresos_planta": 50,
       "egresos_planta": 0,
-      "saldo_bruto": -15
+      "saldo_bruto": -50
     },
     {
       "agencia": "14123",
@@ -12412,24 +11566,6 @@
       "ingresos_planta": 39,
       "egresos_planta": 0,
       "saldo_bruto": -39
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-17",
-      "equipo": "028",
-      "ingresos_planta": 1041,
-      "egresos_planta": 0,
-      "saldo_bruto": -1041
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-17",
-      "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 0,
-      "saldo_bruto": -35
     },
     {
       "agencia": "14117",
@@ -12532,7 +11668,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-18",
       "equipo": "028",
       "ingresos_planta": 2932,
@@ -12541,7 +11677,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-18",
       "equipo": "031",
       "ingresos_planta": 62,
@@ -12703,21 +11839,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-19",
       "equipo": "028",
-      "ingresos_planta": 1910,
-      "egresos_planta": 0,
-      "saldo_bruto": -1910
+      "ingresos_planta": 3779,
+      "egresos_planta": 1980,
+      "saldo_bruto": -1799
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-19",
       "equipo": "031",
-      "ingresos_planta": 17,
-      "egresos_planta": 0,
-      "saldo_bruto": -17
+      "ingresos_planta": 90,
+      "egresos_planta": 33,
+      "saldo_bruto": -57
     },
     {
       "agencia": "14123",
@@ -12790,24 +11926,6 @@
       "ingresos_planta": 31,
       "egresos_planta": 33,
       "saldo_bruto": 2
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-19",
-      "equipo": "028",
-      "ingresos_planta": 1869,
-      "egresos_planta": 1980,
-      "saldo_bruto": 111
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-19",
-      "equipo": "031",
-      "ingresos_planta": 73,
-      "egresos_planta": 33,
-      "saldo_bruto": -40
     },
     {
       "agencia": "14117",
@@ -12910,7 +12028,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-20",
       "equipo": "028",
       "ingresos_planta": 651,
@@ -12919,7 +12037,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-20",
       "equipo": "031",
       "ingresos_planta": 21,
@@ -13063,7 +12181,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-21",
       "equipo": "028",
       "ingresos_planta": 1313,
@@ -13072,7 +12190,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-21",
       "equipo": "031",
       "ingresos_planta": 39,
@@ -13297,7 +12415,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-23",
       "equipo": "028",
       "ingresos_planta": 806,
@@ -13306,7 +12424,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-23",
       "equipo": "031",
       "ingresos_planta": 45,
@@ -13485,6 +12603,15 @@
       "saldo_bruto": 217
     },
     {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-03-24",
+      "equipo": "028",
+      "ingresos_planta": 482,
+      "egresos_planta": 0,
+      "saldo_bruto": -482
+    },
+    {
       "agencia": "14127",
       "ceve": "Santa Fe",
       "fecha": "2026-03-24",
@@ -13501,15 +12628,6 @@
       "ingresos_planta": 37,
       "egresos_planta": 0,
       "saldo_bruto": -37
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-24",
-      "equipo": "028",
-      "ingresos_planta": 482,
-      "egresos_planta": 0,
-      "saldo_bruto": -482
     },
     {
       "agencia": "14117",
@@ -13585,7 +12703,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-25",
       "equipo": "028",
       "ingresos_planta": 1452,
@@ -13594,7 +12712,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-25",
       "equipo": "031",
       "ingresos_planta": 35,
@@ -13756,21 +12874,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-26",
       "equipo": "028",
-      "ingresos_planta": 403,
+      "ingresos_planta": 1801,
       "egresos_planta": 0,
-      "saldo_bruto": -403
+      "saldo_bruto": -1801
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-26",
       "equipo": "031",
-      "ingresos_planta": 12,
+      "ingresos_planta": 77,
       "egresos_planta": 0,
-      "saldo_bruto": -12
+      "saldo_bruto": -77
     },
     {
       "agencia": "14123",
@@ -13843,24 +12961,6 @@
       "ingresos_planta": 73,
       "egresos_planta": 25,
       "saldo_bruto": -48
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-26",
-      "equipo": "028",
-      "ingresos_planta": 1398,
-      "egresos_planta": 0,
-      "saldo_bruto": -1398
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-26",
-      "equipo": "031",
-      "ingresos_planta": 65,
-      "egresos_planta": 0,
-      "saldo_bruto": -65
     },
     {
       "agencia": "14117",
@@ -13963,7 +13063,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-27",
       "equipo": "028",
       "ingresos_planta": 1116,
@@ -13972,7 +13072,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-27",
       "equipo": "031",
       "ingresos_planta": 33,
@@ -14134,12 +13234,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-28",
       "equipo": "028",
       "ingresos_planta": 1113,
-      "egresos_planta": 0,
-      "saldo_bruto": -1113
+      "egresos_planta": 1980,
+      "saldo_bruto": 867
+    },
+    {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-03-28",
+      "equipo": "031",
+      "ingresos_planta": 0,
+      "egresos_planta": 33,
+      "saldo_bruto": 33
     },
     {
       "agencia": "14123",
@@ -14194,24 +13303,6 @@
       "ingresos_planta": 41,
       "egresos_planta": 57,
       "saldo_bruto": 16
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-28",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 1980,
-      "saldo_bruto": 1980
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-28",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 33,
-      "saldo_bruto": 33
     },
     {
       "agencia": "14117",
@@ -14377,7 +13468,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-30",
       "equipo": "028",
       "ingresos_planta": 1076,
@@ -14386,7 +13477,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-30",
       "equipo": "031",
       "ingresos_planta": 45,
@@ -14566,21 +13657,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-31",
       "equipo": "028",
-      "ingresos_planta": 1880,
-      "egresos_planta": 0,
-      "saldo_bruto": -1880
+      "ingresos_planta": 4186,
+      "egresos_planta": 1980,
+      "saldo_bruto": -2206
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-03-31",
       "equipo": "031",
-      "ingresos_planta": 45,
-      "egresos_planta": 0,
-      "saldo_bruto": -45
+      "ingresos_planta": 105,
+      "egresos_planta": 33,
+      "saldo_bruto": -72
     },
     {
       "agencia": "14123",
@@ -14653,24 +13744,6 @@
       "ingresos_planta": 76,
       "egresos_planta": 0,
       "saldo_bruto": -76
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-31",
-      "equipo": "028",
-      "ingresos_planta": 2306,
-      "egresos_planta": 1980,
-      "saldo_bruto": -326
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-03-31",
-      "equipo": "031",
-      "ingresos_planta": 60,
-      "egresos_planta": 33,
-      "saldo_bruto": -27
     },
     {
       "agencia": "14117",
@@ -14773,21 +13846,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-01",
       "equipo": "028",
       "ingresos_planta": 2567,
-      "egresos_planta": 0,
-      "saldo_bruto": -2567
+      "egresos_planta": 1980,
+      "saldo_bruto": -587
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-01",
       "equipo": "031",
       "ingresos_planta": 103,
-      "egresos_planta": 0,
-      "saldo_bruto": -103
+      "egresos_planta": 33,
+      "saldo_bruto": -70
     },
     {
       "agencia": "14123",
@@ -14860,24 +13933,6 @@
       "ingresos_planta": 41,
       "egresos_planta": 66,
       "saldo_bruto": 25
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-01",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 1980,
-      "saldo_bruto": 1980
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-01",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 33,
-      "saldo_bruto": 33
     },
     {
       "agencia": "14117",
@@ -14980,21 +14035,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-02",
       "equipo": "028",
-      "ingresos_planta": 630,
+      "ingresos_planta": 2163,
       "egresos_planta": 0,
-      "saldo_bruto": -630
+      "saldo_bruto": -2163
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-02",
       "equipo": "031",
-      "ingresos_planta": 21,
+      "ingresos_planta": 71,
       "egresos_planta": 0,
-      "saldo_bruto": -21
+      "saldo_bruto": -71
     },
     {
       "agencia": "14123",
@@ -15067,24 +14122,6 @@
       "ingresos_planta": 32,
       "egresos_planta": 183,
       "saldo_bruto": 151
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-02",
-      "equipo": "028",
-      "ingresos_planta": 1533,
-      "egresos_planta": 0,
-      "saldo_bruto": -1533
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-02",
-      "equipo": "031",
-      "ingresos_planta": 50,
-      "egresos_planta": 0,
-      "saldo_bruto": -50
     },
     {
       "agencia": "14117",
@@ -15196,21 +14233,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-04",
       "equipo": "028",
       "ingresos_planta": 1671,
-      "egresos_planta": 0,
-      "saldo_bruto": -1671
+      "egresos_planta": 3600,
+      "saldo_bruto": 1929
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-04",
       "equipo": "031",
       "ingresos_planta": 17,
-      "egresos_planta": 0,
-      "saldo_bruto": -17
+      "egresos_planta": 120,
+      "saldo_bruto": 103
     },
     {
       "agencia": "14123",
@@ -15265,24 +14302,6 @@
       "ingresos_planta": 38,
       "egresos_planta": 7,
       "saldo_bruto": -31
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-04",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 3600,
-      "saldo_bruto": 3600
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-04",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 120,
-      "saldo_bruto": 120
     },
     {
       "agencia": "14117",
@@ -15439,7 +14458,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-06",
       "equipo": "028",
       "ingresos_planta": 936,
@@ -15448,7 +14467,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-06",
       "equipo": "031",
       "ingresos_planta": 55,
@@ -15628,21 +14647,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-07",
       "equipo": "028",
-      "ingresos_planta": 1247,
-      "egresos_planta": 1037,
-      "saldo_bruto": -210
+      "ingresos_planta": 1992,
+      "egresos_planta": 2837,
+      "saldo_bruto": 845
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-07",
       "equipo": "031",
-      "ingresos_planta": 46,
-      "egresos_planta": 28,
-      "saldo_bruto": -18
+      "ingresos_planta": 81,
+      "egresos_planta": 89,
+      "saldo_bruto": 8
     },
     {
       "agencia": "14123",
@@ -15715,24 +14734,6 @@
       "ingresos_planta": 58,
       "egresos_planta": 33,
       "saldo_bruto": -25
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-07",
-      "equipo": "028",
-      "ingresos_planta": 745,
-      "egresos_planta": 1800,
-      "saldo_bruto": 1055
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-07",
-      "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 61,
-      "saldo_bruto": 26
     },
     {
       "agencia": "14117",
@@ -15835,7 +14836,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-08",
       "equipo": "028",
       "ingresos_planta": 1016,
@@ -15844,7 +14845,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-08",
       "equipo": "031",
       "ingresos_planta": 52,
@@ -16024,16 +15025,16 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-09",
       "equipo": "028",
-      "ingresos_planta": 1401,
+      "ingresos_planta": 2247,
       "egresos_planta": 1800,
-      "saldo_bruto": 399
+      "saldo_bruto": -447
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-09",
       "equipo": "031",
       "ingresos_planta": 35,
@@ -16111,15 +15112,6 @@
       "ingresos_planta": 70,
       "egresos_planta": 118,
       "saldo_bruto": 48
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-09",
-      "equipo": "028",
-      "ingresos_planta": 846,
-      "egresos_planta": 0,
-      "saldo_bruto": -846
     },
     {
       "agencia": "14117",
@@ -16222,7 +15214,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-10",
       "equipo": "028",
       "ingresos_planta": 190,
@@ -16231,7 +15223,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-10",
       "equipo": "031",
       "ingresos_planta": 7,
@@ -16348,7 +15340,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-11",
       "equipo": "028",
       "ingresos_planta": 746,
@@ -16357,7 +15349,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-11",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -16573,7 +15565,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-13",
       "equipo": "028",
       "ingresos_planta": 962,
@@ -16582,7 +15574,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-13",
       "equipo": "031",
       "ingresos_planta": 55,
@@ -16762,21 +15754,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-14",
       "equipo": "028",
-      "ingresos_planta": 1750,
+      "ingresos_planta": 2345,
       "egresos_planta": 1620,
-      "saldo_bruto": -130
+      "saldo_bruto": -725
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-14",
       "equipo": "031",
-      "ingresos_planta": 83,
+      "ingresos_planta": 103,
       "egresos_planta": 27,
-      "saldo_bruto": -56
+      "saldo_bruto": -76
     },
     {
       "agencia": "14123",
@@ -16849,24 +15841,6 @@
       "ingresos_planta": 77,
       "egresos_planta": 33,
       "saldo_bruto": -44
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-14",
-      "equipo": "028",
-      "ingresos_planta": 595,
-      "egresos_planta": 0,
-      "saldo_bruto": -595
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-14",
-      "equipo": "031",
-      "ingresos_planta": 20,
-      "egresos_planta": 0,
-      "saldo_bruto": -20
     },
     {
       "agencia": "14117",
@@ -17140,21 +16114,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-16",
       "equipo": "028",
-      "ingresos_planta": 1709,
+      "ingresos_planta": 2683,
       "egresos_planta": 1980,
-      "saldo_bruto": 271
+      "saldo_bruto": -703
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-16",
       "equipo": "031",
-      "ingresos_planta": 34,
+      "ingresos_planta": 64,
       "egresos_planta": 33,
-      "saldo_bruto": -1
+      "saldo_bruto": -31
     },
     {
       "agencia": "14123",
@@ -17227,24 +16201,6 @@
       "ingresos_planta": 57,
       "egresos_planta": 64,
       "saldo_bruto": 7
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-16",
-      "equipo": "028",
-      "ingresos_planta": 974,
-      "egresos_planta": 0,
-      "saldo_bruto": -974
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-16",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -17482,7 +16438,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-18",
       "equipo": "028",
       "ingresos_planta": 1300,
@@ -17491,7 +16447,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-18",
       "equipo": "031",
       "ingresos_planta": 40,
@@ -17716,7 +16672,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-20",
       "equipo": "028",
       "ingresos_planta": 2113,
@@ -17725,7 +16681,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-20",
       "equipo": "031",
       "ingresos_planta": 86,
@@ -17905,21 +16861,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-21",
       "equipo": "028",
-      "ingresos_planta": 1289,
+      "ingresos_planta": 1966,
       "egresos_planta": 1980,
-      "saldo_bruto": 691
+      "saldo_bruto": 14
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-21",
       "equipo": "031",
-      "ingresos_planta": 33,
+      "ingresos_planta": 63,
       "egresos_planta": 33,
-      "saldo_bruto": 0
+      "saldo_bruto": -30
     },
     {
       "agencia": "14123",
@@ -17992,24 +16948,6 @@
       "ingresos_planta": 41,
       "egresos_planta": 0,
       "saldo_bruto": -41
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-21",
-      "equipo": "028",
-      "ingresos_planta": 677,
-      "egresos_planta": 0,
-      "saldo_bruto": -677
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-21",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -18112,7 +17050,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-22",
       "equipo": "028",
       "ingresos_planta": 1684,
@@ -18121,7 +17059,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-22",
       "equipo": "031",
       "ingresos_planta": 90,
@@ -18283,12 +17221,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-23",
       "equipo": "028",
-      "ingresos_planta": 1210,
-      "egresos_planta": 0,
-      "saldo_bruto": -1210
+      "ingresos_planta": 2153,
+      "egresos_planta": 1440,
+      "saldo_bruto": -713
+    },
+    {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-04-23",
+      "equipo": "031",
+      "ingresos_planta": 50,
+      "egresos_planta": 84,
+      "saldo_bruto": 34
     },
     {
       "agencia": "14123",
@@ -18361,24 +17308,6 @@
       "ingresos_planta": 68,
       "egresos_planta": 80,
       "saldo_bruto": 12
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-23",
-      "equipo": "028",
-      "ingresos_planta": 943,
-      "egresos_planta": 1440,
-      "saldo_bruto": 497
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-23",
-      "equipo": "031",
-      "ingresos_planta": 50,
-      "egresos_planta": 84,
-      "saldo_bruto": 34
     },
     {
       "agencia": "14117",
@@ -18481,7 +17410,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-24",
       "equipo": "028",
       "ingresos_planta": 0,
@@ -18490,7 +17419,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-24",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -18652,7 +17581,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-25",
       "equipo": "028",
       "ingresos_planta": 1308,
@@ -18661,7 +17590,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-25",
       "equipo": "031",
       "ingresos_planta": 40,
@@ -18868,7 +17797,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-27",
       "equipo": "028",
       "ingresos_planta": 1848,
@@ -18877,7 +17806,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-27",
       "equipo": "031",
       "ingresos_planta": 100,
@@ -19057,21 +17986,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-28",
       "equipo": "028",
-      "ingresos_planta": 1710,
+      "ingresos_planta": 3250,
       "egresos_planta": 1980,
-      "saldo_bruto": 270
+      "saldo_bruto": -1270
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-28",
       "equipo": "031",
-      "ingresos_planta": 41,
+      "ingresos_planta": 91,
       "egresos_planta": 33,
-      "saldo_bruto": -8
+      "saldo_bruto": -58
     },
     {
       "agencia": "14123",
@@ -19144,24 +18073,6 @@
       "ingresos_planta": 64,
       "egresos_planta": 44,
       "saldo_bruto": -20
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-28",
-      "equipo": "028",
-      "ingresos_planta": 1540,
-      "egresos_planta": 0,
-      "saldo_bruto": -1540
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-04-28",
-      "equipo": "031",
-      "ingresos_planta": 50,
-      "egresos_planta": 0,
-      "saldo_bruto": -50
     },
     {
       "agencia": "14117",
@@ -19264,7 +18175,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-29",
       "equipo": "028",
       "ingresos_planta": 578,
@@ -19273,7 +18184,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-29",
       "equipo": "031",
       "ingresos_planta": 45,
@@ -19453,7 +18364,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-30",
       "equipo": "028",
       "ingresos_planta": 464,
@@ -19462,7 +18373,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-04-30",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -19669,7 +18580,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-02",
       "equipo": "028",
       "ingresos_planta": 2375,
@@ -19678,7 +18589,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-02",
       "equipo": "031",
       "ingresos_planta": 77,
@@ -19885,7 +18796,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-04",
       "equipo": "028",
       "ingresos_planta": 771,
@@ -19894,7 +18805,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-04",
       "equipo": "031",
       "ingresos_planta": 45,
@@ -20056,21 +18967,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-05",
       "equipo": "028",
-      "ingresos_planta": 1082,
+      "ingresos_planta": 2045,
       "egresos_planta": 1980,
-      "saldo_bruto": 898
+      "saldo_bruto": -65
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-05",
       "equipo": "031",
-      "ingresos_planta": 30,
+      "ingresos_planta": 80,
       "egresos_planta": 33,
-      "saldo_bruto": 3
+      "saldo_bruto": -47
     },
     {
       "agencia": "14123",
@@ -20143,24 +19054,6 @@
       "ingresos_planta": 68,
       "egresos_planta": 0,
       "saldo_bruto": -68
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-05",
-      "equipo": "028",
-      "ingresos_planta": 963,
-      "egresos_planta": 0,
-      "saldo_bruto": -963
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-05",
-      "equipo": "031",
-      "ingresos_planta": 50,
-      "egresos_planta": 0,
-      "saldo_bruto": -50
     },
     {
       "agencia": "14117",
@@ -20263,21 +19156,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-06",
       "equipo": "028",
       "ingresos_planta": 2139,
-      "egresos_planta": 0,
-      "saldo_bruto": -2139
+      "egresos_planta": 1980,
+      "saldo_bruto": -159
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-06",
       "equipo": "031",
       "ingresos_planta": 100,
-      "egresos_planta": 0,
-      "saldo_bruto": -100
+      "egresos_planta": 33,
+      "saldo_bruto": -67
     },
     {
       "agencia": "14123",
@@ -20341,24 +19234,6 @@
       "ingresos_planta": 40,
       "egresos_planta": 66,
       "saldo_bruto": 26
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-06",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 1980,
-      "saldo_bruto": 1980
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-06",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 33,
-      "saldo_bruto": 33
     },
     {
       "agencia": "14117",
@@ -20461,21 +19336,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-07",
       "equipo": "028",
-      "ingresos_planta": 963,
+      "ingresos_planta": 2162,
       "egresos_planta": 1260,
-      "saldo_bruto": 297
+      "saldo_bruto": -902
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-07",
       "equipo": "031",
-      "ingresos_planta": 31,
+      "ingresos_planta": 76,
       "egresos_planta": 171,
-      "saldo_bruto": 140
+      "saldo_bruto": 95
     },
     {
       "agencia": "14123",
@@ -20548,24 +19423,6 @@
       "ingresos_planta": 37,
       "egresos_planta": 135,
       "saldo_bruto": 98
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-07",
-      "equipo": "028",
-      "ingresos_planta": 1199,
-      "egresos_planta": 0,
-      "saldo_bruto": -1199
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-07",
-      "equipo": "031",
-      "ingresos_planta": 45,
-      "egresos_planta": 0,
-      "saldo_bruto": -45
     },
     {
       "agencia": "14117",
@@ -20785,21 +19642,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-09",
       "equipo": "028",
       "ingresos_planta": 1360,
-      "egresos_planta": 0,
-      "saldo_bruto": -1360
+      "egresos_planta": 1980,
+      "saldo_bruto": 620
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-09",
       "equipo": "031",
       "ingresos_planta": 40,
-      "egresos_planta": 0,
-      "saldo_bruto": -40
+      "egresos_planta": 33,
+      "saldo_bruto": -7
     },
     {
       "agencia": "14123",
@@ -20872,24 +19729,6 @@
       "ingresos_planta": 30,
       "egresos_planta": 60,
       "saldo_bruto": 30
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-09",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 1980,
-      "saldo_bruto": 1980
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-09",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 33,
-      "saldo_bruto": 33
     },
     {
       "agencia": "14117",
@@ -21055,7 +19894,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-11",
       "equipo": "028",
       "ingresos_planta": 1544,
@@ -21064,7 +19903,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-11",
       "equipo": "031",
       "ingresos_planta": 75,
@@ -21226,21 +20065,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-12",
       "equipo": "028",
-      "ingresos_planta": 1127,
+      "ingresos_planta": 2223,
       "egresos_planta": 0,
-      "saldo_bruto": -1127
+      "saldo_bruto": -2223
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-12",
       "equipo": "031",
-      "ingresos_planta": 37,
+      "ingresos_planta": 82,
       "egresos_planta": 0,
-      "saldo_bruto": -37
+      "saldo_bruto": -82
     },
     {
       "agencia": "14123",
@@ -21313,24 +20152,6 @@
       "ingresos_planta": 61,
       "egresos_planta": 33,
       "saldo_bruto": -28
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-12",
-      "equipo": "028",
-      "ingresos_planta": 1096,
-      "egresos_planta": 0,
-      "saldo_bruto": -1096
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-12",
-      "equipo": "031",
-      "ingresos_planta": 45,
-      "egresos_planta": 0,
-      "saldo_bruto": -45
     },
     {
       "agencia": "14117",
@@ -21433,7 +20254,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-13",
       "equipo": "028",
       "ingresos_planta": 1940,
@@ -21442,7 +20263,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-13",
       "equipo": "031",
       "ingresos_planta": 88,
@@ -21604,21 +20425,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-14",
       "equipo": "028",
-      "ingresos_planta": 1064,
+      "ingresos_planta": 2189,
       "egresos_planta": 1980,
-      "saldo_bruto": 916
+      "saldo_bruto": -209
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-14",
       "equipo": "031",
-      "ingresos_planta": 0,
+      "ingresos_planta": 83,
       "egresos_planta": 33,
-      "saldo_bruto": 33
+      "saldo_bruto": -50
     },
     {
       "agencia": "14123",
@@ -21691,24 +20512,6 @@
       "ingresos_planta": 77,
       "egresos_planta": 48,
       "saldo_bruto": -29
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-14",
-      "equipo": "028",
-      "ingresos_planta": 1125,
-      "egresos_planta": 0,
-      "saldo_bruto": -1125
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-14",
-      "equipo": "031",
-      "ingresos_planta": 83,
-      "egresos_planta": 0,
-      "saldo_bruto": -83
     },
     {
       "agencia": "14117",
@@ -21811,7 +20614,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-15",
       "equipo": "028",
       "ingresos_planta": 0,
@@ -21820,7 +20623,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-15",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -21982,7 +20785,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-16",
       "equipo": "028",
       "ingresos_planta": 1234,
@@ -21991,7 +20794,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-16",
       "equipo": "031",
       "ingresos_planta": 37,
@@ -22216,7 +21019,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-18",
       "equipo": "028",
       "ingresos_planta": 1945,
@@ -22225,7 +21028,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-18",
       "equipo": "031",
       "ingresos_planta": 55,
@@ -22405,21 +21208,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-19",
       "equipo": "028",
-      "ingresos_planta": 384,
+      "ingresos_planta": 1295,
       "egresos_planta": 0,
-      "saldo_bruto": -384
+      "saldo_bruto": -1295
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-19",
       "equipo": "031",
-      "ingresos_planta": 25,
+      "ingresos_planta": 55,
       "egresos_planta": 0,
-      "saldo_bruto": -25
+      "saldo_bruto": -55
     },
     {
       "agencia": "14123",
@@ -22492,24 +21295,6 @@
       "ingresos_planta": 78,
       "egresos_planta": 54,
       "saldo_bruto": -24
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-19",
-      "equipo": "028",
-      "ingresos_planta": 911,
-      "egresos_planta": 0,
-      "saldo_bruto": -911
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-19",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -22612,7 +21397,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-20",
       "equipo": "028",
       "ingresos_planta": 1722,
@@ -22621,7 +21406,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-20",
       "equipo": "031",
       "ingresos_planta": 46,
@@ -22783,21 +21568,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-21",
       "equipo": "028",
-      "ingresos_planta": 2004,
+      "ingresos_planta": 2981,
       "egresos_planta": 1980,
-      "saldo_bruto": -24
+      "saldo_bruto": -1001
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-21",
       "equipo": "031",
-      "ingresos_planta": 40,
+      "ingresos_planta": 75,
       "egresos_planta": 33,
-      "saldo_bruto": -7
+      "saldo_bruto": -42
     },
     {
       "agencia": "14123",
@@ -22870,24 +21655,6 @@
       "ingresos_planta": 73,
       "egresos_planta": 33,
       "saldo_bruto": -40
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-21",
-      "equipo": "028",
-      "ingresos_planta": 977,
-      "egresos_planta": 0,
-      "saldo_bruto": -977
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-21",
-      "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 0,
-      "saldo_bruto": -35
     },
     {
       "agencia": "14117",
@@ -22972,7 +21739,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-22",
       "equipo": "028",
       "ingresos_planta": 1005,
@@ -22981,7 +21748,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-22",
       "equipo": "031",
       "ingresos_planta": 45,
@@ -23143,7 +21910,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-23",
       "equipo": "028",
       "ingresos_planta": 1510,
@@ -23152,7 +21919,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-23",
       "equipo": "031",
       "ingresos_planta": 45,
@@ -23503,21 +22270,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-26",
       "equipo": "028",
-      "ingresos_planta": 1053,
+      "ingresos_planta": 2006,
       "egresos_planta": 0,
-      "saldo_bruto": -1053
+      "saldo_bruto": -2006
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-26",
       "equipo": "031",
-      "ingresos_planta": 25,
+      "ingresos_planta": 60,
       "egresos_planta": 0,
-      "saldo_bruto": -25
+      "saldo_bruto": -60
     },
     {
       "agencia": "14123",
@@ -23554,24 +22321,6 @@
       "ingresos_planta": 79,
       "egresos_planta": 15,
       "saldo_bruto": -64
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-26",
-      "equipo": "028",
-      "ingresos_planta": 953,
-      "egresos_planta": 0,
-      "saldo_bruto": -953
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-26",
-      "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 0,
-      "saldo_bruto": -35
     },
     {
       "agencia": "14117",
@@ -23674,7 +22423,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-27",
       "equipo": "028",
       "ingresos_planta": 2020,
@@ -23683,7 +22432,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-27",
       "equipo": "031",
       "ingresos_planta": 71,
@@ -23827,21 +22576,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-28",
       "equipo": "028",
-      "ingresos_planta": 1344,
+      "ingresos_planta": 2251,
       "egresos_planta": 1620,
-      "saldo_bruto": 276
+      "saldo_bruto": -631
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-28",
       "equipo": "031",
-      "ingresos_planta": 40,
+      "ingresos_planta": 80,
       "egresos_planta": 57,
-      "saldo_bruto": 17
+      "saldo_bruto": -23
     },
     {
       "agencia": "14123",
@@ -23914,24 +22663,6 @@
       "ingresos_planta": 56,
       "egresos_planta": 33,
       "saldo_bruto": -23
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-28",
-      "equipo": "028",
-      "ingresos_planta": 907,
-      "egresos_planta": 0,
-      "saldo_bruto": -907
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-05-28",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 0,
-      "saldo_bruto": -40
     },
     {
       "agencia": "14117",
@@ -24034,7 +22765,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-29",
       "equipo": "028",
       "ingresos_planta": 200,
@@ -24043,7 +22774,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-29",
       "equipo": "031",
       "ingresos_planta": 7,
@@ -24223,7 +22954,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-30",
       "equipo": "028",
       "ingresos_planta": 1033,
@@ -24232,7 +22963,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-05-30",
       "equipo": "031",
       "ingresos_planta": 31,
@@ -24493,7 +23224,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-01",
       "equipo": "028",
       "ingresos_planta": 1941,
@@ -24502,7 +23233,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-01",
       "equipo": "031",
       "ingresos_planta": 93,
@@ -24682,21 +23413,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-02",
       "equipo": "028",
-      "ingresos_planta": 1050,
+      "ingresos_planta": 1522,
       "egresos_planta": 0,
-      "saldo_bruto": -1050
+      "saldo_bruto": -1522
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-02",
       "equipo": "031",
-      "ingresos_planta": 12,
+      "ingresos_planta": 32,
       "egresos_planta": 0,
-      "saldo_bruto": -12
+      "saldo_bruto": -32
     },
     {
       "agencia": "14123",
@@ -24769,24 +23500,6 @@
       "ingresos_planta": 75,
       "egresos_planta": 33,
       "saldo_bruto": -42
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-02",
-      "equipo": "028",
-      "ingresos_planta": 472,
-      "egresos_planta": 0,
-      "saldo_bruto": -472
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-02",
-      "equipo": "031",
-      "ingresos_planta": 20,
-      "egresos_planta": 0,
-      "saldo_bruto": -20
     },
     {
       "agencia": "14117",
@@ -24889,7 +23602,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-03",
       "equipo": "028",
       "ingresos_planta": 1228,
@@ -24898,7 +23611,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-03",
       "equipo": "031",
       "ingresos_planta": 50,
@@ -25078,21 +23791,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-04",
       "equipo": "028",
-      "ingresos_planta": 1831,
+      "ingresos_planta": 2883,
       "egresos_planta": 1980,
-      "saldo_bruto": 149
+      "saldo_bruto": -903
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-04",
       "equipo": "031",
-      "ingresos_planta": 43,
+      "ingresos_planta": 63,
       "egresos_planta": 33,
-      "saldo_bruto": -10
+      "saldo_bruto": -30
     },
     {
       "agencia": "14123",
@@ -25165,24 +23878,6 @@
       "ingresos_planta": 69,
       "egresos_planta": 39,
       "saldo_bruto": -30
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-04",
-      "equipo": "028",
-      "ingresos_planta": 1052,
-      "egresos_planta": 0,
-      "saldo_bruto": -1052
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-04",
-      "equipo": "031",
-      "ingresos_planta": 20,
-      "egresos_planta": 0,
-      "saldo_bruto": -20
     },
     {
       "agencia": "14117",
@@ -25285,7 +23980,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-05",
       "equipo": "028",
       "ingresos_planta": 0,
@@ -25294,7 +23989,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-05",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -25456,7 +24151,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-06",
       "equipo": "028",
       "ingresos_planta": 2121,
@@ -25465,7 +24160,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-06",
       "equipo": "031",
       "ingresos_planta": 66,
@@ -25672,7 +24367,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-08",
       "equipo": "028",
       "ingresos_planta": 1037,
@@ -25681,7 +24376,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-08",
       "equipo": "031",
       "ingresos_planta": 65,
@@ -25861,21 +24556,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-09",
       "equipo": "028",
-      "ingresos_planta": 1308,
+      "ingresos_planta": 2297,
       "egresos_planta": 0,
-      "saldo_bruto": -1308
+      "saldo_bruto": -2297
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-09",
       "equipo": "031",
-      "ingresos_planta": 24,
+      "ingresos_planta": 49,
       "egresos_planta": 0,
-      "saldo_bruto": -24
+      "saldo_bruto": -49
     },
     {
       "agencia": "14123",
@@ -25948,24 +24643,6 @@
       "ingresos_planta": 80,
       "egresos_planta": 60,
       "saldo_bruto": -20
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-09",
-      "equipo": "028",
-      "ingresos_planta": 989,
-      "egresos_planta": 0,
-      "saldo_bruto": -989
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-09",
-      "equipo": "031",
-      "ingresos_planta": 25,
-      "egresos_planta": 0,
-      "saldo_bruto": -25
     },
     {
       "agencia": "14117",
@@ -26068,7 +24745,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-10",
       "equipo": "028",
       "ingresos_planta": 634,
@@ -26077,7 +24754,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-10",
       "equipo": "031",
       "ingresos_planta": 40,
@@ -26257,21 +24934,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-11",
       "equipo": "028",
-      "ingresos_planta": 2051,
+      "ingresos_planta": 3222,
       "egresos_planta": 3870,
-      "saldo_bruto": 1819
+      "saldo_bruto": 648
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-11",
       "equipo": "031",
-      "ingresos_planta": 19,
+      "ingresos_planta": 59,
       "egresos_planta": 64,
-      "saldo_bruto": 45
+      "saldo_bruto": 5
     },
     {
       "agencia": "14123",
@@ -26344,24 +25021,6 @@
       "ingresos_planta": 40,
       "egresos_planta": 33,
       "saldo_bruto": -7
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-11",
-      "equipo": "028",
-      "ingresos_planta": 1171,
-      "egresos_planta": 0,
-      "saldo_bruto": -1171
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-11",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 0,
-      "saldo_bruto": -40
     },
     {
       "agencia": "14117",
@@ -26464,7 +25123,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-12",
       "equipo": "028",
       "ingresos_planta": 2224,
@@ -26473,7 +25132,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-12",
       "equipo": "031",
       "ingresos_planta": 30,
@@ -26635,7 +25294,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-13",
       "equipo": "028",
       "ingresos_planta": 240,
@@ -26644,7 +25303,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-13",
       "equipo": "031",
       "ingresos_planta": 8,
@@ -26995,21 +25654,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-16",
       "equipo": "028",
-      "ingresos_planta": 1506,
+      "ingresos_planta": 2427,
       "egresos_planta": 0,
-      "saldo_bruto": -1506
+      "saldo_bruto": -2427
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-16",
       "equipo": "031",
-      "ingresos_planta": 55,
+      "ingresos_planta": 85,
       "egresos_planta": 0,
-      "saldo_bruto": -55
+      "saldo_bruto": -85
     },
     {
       "agencia": "14123",
@@ -27082,24 +25741,6 @@
       "ingresos_planta": 82,
       "egresos_planta": 6,
       "saldo_bruto": -76
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-16",
-      "equipo": "028",
-      "ingresos_planta": 921,
-      "egresos_planta": 0,
-      "saldo_bruto": -921
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-16",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -27202,7 +25843,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-17",
       "equipo": "028",
       "ingresos_planta": 1533,
@@ -27211,7 +25852,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-17",
       "equipo": "031",
       "ingresos_planta": 68,
@@ -27391,21 +26032,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-18",
       "equipo": "028",
-      "ingresos_planta": 1653,
+      "ingresos_planta": 2802,
       "egresos_planta": 1800,
-      "saldo_bruto": 147
+      "saldo_bruto": -1002
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-18",
       "equipo": "031",
-      "ingresos_planta": 50,
+      "ingresos_planta": 90,
       "egresos_planta": 60,
-      "saldo_bruto": 10
+      "saldo_bruto": -30
     },
     {
       "agencia": "14123",
@@ -27478,24 +26119,6 @@
       "ingresos_planta": 41,
       "egresos_planta": 57,
       "saldo_bruto": 16
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-18",
-      "equipo": "028",
-      "ingresos_planta": 1149,
-      "egresos_planta": 0,
-      "saldo_bruto": -1149
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-18",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 0,
-      "saldo_bruto": -40
     },
     {
       "agencia": "14117",
@@ -27598,7 +26221,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-19",
       "equipo": "028",
       "ingresos_planta": 140,
@@ -27607,7 +26230,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-19",
       "equipo": "031",
       "ingresos_planta": 4,
@@ -27841,7 +26464,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-22",
       "equipo": "028",
       "ingresos_planta": 2288,
@@ -27850,7 +26473,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-22",
       "equipo": "031",
       "ingresos_planta": 40,
@@ -28030,21 +26653,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-23",
       "equipo": "028",
-      "ingresos_planta": 1277,
+      "ingresos_planta": 1918,
       "egresos_planta": 1800,
-      "saldo_bruto": 523
+      "saldo_bruto": -118
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-23",
       "equipo": "031",
-      "ingresos_planta": 20,
+      "ingresos_planta": 50,
       "egresos_planta": 60,
-      "saldo_bruto": 40
+      "saldo_bruto": 10
     },
     {
       "agencia": "14123",
@@ -28117,24 +26740,6 @@
       "ingresos_planta": 82,
       "egresos_planta": 57,
       "saldo_bruto": -25
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-23",
-      "equipo": "028",
-      "ingresos_planta": 641,
-      "egresos_planta": 0,
-      "saldo_bruto": -641
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-23",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -28237,7 +26842,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-24",
       "equipo": "028",
       "ingresos_planta": 2354,
@@ -28246,7 +26851,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-24",
       "equipo": "031",
       "ingresos_planta": 87,
@@ -28408,21 +27013,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-25",
       "equipo": "028",
-      "ingresos_planta": 1202,
+      "ingresos_planta": 1921,
       "egresos_planta": 1440,
-      "saldo_bruto": 238
+      "saldo_bruto": -481
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-25",
       "equipo": "031",
-      "ingresos_planta": 0,
+      "ingresos_planta": 20,
       "egresos_planta": 84,
-      "saldo_bruto": 84
+      "saldo_bruto": 64
     },
     {
       "agencia": "14123",
@@ -28495,24 +27100,6 @@
       "ingresos_planta": 77,
       "egresos_planta": 54,
       "saldo_bruto": -23
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-25",
-      "equipo": "028",
-      "ingresos_planta": 719,
-      "egresos_planta": 0,
-      "saldo_bruto": -719
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-25",
-      "equipo": "031",
-      "ingresos_planta": 20,
-      "egresos_planta": 0,
-      "saldo_bruto": -20
     },
     {
       "agencia": "14117",
@@ -28768,7 +27355,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-27",
       "equipo": "028",
       "ingresos_planta": 1182,
@@ -28777,7 +27364,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-27",
       "equipo": "031",
       "ingresos_planta": 26,
@@ -28984,7 +27571,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-29",
       "equipo": "028",
       "ingresos_planta": 1811,
@@ -28993,7 +27580,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-29",
       "equipo": "031",
       "ingresos_planta": 65,
@@ -29182,21 +27769,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-30",
       "equipo": "028",
-      "ingresos_planta": 1176,
+      "ingresos_planta": 1891,
       "egresos_planta": 0,
-      "saldo_bruto": -1176
+      "saldo_bruto": -1891
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-06-30",
       "equipo": "031",
-      "ingresos_planta": 41,
+      "ingresos_planta": 66,
       "egresos_planta": 0,
-      "saldo_bruto": -41
+      "saldo_bruto": -66
     },
     {
       "agencia": "14123",
@@ -29269,24 +27856,6 @@
       "ingresos_planta": 84,
       "egresos_planta": 60,
       "saldo_bruto": -24
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-30",
-      "equipo": "028",
-      "ingresos_planta": 715,
-      "egresos_planta": 0,
-      "saldo_bruto": -715
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-06-30",
-      "equipo": "031",
-      "ingresos_planta": 25,
-      "egresos_planta": 0,
-      "saldo_bruto": -25
     },
     {
       "agencia": "14117",
@@ -29389,7 +27958,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-01",
       "equipo": "028",
       "ingresos_planta": 2384,
@@ -29398,7 +27967,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-01",
       "equipo": "031",
       "ingresos_planta": 70,
@@ -29578,21 +28147,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-02",
       "equipo": "028",
-      "ingresos_planta": 1312,
+      "ingresos_planta": 2422,
       "egresos_planta": 1260,
-      "saldo_bruto": -52
+      "saldo_bruto": -1162
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-02",
       "equipo": "031",
-      "ingresos_planta": 40,
+      "ingresos_planta": 70,
       "egresos_planta": 21,
-      "saldo_bruto": -19
+      "saldo_bruto": -49
     },
     {
       "agencia": "14123",
@@ -29665,24 +28234,6 @@
       "ingresos_planta": 79,
       "egresos_planta": 72,
       "saldo_bruto": -7
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-02",
-      "equipo": "028",
-      "ingresos_planta": 1110,
-      "egresos_planta": 0,
-      "saldo_bruto": -1110
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-02",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -29785,7 +28336,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-03",
       "equipo": "028",
       "ingresos_planta": 20,
@@ -29794,7 +28345,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-03",
       "equipo": "031",
       "ingresos_planta": 1,
@@ -29974,7 +28525,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-04",
       "equipo": "028",
       "ingresos_planta": 1800,
@@ -29983,7 +28534,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-04",
       "equipo": "031",
       "ingresos_planta": 57,
@@ -30181,21 +28732,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-06",
       "equipo": "028",
-      "ingresos_planta": 1242,
+      "ingresos_planta": 2070,
       "egresos_planta": 0,
-      "saldo_bruto": -1242
+      "saldo_bruto": -2070
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-06",
       "equipo": "031",
-      "ingresos_planta": 60,
+      "ingresos_planta": 90,
       "egresos_planta": 0,
-      "saldo_bruto": -60
+      "saldo_bruto": -90
     },
     {
       "agencia": "14123",
@@ -30268,24 +28819,6 @@
       "ingresos_planta": 106,
       "egresos_planta": 8,
       "saldo_bruto": -98
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-06",
-      "equipo": "028",
-      "ingresos_planta": 828,
-      "egresos_planta": 0,
-      "saldo_bruto": -828
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-06",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -30388,7 +28921,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-07",
       "equipo": "028",
       "ingresos_planta": 2415,
@@ -30397,7 +28930,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-07",
       "equipo": "031",
       "ingresos_planta": 67,
@@ -30577,21 +29110,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-08",
       "equipo": "028",
-      "ingresos_planta": 586,
+      "ingresos_planta": 1419,
       "egresos_planta": 0,
-      "saldo_bruto": -586
+      "saldo_bruto": -1419
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-08",
       "equipo": "031",
-      "ingresos_planta": 30,
+      "ingresos_planta": 50,
       "egresos_planta": 0,
-      "saldo_bruto": -30
+      "saldo_bruto": -50
     },
     {
       "agencia": "14126",
@@ -30646,24 +29179,6 @@
       "ingresos_planta": 75,
       "egresos_planta": 97,
       "saldo_bruto": 22
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-08",
-      "equipo": "028",
-      "ingresos_planta": 833,
-      "egresos_planta": 0,
-      "saldo_bruto": -833
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-08",
-      "equipo": "031",
-      "ingresos_planta": 20,
-      "egresos_planta": 0,
-      "saldo_bruto": -20
     },
     {
       "agencia": "14117",
@@ -30883,7 +29398,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-10",
       "equipo": "028",
       "ingresos_planta": 1579,
@@ -30892,7 +29407,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-10",
       "equipo": "031",
       "ingresos_planta": 38,
@@ -31054,7 +29569,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-11",
       "equipo": "028",
       "ingresos_planta": 1237,
@@ -31063,7 +29578,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-11",
       "equipo": "031",
       "ingresos_planta": 37,
@@ -31270,7 +29785,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-13",
       "equipo": "028",
       "ingresos_planta": 2172,
@@ -31279,7 +29794,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-13",
       "equipo": "031",
       "ingresos_planta": 30,
@@ -31459,21 +29974,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-14",
       "equipo": "028",
-      "ingresos_planta": 1146,
+      "ingresos_planta": 2178,
       "egresos_planta": 0,
-      "saldo_bruto": -1146
+      "saldo_bruto": -2178
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-14",
       "equipo": "031",
-      "ingresos_planta": 25,
+      "ingresos_planta": 45,
       "egresos_planta": 0,
-      "saldo_bruto": -25
+      "saldo_bruto": -45
     },
     {
       "agencia": "14123",
@@ -31546,24 +30061,6 @@
       "ingresos_planta": 64,
       "egresos_planta": 33,
       "saldo_bruto": -31
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-14",
-      "equipo": "028",
-      "ingresos_planta": 1032,
-      "egresos_planta": 0,
-      "saldo_bruto": -1032
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-14",
-      "equipo": "031",
-      "ingresos_planta": 20,
-      "egresos_planta": 0,
-      "saldo_bruto": -20
     },
     {
       "agencia": "14117",
@@ -31666,7 +30163,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-15",
       "equipo": "028",
       "ingresos_planta": 1813,
@@ -31675,7 +30172,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-15",
       "equipo": "031",
       "ingresos_planta": 40,
@@ -31855,21 +30352,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-16",
       "equipo": "028",
-      "ingresos_planta": 1372,
+      "ingresos_planta": 2590,
       "egresos_planta": 1800,
-      "saldo_bruto": 428
+      "saldo_bruto": -790
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-16",
       "equipo": "031",
-      "ingresos_planta": 0,
+      "ingresos_planta": 40,
       "egresos_planta": 60,
-      "saldo_bruto": 60
+      "saldo_bruto": 20
     },
     {
       "agencia": "14123",
@@ -31942,24 +30439,6 @@
       "ingresos_planta": 42,
       "egresos_planta": 33,
       "saldo_bruto": -9
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-16",
-      "equipo": "028",
-      "ingresos_planta": 1218,
-      "egresos_planta": 0,
-      "saldo_bruto": -1218
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-16",
-      "equipo": "031",
-      "ingresos_planta": 40,
-      "egresos_planta": 0,
-      "saldo_bruto": -40
     },
     {
       "agencia": "14117",
@@ -32062,7 +30541,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-17",
       "equipo": "028",
       "ingresos_planta": 0,
@@ -32071,7 +30550,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-17",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -32251,7 +30730,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-18",
       "equipo": "028",
       "ingresos_planta": 2298,
@@ -32260,7 +30739,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-18",
       "equipo": "031",
       "ingresos_planta": 71,
@@ -32449,7 +30928,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-20",
       "equipo": "028",
       "ingresos_planta": 1212,
@@ -32458,7 +30937,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-20",
       "equipo": "031",
       "ingresos_planta": 55,
@@ -32638,21 +31117,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-21",
       "equipo": "028",
-      "ingresos_planta": 1696,
+      "ingresos_planta": 2921,
       "egresos_planta": 1980,
-      "saldo_bruto": 284
+      "saldo_bruto": -941
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-21",
       "equipo": "031",
-      "ingresos_planta": 62,
+      "ingresos_planta": 92,
       "egresos_planta": 33,
-      "saldo_bruto": -29
+      "saldo_bruto": -59
     },
     {
       "agencia": "14123",
@@ -32725,24 +31204,6 @@
       "ingresos_planta": 83,
       "egresos_planta": 33,
       "saldo_bruto": -50
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-21",
-      "equipo": "028",
-      "ingresos_planta": 1225,
-      "egresos_planta": 0,
-      "saldo_bruto": -1225
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-21",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -32845,7 +31306,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-22",
       "equipo": "028",
       "ingresos_planta": 1959,
@@ -32854,7 +31315,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-22",
       "equipo": "031",
       "ingresos_planta": 77,
@@ -33034,21 +31495,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-23",
       "equipo": "028",
-      "ingresos_planta": 1244,
+      "ingresos_planta": 2484,
       "egresos_planta": 1380,
-      "saldo_bruto": 136
+      "saldo_bruto": -1104
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-23",
       "equipo": "031",
-      "ingresos_planta": 35,
+      "ingresos_planta": 65,
       "egresos_planta": 96,
-      "saldo_bruto": 61
+      "saldo_bruto": 31
     },
     {
       "agencia": "14123",
@@ -33121,24 +31582,6 @@
       "ingresos_planta": 72,
       "egresos_planta": 45,
       "saldo_bruto": -27
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-23",
-      "equipo": "028",
-      "ingresos_planta": 1240,
-      "egresos_planta": 0,
-      "saldo_bruto": -1240
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-23",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -33394,7 +31837,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-25",
       "equipo": "028",
       "ingresos_planta": 1176,
@@ -33403,7 +31846,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-25",
       "equipo": "031",
       "ingresos_planta": 38,
@@ -33610,7 +32053,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-27",
       "equipo": "028",
       "ingresos_planta": 1657,
@@ -33619,7 +32062,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-27",
       "equipo": "031",
       "ingresos_planta": 63,
@@ -33799,21 +32242,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-28",
       "equipo": "028",
-      "ingresos_planta": 1142,
+      "ingresos_planta": 2209,
       "egresos_planta": 0,
-      "saldo_bruto": -1142
+      "saldo_bruto": -2209
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-28",
       "equipo": "031",
-      "ingresos_planta": 20,
+      "ingresos_planta": 50,
       "egresos_planta": 0,
-      "saldo_bruto": -20
+      "saldo_bruto": -50
     },
     {
       "agencia": "14123",
@@ -33886,24 +32329,6 @@
       "ingresos_planta": 71,
       "egresos_planta": 54,
       "saldo_bruto": -17
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-28",
-      "equipo": "028",
-      "ingresos_planta": 1067,
-      "egresos_planta": 0,
-      "saldo_bruto": -1067
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-28",
-      "equipo": "031",
-      "ingresos_planta": 30,
-      "egresos_planta": 0,
-      "saldo_bruto": -30
     },
     {
       "agencia": "14117",
@@ -34006,7 +32431,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-29",
       "equipo": "028",
       "ingresos_planta": 1943,
@@ -34015,7 +32440,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-29",
       "equipo": "031",
       "ingresos_planta": 75,
@@ -34177,16 +32602,16 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-30",
       "equipo": "028",
-      "ingresos_planta": 1527,
+      "ingresos_planta": 2739,
       "egresos_planta": 1800,
-      "saldo_bruto": 273
+      "saldo_bruto": -939
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-07-30",
       "equipo": "031",
       "ingresos_planta": 47,
@@ -34264,15 +32689,6 @@
       "ingresos_planta": 64,
       "egresos_planta": 66,
       "saldo_bruto": 2
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-07-30",
-      "equipo": "028",
-      "ingresos_planta": 1212,
-      "egresos_planta": 0,
-      "saldo_bruto": -1212
     },
     {
       "agencia": "14117",
@@ -34546,7 +32962,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-01",
       "equipo": "028",
       "ingresos_planta": 1362,
@@ -34555,7 +32971,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-01",
       "equipo": "031",
       "ingresos_planta": 40,
@@ -34744,7 +33160,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-03",
       "equipo": "028",
       "ingresos_planta": 1069,
@@ -34753,7 +33169,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-03",
       "equipo": "031",
       "ingresos_planta": 37,
@@ -34933,16 +33349,16 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-04",
       "equipo": "028",
-      "ingresos_planta": 1809,
+      "ingresos_planta": 2962,
       "egresos_planta": 0,
-      "saldo_bruto": -1809
+      "saldo_bruto": -2962
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-04",
       "equipo": "031",
       "ingresos_planta": 48,
@@ -35020,15 +33436,6 @@
       "ingresos_planta": 72,
       "egresos_planta": 33,
       "saldo_bruto": -39
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-04",
-      "equipo": "028",
-      "ingresos_planta": 1153,
-      "egresos_planta": 0,
-      "saldo_bruto": -1153
     },
     {
       "agencia": "14117",
@@ -35131,7 +33538,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-05",
       "equipo": "028",
       "ingresos_planta": 880,
@@ -35140,7 +33547,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-05",
       "equipo": "031",
       "ingresos_planta": 19,
@@ -35320,16 +33727,16 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-06",
       "equipo": "028",
-      "ingresos_planta": 1235,
+      "ingresos_planta": 2225,
       "egresos_planta": 1980,
-      "saldo_bruto": 745
+      "saldo_bruto": -245
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-06",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -35407,15 +33814,6 @@
       "ingresos_planta": 31,
       "egresos_planta": 33,
       "saldo_bruto": 2
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-06",
-      "equipo": "028",
-      "ingresos_planta": 990,
-      "egresos_planta": 0,
-      "saldo_bruto": -990
     },
     {
       "agencia": "14117",
@@ -35518,21 +33916,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-07",
       "equipo": "028",
       "ingresos_planta": 0,
-      "egresos_planta": 1980,
-      "saldo_bruto": 1980
+      "egresos_planta": 3240,
+      "saldo_bruto": 3240
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-07",
       "equipo": "031",
       "ingresos_planta": 0,
-      "egresos_planta": 33,
-      "saldo_bruto": 33
+      "egresos_planta": 148,
+      "saldo_bruto": 148
     },
     {
       "agencia": "14126",
@@ -35587,24 +33985,6 @@
       "ingresos_planta": 40,
       "egresos_planta": 66,
       "saldo_bruto": 26
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-07",
-      "equipo": "028",
-      "ingresos_planta": 0,
-      "egresos_planta": 1260,
-      "saldo_bruto": 1260
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-07",
-      "equipo": "031",
-      "ingresos_planta": 0,
-      "egresos_planta": 115,
-      "saldo_bruto": 115
     },
     {
       "agencia": "14117",
@@ -35707,7 +34087,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-08",
       "equipo": "028",
       "ingresos_planta": 2137,
@@ -35716,7 +34096,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-08",
       "equipo": "031",
       "ingresos_planta": 0,
@@ -35941,7 +34321,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-10",
       "equipo": "028",
       "ingresos_planta": 1031,
@@ -35950,7 +34330,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-10",
       "equipo": "031",
       "ingresos_planta": 26,
@@ -36130,12 +34510,12 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-11",
       "equipo": "028",
-      "ingresos_planta": 756,
+      "ingresos_planta": 1094,
       "egresos_planta": 0,
-      "saldo_bruto": -756
+      "saldo_bruto": -1094
     },
     {
       "agencia": "14123",
@@ -36208,15 +34588,6 @@
       "ingresos_planta": 72,
       "egresos_planta": 86,
       "saldo_bruto": 14
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-11",
-      "equipo": "028",
-      "ingresos_planta": 338,
-      "egresos_planta": 0,
-      "saldo_bruto": -338
     },
     {
       "agencia": "14117",
@@ -36319,7 +34690,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-12",
       "equipo": "028",
       "ingresos_planta": 1595,
@@ -36328,7 +34699,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-12",
       "equipo": "031",
       "ingresos_planta": 34,
@@ -36508,21 +34879,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-13",
       "equipo": "028",
-      "ingresos_planta": 1279,
+      "ingresos_planta": 2463,
       "egresos_planta": 1965,
-      "saldo_bruto": 686
+      "saldo_bruto": -498
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-13",
       "equipo": "031",
-      "ingresos_planta": 38,
+      "ingresos_planta": 75,
       "egresos_planta": 33,
-      "saldo_bruto": -5
+      "saldo_bruto": -42
     },
     {
       "agencia": "14123",
@@ -36595,24 +34966,6 @@
       "ingresos_planta": 70,
       "egresos_planta": 56,
       "saldo_bruto": -14
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-13",
-      "equipo": "028",
-      "ingresos_planta": 1184,
-      "egresos_planta": 0,
-      "saldo_bruto": -1184
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-13",
-      "equipo": "031",
-      "ingresos_planta": 37,
-      "egresos_planta": 0,
-      "saldo_bruto": -37
     },
     {
       "agencia": "14117",
@@ -36715,7 +35068,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-14",
       "equipo": "028",
       "ingresos_planta": 1037,
@@ -36724,7 +35077,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-14",
       "equipo": "031",
       "ingresos_planta": 33,
@@ -36886,7 +35239,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-15",
       "equipo": "028",
       "ingresos_planta": 101,
@@ -37237,21 +35590,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-18",
       "equipo": "028",
-      "ingresos_planta": 1971,
+      "ingresos_planta": 2861,
       "egresos_planta": 0,
-      "saldo_bruto": -1971
+      "saldo_bruto": -2861
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-18",
       "equipo": "031",
-      "ingresos_planta": 24,
+      "ingresos_planta": 42,
       "egresos_planta": 0,
-      "saldo_bruto": -24
+      "saldo_bruto": -42
     },
     {
       "agencia": "14123",
@@ -37324,24 +35677,6 @@
       "ingresos_planta": 111,
       "egresos_planta": 18,
       "saldo_bruto": -93
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-18",
-      "equipo": "028",
-      "ingresos_planta": 890,
-      "egresos_planta": 0,
-      "saldo_bruto": -890
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-18",
-      "equipo": "031",
-      "ingresos_planta": 18,
-      "egresos_planta": 0,
-      "saldo_bruto": -18
     },
     {
       "agencia": "14117",
@@ -37444,7 +35779,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-19",
       "equipo": "028",
       "ingresos_planta": 704,
@@ -37453,7 +35788,7 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-19",
       "equipo": "031",
       "ingresos_planta": 40,
@@ -37633,21 +35968,21 @@
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-20",
       "equipo": "028",
-      "ingresos_planta": 2801,
+      "ingresos_planta": 3694,
       "egresos_planta": 3420,
-      "saldo_bruto": 619
+      "saldo_bruto": -274
     },
     {
       "agencia": "14122",
-      "ceve": "Mar del Plata",
+      "ceve": "Mar del Plata + ST",
       "fecha": "2026-08-20",
       "equipo": "031",
-      "ingresos_planta": 42,
+      "ingresos_planta": 77,
       "egresos_planta": 149,
-      "saldo_bruto": 107
+      "saldo_bruto": 72
     },
     {
       "agencia": "14123",
@@ -37720,24 +36055,6 @@
       "ingresos_planta": 31,
       "egresos_planta": 33,
       "saldo_bruto": 2
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-20",
-      "equipo": "028",
-      "ingresos_planta": 893,
-      "egresos_planta": 0,
-      "saldo_bruto": -893
-    },
-    {
-      "agencia": "14128",
-      "ceve": "Santa Teresita",
-      "fecha": "2026-08-20",
-      "equipo": "031",
-      "ingresos_planta": 35,
-      "egresos_planta": 0,
-      "saldo_bruto": -35
     },
     {
       "agencia": "14117",
