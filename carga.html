@@ -332,18 +332,84 @@ const EQUIPOS = [['BG','BANDEJAS (028)'],['DOG','DOLLYS Grandes (031)'],['PM','P
 let MAESTRO=null;
 
 async function cargar(){
-  const raw=await fetch('data/ceves_maestro.json').then(r=>r.json());
-  MAESTRO={...raw, ceves: raw.ceves.filter(c=>!SUBAG.includes(c.agencia))};
-  ['dCeve','mCeve'].forEach(id=>{const s=document.getElementById(id);MAESTRO.ceves.forEach(c=>s.innerHTML+='<option value="'+c.agencia+'">'+c.nombre+'</option>')});
-  const h=new Date();
-  document.getElementById('dFecha').value=h.toISOString().slice(0,10);
-  document.getElementById('dHora').value=h.toTimeString().slice(0,5);
-  document.getElementById('mFecha').value=h.toISOString().slice(0,7);
-  document.getElementById('mFC').value=h.toISOString().slice(0,10);
-  document.getElementById('mHC').value=h.toTimeString().slice(0,5);
+  const raw = await fetch(
+    'data/ceves_maestro.json?ts=' + Date.now(),
+    { cache: 'no-store' }
+  ).then(r => r.json());
+
+  const cevesBase = raw.ceves.map(
+    c => ({...c})
+  );
+
+  const mdp = cevesBase.find(
+    c =>
+      String(c.nombre)
+        .trim()
+        .toLowerCase() === 'mar del plata'
+  );
+
+  if(mdp){
+    mdp.nombre = 'Mar del Plata + ST';
+  }
+
+  MAESTRO = {
+    ...raw,
+    ceves: cevesBase.filter(
+      c => !SUBAG.includes(
+        String(c.agencia)
+      )
+    )
+  };
+
+  ['dCeve','mCeve'].forEach(id => {
+    const selector =
+      document.getElementById(id);
+
+    selector.innerHTML = '';
+
+    MAESTRO.ceves.forEach(c => {
+      selector.innerHTML +=
+        '<option value="' +
+        c.agencia +
+        '">' +
+        c.nombre +
+        '</option>';
+    });
+  });
+
+  const hoy = new Date();
+
+  document.getElementById('dFecha').value =
+    hoy.toISOString().slice(0,10);
+
+  document.getElementById('dHora').value =
+    hoy.toTimeString().slice(0,5);
+
+  document.getElementById('mFecha').value =
+    hoy.toISOString().slice(0,7);
+
+  document.getElementById('mFC').value =
+    hoy.toISOString().slice(0,10);
+
+  document.getElementById('mHC').value =
+    hoy.toTimeString().slice(0,5);
 }
-document.getElementById('btnD').addEventListener('click',()=>activar('D'));
-document.getElementById('btnM').addEventListener('click',()=>document.getElementById('modM').classList.add('show'));
+
+document.getElementById('btnD')
+  .addEventListener(
+    'click',
+    () => activar('D')
+  );
+
+document.getElementById('btnM')
+  .addEventListener(
+    'click',
+    () =>
+      document
+        .getElementById('modM')
+        .classList.add('show')
+  );
+
 function activar(t){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
