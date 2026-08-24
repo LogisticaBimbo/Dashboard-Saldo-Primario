@@ -377,13 +377,67 @@ const supabaseClient = window.supabase.createClient(
    SUPABASE_URL,
    SUPABASE_KEY
 );
-let MAESTRO=null, MOVS=[], DETALLE=[], STOCK={registros_diarios:[]};
+let MAESTRO=null;
+let MOVS=[];
+let DETALLE=[];
+let STOCK={registros_diarios:[]};
+
+let AG_MDP=null;
+const AG_ST='14128';
 let sortCol='sn', sortDir='asc';
 let sortColDet='fecha', sortDirDet='asc';
 let sortColSem='variacion', sortDirSem='asc';
 async function cargar(){
-  const raw = await fetch('data/ceves_maestro.json').then(r=>r.json());
-  MAESTRO = {...raw, ceves: raw.ceves.filter(c=>!SUBAG.includes(c.agencia))};
+  const raw = await fetch(
+  'data/ceves_maestro.json?ts=' + Date.now(),
+  { cache: 'no-store' }
+).then(r => r.json());
+
+const cevesBase = raw.ceves.map(
+  c => ({...c})
+);
+
+const mdp = cevesBase.find(
+  c =>
+    String(c.nombre)
+      .trim()
+      .toLowerCase() === 'mar del plata'
+);
+
+const st = cevesBase.find(
+  c => String(c.agencia) === AG_ST
+);
+
+if(!mdp){
+  throw new Error(
+    'No se encontró Mar del Plata en ceves_maestro.json'
+  );
+}
+
+AG_MDP = String(mdp.agencia);
+
+if(st){
+  mdp.inv_inicial_BG =
+    (Number(mdp.inv_inicial_BG) || 0)
+    + (Number(st.inv_inicial_BG) || 0);
+
+  mdp.inv_inicial_DO =
+    (Number(mdp.inv_inicial_DO) || 0)
+    + (Number(st.inv_inicial_DO) || 0);
+
+  mdp.inv_inicial_PAL =
+    (Number(mdp.inv_inicial_PAL) || 0)
+    + (Number(st.inv_inicial_PAL) || 0);
+}
+
+mdp.nombre = 'Mar del Plata + ST';
+
+MAESTRO = {
+  ...raw,
+  ceves: cevesBase.filter(
+    c => !SUBAG.includes(String(c.agencia))
+  )
+};
   const m = await fetch(
   'data/movimientos_mc1.json?ts=' + Date.now(),
   { cache: 'no-store' }
@@ -509,22 +563,97 @@ function filtrar(){
 function fmt(n){return(n||0).toLocaleString('es-AR')}
 function fmtP(n){return(n*100).toFixed(2)+'%'}
 function fmtPSigned(n){const v=(n*100).toFixed(2);return (n>=0?'+':'')+v+'%'}
-function stockAct(ag,eq){
-  const r=(STOCK.registros_diarios||[])
-    .filter(s=>String(s.agencia)===String(ag));
 
-  if(!r.length) return null;
+function stockAct(ag, eq){
+  const agenciasGrupo =
+    String(ag) === String(AG_MDP)
+      ? [String(AG_MDP), AG_ST]
+      : [String(ag)];
 
-  r.sort((a,b)=>{
-    const ka=(a.fecha||'')+'|'+(a.timestamp||'');
-    const kb=(b.fecha||'')+'|'+(b.timestamp||'');
-    return kb.localeCompare(ka);
+  const registros = (
+    STOCK.registros_diarios || []
+  ).filter(
+    s => agenciasGrupo.includes(
+      String(s.agencia)
+    )
+  );
+
+  if(!registros.length){
+    return null;
+  }
+
+  /*
+  Buscar la última carga de cada centro.
+  Para Mar del Plata + ST se toman:
+  - última carga de Mar del Plata;
+  - última carga de Santa Teresita;
+  y luego se suman.
+  */
+  const ultimoPorAgencia = {};
+
+  registros.forEach(registro => {
+    const agenciaRegistro =
+      String(registro.agencia);
+
+    const claveNueva =
+      (registro.fecha || '') +
+      '|' +
+      (registro.timestamp || '');
+
+    const actual =
+      ultimoPorAgencia[agenciaRegistro];
+
+    const claveActual = actual
+      ? (actual.fecha || '') +
+        '|' +
+        (actual.timestamp || '')
+      : '';
+
+    if(
+      !actual ||
+      claveNueva.localeCompare(claveActual) > 0
+    ){
+      ultimoPorAgencia[
+        agenciaRegistro
+      ] = registro;
+    }
   });
 
-  return eq==='028'
-    ? Number(r[0].BG)||0
-    : Number(r[0].DO)||0;
+  const vigentes = Object.values(
+    ultimoPorAgencia
+  );
+
+  if(!vigentes.length){
+    return null;
+  }
+
+  if(eq === '028'){
+    return vigentes.reduce(
+      (total, r) =>
+        total + (Number(r.BG) || 0),
+      0
+    );
+  }
+
+  if(eq === '031'){
+    return vigentes.reduce(
+      (total, r) =>
+        total + (Number(r.DO) || 0),
+      0
+    );
+  }
+
+  if(eq === '132'){
+    return vigentes.reduce(
+      (total, r) =>
+        total + (Number(r.PAL) || 0),
+      0
+    );
+  }
+
+  return null;
 }
+
 function calc(ag,eq,d){
   const c=MAESTRO.ceves.find(x=>x.agencia===ag);
   const inv=eq==='028'?c.inv_inicial_BG:c.inv_inicial_DO;
