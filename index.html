@@ -257,7 +257,7 @@ button[type=submit]:hover{background:#004f8c}
 }
 </style></head><body>
 <header><h1>📊 Dashboard Saldo Primario - CeVes Argentina</h1><div class="updated" id="lastUpdate">Cargando…</div></header>
-<div class="container"><div class="nav"><a href="index.html" class="active">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="seguimiento.html">✅ Seguimiento</a></div>
+<div class="container"><div class="nav"><a href="index.html" class="active">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html">🧾 Carga Facturaciones</a><a href="seguimiento.html">✅ Seguimiento</a></div>
 <div class="filters">
 <div><label>Desde</label><input type="date" id="fDesde"></div>
 <div><label>Hasta</label><input type="date" id="fHasta"></div>
@@ -380,7 +380,10 @@ const supabaseClient = window.supabase.createClient(
 let MAESTRO=null;
 let MOVS=[];
 let DETALLE=[];
-let STOCK={registros_diarios:[]};
+let FACTURACIONES=[ ];
+let STOCK={
+      registros_diarios:[ ]
+};
 
 let AG_MDP=null;
 const AG_ST='14128';
@@ -464,6 +467,127 @@ MAESTRO = {
 });
     DETALLE = det.movimientos.filter(x=>!SUBAG.includes(x.agencia));
   } catch(e){ DETALLE = []; }
+
+/*
+Cargar facturaciones manuales desde Supabase.
+
+Cada facturación se convierte en:
+- egreso a Planta Pilar;
+- movimiento visible en el detalle;
+- impacto en el saldo del CeVe y equipo.
+*/
+try {
+  const {
+    data: facturacionesSupabase,
+    error: errorFacturaciones
+  } = await supabaseClient
+    .from('facturaciones')
+    .select(
+      'id, created_at, agencia, ceve, ' +
+      'fecha_facturacion, numero_factura, ' +
+      'cliente, codigo_facturado, ' +
+      'cantidad_facturada'
+    )
+    .order(
+      'fecha_facturacion',
+      { ascending: true }
+    )
+    .order(
+      'created_at',
+      { ascending: true }
+    );
+
+  if(errorFacturaciones){
+    throw errorFacturaciones;
+  }
+
+  FACTURACIONES =
+    facturacionesSupabase || [];
+
+  /*
+  Incorporar cada factura a MOVS.
+
+  Así se suma automáticamente a:
+  - Egresos Planta;
+  - Saldo Bruto;
+  - Saldo Neto;
+  - gráficos;
+  - tabla maestra;
+  - exportaciones de movimientos.
+  */
+  FACTURACIONES.forEach(factura => {
+    const agencia =
+      String(factura.agencia);
+
+    const equipo =
+      String(factura.codigo_facturado)
+        .padStart(3, '0');
+
+    const cantidad =
+      Number(
+        factura.cantidad_facturada
+      ) || 0;
+
+    if(
+      SUBAG.includes(agencia) ||
+      !['028', '031'].includes(equipo) ||
+      cantidad <= 0
+    ){
+      return;
+    }
+
+    MOVS.push({
+      agencia: agencia,
+      ceve: factura.ceve,
+      fecha: factura.fecha_facturacion,
+      equipo: equipo,
+      ingresos_planta: 0,
+      egresos_planta: cantidad,
+      saldo_bruto: cantidad,
+      fuente: 'facturacion_manual',
+      id_facturacion: factura.id
+    });
+
+    /*
+    Incorporar la misma factura al detalle.
+
+    Destino HIZ se visualiza como Planta Pilar
+    mediante plantaLabel().
+    */
+    DETALLE.push({
+      fecha: factura.fecha_facturacion,
+      agencia: agencia,
+      ceve: factura.ceve,
+      equipo: equipo,
+      motivo: 'FACTURACIÓN MANUAL',
+      tipo: 'egreso_planta',
+      origen:
+        factura.ceve +
+        ' - ' +
+        factura.cliente,
+      destino: 'HIZ',
+      remito: factura.numero_factura,
+      cantidad: cantidad,
+      fuente: 'facturacion_manual',
+      id_facturacion: factura.id,
+      timestamp: factura.created_at
+    });
+  });
+
+  console.log(
+    'Facturaciones cargadas desde Supabase:',
+    FACTURACIONES.length
+  );
+
+} catch(e) {
+  console.error(
+    'Error cargando facturaciones:',
+    e
+  );
+
+  FACTURACIONES = [];
+}
+
 try {
   const { data: stockSupabase, error } = await supabaseClient
     .from('stock_diario')
@@ -543,6 +667,39 @@ try {
       )
       .subscribe(status => {
         console.log('Estado Realtime:', status);
+      });
+  }
+/*
+Actualizar automáticamente el dashboard
+cuando se registra una nueva facturación.
+*/
+if(!window._facturacionRealtime){
+  window._facturacionRealtime =
+    supabaseClient
+      .channel(
+        'facturaciones-dashboard'
+      )
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'facturaciones'
+        },
+        payload => {
+          console.log(
+            'Nueva facturación recibida:',
+            payload.new
+          );
+
+          location.reload();
+        }
+      )
+      .subscribe(status => {
+        console.log(
+          'Estado Realtime facturaciones:',
+          status
+        );
       });
   }
 }
