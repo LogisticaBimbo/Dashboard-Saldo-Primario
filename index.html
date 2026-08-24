@@ -565,90 +565,49 @@ function fmtP(n){return(n*100).toFixed(2)+'%'}
 function fmtPSigned(n){const v=(n*100).toFixed(2);return (n>=0?'+':'')+v+'%'}
 
 function stockAct(ag, eq){
-  const agenciasGrupo =
-    String(ag) === String(AG_MDP)
-      ? [String(AG_MDP), AG_ST]
-      : [String(ag)];
+  /*
+  Mar del Plata + ST registra un único
+  stock consolidado bajo la agencia
+  técnica de Mar del Plata.
+  */
 
   const registros = (
     STOCK.registros_diarios || []
-  ).filter(
-    s => agenciasGrupo.includes(
-      String(s.agencia)
+  )
+    .filter(
+      s =>
+        String(s.agencia) === String(ag)
     )
-  );
+    .sort((a,b) => {
+      const claveA =
+        (a.fecha || '') +
+        '|' +
+        (a.timestamp || '');
+
+      const claveB =
+        (b.fecha || '') +
+        '|' +
+        (b.timestamp || '');
+
+      return claveB.localeCompare(claveA);
+    });
 
   if(!registros.length){
     return null;
   }
 
-  /*
-  Buscar la última carga de cada centro.
-  Para Mar del Plata + ST se toman:
-  - última carga de Mar del Plata;
-  - última carga de Santa Teresita;
-  y luego se suman.
-  */
-  const ultimoPorAgencia = {};
-
-  registros.forEach(registro => {
-    const agenciaRegistro =
-      String(registro.agencia);
-
-    const claveNueva =
-      (registro.fecha || '') +
-      '|' +
-      (registro.timestamp || '');
-
-    const actual =
-      ultimoPorAgencia[agenciaRegistro];
-
-    const claveActual = actual
-      ? (actual.fecha || '') +
-        '|' +
-        (actual.timestamp || '')
-      : '';
-
-    if(
-      !actual ||
-      claveNueva.localeCompare(claveActual) > 0
-    ){
-      ultimoPorAgencia[
-        agenciaRegistro
-      ] = registro;
-    }
-  });
-
-  const vigentes = Object.values(
-    ultimoPorAgencia
-  );
-
-  if(!vigentes.length){
-    return null;
-  }
+  const ultimo = registros[0];
 
   if(eq === '028'){
-    return vigentes.reduce(
-      (total, r) =>
-        total + (Number(r.BG) || 0),
-      0
-    );
+    return Number(ultimo.BG) || 0;
   }
 
   if(eq === '031'){
-    return vigentes.reduce(
-      (total, r) =>
-        total + (Number(r.DO) || 0),
-      0
-    );
+    return Number(ultimo.DO) || 0;
   }
 
   if(eq === '132'){
-    return vigentes.reduce(
-      (total, r) =>
-        total + (Number(r.PAL) || 0),
-      0
-    );
+    return Number(ultimo.PAL) || 0;
   }
 
   return null;
