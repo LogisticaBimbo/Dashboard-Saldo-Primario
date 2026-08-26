@@ -260,14 +260,53 @@ button[type=submit]:hover{background:#004f8c}
 <div class="tabs"><button class="tab-btn active" id="btnD">📅 Carga Stock Diario</button><button class="tab-btn" id="btnM">📆 Carga Inventario Mensual</button></div>
 
 <div id="tab-diario" class="tab-content active">
-<div class="info">📅 Cargá el conteo físico diario de bandejas y dollys en tu CeVe.</div>
+<div class="info">
+  📅 Cargá el conteo físico diario de bandejas,
+  dollys y pallets en tu CeVe.
+</div>
 <div class="warning"> ⚠️ <b>Importante:</b> el stock diario debe cargarse una sola vez por día. Antes de confirmar, verificá cuidadosamente el CeVe, la fecha y las cantidades. Si necesitás corregir una carga, realizá un nuevo envío y el dashboard tomará la carga más reciente. </div>
 <div id="msgD"></div>
 <form id="formD">
 <div class="form-row"><div><label>CeVe</label><select id="dCeve" required></select></div><div><label>Fecha del conteo</label><input type="date" id="dFecha" required></div></div>
 <div class="form-row"><div><label>Hora del conteo</label><input type="time" id="dHora" required></div><div><label>Supervisor / Responsable del conteo</label><input type="text" id="dSup" required placeholder="Nombre y apellido"></div></div>
 <div class="section-title">📦 Cantidad por equipo</div>
-<div class="form-row"><div><label>BG - Bandeja Grande (028)</label><input type="number" id="dBG" min="0" value="0" required></div><div><label>DO - Dolly (031)</label><input type="number" id="dDO" min="0" value="0" required></div></div>
+
+<div class="form-row three">
+
+  <div>
+    <label>BG - Bandeja Grande (028)</label>
+    <input
+      type="number"
+      id="dBG"
+      min="0"
+      value="0"
+      required
+    >
+  </div>
+
+  <div>
+    <label>DO - Dolly (031)</label>
+    <input
+      type="number"
+      id="dDO"
+      min="0"
+      value="0"
+      required
+    >
+  </div>
+
+  <div>
+    <label>PAL - Pallet (132)</label>
+    <input
+      type="number"
+      id="dPAL"
+      min="0"
+      value="0"
+      required
+    >
+  </div>
+
+</div>
 <div class="form-row full"><div><label>Observaciones</label><textarea id="dObs"></textarea></div></div>
 <button type="submit">💾 Guardar conteo diario</button>
 </form>
@@ -315,7 +354,7 @@ button[type=submit]:hover{background:#004f8c}
 </div>
 </div>
 
-<div class="modal" id="modD"><div class="modal-box info"> <h3>📅 Carga de Stock Diario</h3> <p>Estás por registrar el stock diario de bandejas y dollys.</p> <p><b>Verificá el CeVe, la fecha y las cantidades antes de continuar.</b></p> <p>El reporte debe cargarse una sola vez por día. Si necesitás corregirlo, podés realizar un nuevo envío y el dashboard utilizará la carga más reciente.</p> <p>¿Estás seguro de que querés continuar?</p><div class="modal-actions"><button type="button" class="btn-cancel" onclick="cerrar('modD')">Cancelar</button><button type="button" class="btn-confirm" onclick="enviarD()">Sí, continuar</button></div></div></div>
+<div class="modal" id="modD"><div class="modal-box info"> <h3>📅 Carga de Stock Diario</h3> <p>Estás por registrar el stock diario de bandejas, dollys y pallets.</p> <p><b>Verificá el CeVe, la fecha y las cantidades antes de continuar.</b></p> <p>El reporte debe cargarse una sola vez por día. Si necesitás corregirlo, podés realizar un nuevo envío y el dashboard utilizará la carga más reciente.</p> <p>¿Estás seguro de que querés continuar?</p><div class="modal-actions"><button type="button" class="btn-cancel" onclick="cerrar('modD')">Cancelar</button><button type="button" class="btn-confirm" onclick="enviarD()">Sí, continuar</button></div></div></div>
 <div class="modal" id="modM"><div class="modal-box warn"><h3>⚠️ Carga de Inventario Mensual</h3><p><b>Estás por ingresar a la Carga de Inventario Mensual</b>, ¿estás seguro que deseas completar la tarea?</p><p>Prestar mucha atención ya que <b>no se puede volver a repetir el formulario</b>.</p><p>Este dato se releva de todos los CeVes una vez por mes y se pasa a Gerencia.</p><div class="modal-actions"><button type="button" class="btn-cancel" onclick="cerrar('modM')">Cancelar</button><button type="button" class="btn-confirm warn" onclick="confirmarM()">Sí, continuar</button></div></div></div>
 
 <script>
@@ -478,16 +517,27 @@ if(fallidos.length === endpoints.length){
       localStorage.setItem('mensuales', JSON.stringify(local));
     } else {
       const { error } = await supabaseClient
-        .from('stock_diario')
-        .insert({
-          ceve: p.ceve,
-          agencia: String(p.agencia),
-          fecha_conteo: p.fecha,
-          bg: Number(p.BG) || 0,
-          do_stock: Number(p.DO) || 0,
-          observaciones: p.observaciones || '',
-          usuario: p.supervisor || ''
-        });
+  .from('stock_diario')
+  .insert({
+    ceve: p.ceve,
+    agencia: String(p.agencia),
+    fecha_conteo: p.fecha,
+
+    bg:
+      Number(p.BG) || 0,
+
+    do_stock:
+      Number(p.DO) || 0,
+
+    pal:
+      Number(p.PAL) || 0,
+
+    observaciones:
+      p.observaciones || '',
+
+    usuario:
+      p.supervisor || ''
+  });
 
       if(error) throw error;
     }
@@ -509,7 +559,51 @@ function enviarD(){
   const a=document.getElementById('dCeve').value, c=MAESTRO.ceves.find(x=>x.agencia===a);
   const fecha=document.getElementById('dFecha').value, hora=document.getElementById('dHora').value;
   const ts = fecha+'T'+hora+':00';
-  guardar({tipo:'diario',agencia:c.agencia,ceve:c.nombre,fecha:fecha,hora:hora,supervisor:document.getElementById('dSup').value,BG:+document.getElementById('dBG').value||0,DO:+document.getElementById('dDO').value||0,observaciones:document.getElementById('dObs').value,timestamp:ts},'msgD','formD');
+    guardar(
+    {
+      tipo: 'diario',
+      agencia: c.agencia,
+      ceve: c.nombre,
+      fecha: fecha,
+      hora: hora,
+
+      supervisor:
+        document.getElementById(
+          'dSup'
+        ).value,
+
+      BG:
+        Number(
+          document.getElementById(
+            'dBG'
+          ).value
+        ) || 0,
+
+      DO:
+        Number(
+          document.getElementById(
+            'dDO'
+          ).value
+        ) || 0,
+
+      PAL:
+        Number(
+          document.getElementById(
+            'dPAL'
+          ).value
+        ) || 0,
+
+      observaciones:
+        document.getElementById(
+          'dObs'
+        ).value,
+
+      timestamp: ts
+    },
+
+    'msgD',
+    'formD'
+  );
 }
 
 document.getElementById('formM').addEventListener('submit',e=>{
