@@ -263,7 +263,7 @@ button[type=submit]:hover{background:#004f8c}
 <div><label>Hasta</label><input type="date" id="fHasta"></div>
 <div><label>Región</label><select id="fRegion"><option value="">Todas</option><option>AMBA</option><option>Interior</option></select></div>
 <div><label>CeVe</label><select id="fCeve"><option value="">Todos</option></select></div>
-<div><label>Equipo</label><select id="fEquipo"><option value="028" selected>BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="">Todos</option></select></div>
+<div><label>Equipo</label><select id="fEquipo"><option value="028" selected>BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132" selected>PAL-Pallet</option><option value="">Todos</option></select></div>
 </div>
 <div class="kpis" id="kpis"></div>
 <div class="grid">
@@ -363,7 +363,7 @@ button[type=submit]:hover{background:#004f8c}
 <p>Filtrá los movimientos a exportar:</p>
 <div class="form-row"><div><label>Desde</label><input type="date" id="movDesde"></div><div><label>Hasta</label><input type="date" id="movHasta"></div></div>
 <div class="form-row"><div><label>Región</label><select id="movRegion"><option value="">Todas</option><option>AMBA</option><option>Interior</option></select></div><div><label>CeVe</label><select id="movCeve"><option value="">Todos</option></select></div></div>
-<div class="form-row"><div><label>Equipo</label><select id="movEquipo"><option value="">Todos</option><option value="028">BG-Bandeja Grande</option><option value="031">DO-Dolly</option></select></div><div><label>Tipo</label><select id="movTipo"><option value="">Ambos</option><option value="ing">Solo Ingresos</option><option value="egr">Solo Egresos</option></select></div></div>
+<div class="form-row"><div><label>Equipo</label><select id="movEquipo"><option value="">Todos</option><option value="028">BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132">PAL-Pallet</option></select></div><div><label>Tipo</label><select id="movTipo"><option value="">Ambos</option><option value="ing">Solo Ingresos</option><option value="egr">Solo Egresos</option></select></div></div>
 <div class="modal-actions">
 <button type="button" class="btn-cancel" onclick="document.getElementById('modMov').classList.remove('show')">Cancelar</button>
 <button type="button" class="btn-confirm" onclick="descargarMov()">⬇ Descargar Excel</button>
@@ -530,7 +530,7 @@ try {
 
     if(
       SUBAG.includes(agencia) ||
-      !['028', '031'].includes(equipo) ||
+      !['028', '031', '132'].includes(equipo) ||
       cantidad <= 0
     ){
       return;
@@ -591,7 +591,11 @@ try {
 try {
   const { data: stockSupabase, error } = await supabaseClient
     .from('stock_diario')
-    .select('agencia, ceve, fecha_conteo, bg, do_stock, observaciones, usuario, created_at')
+    .select(
+  'agencia, ceve, fecha_conteo, ' +
+  'bg, do_stock, pal, ' +
+  'observaciones, usuario, created_at'
+)
     .order('fecha_conteo', { ascending: false })
     .order('created_at', { ascending: false });
 
@@ -605,6 +609,10 @@ try {
       fecha: r.fecha_conteo,
       BG: Number(r.bg) || 0,
       DO: Number(r.do_stock) || 0,
+      PAL:
+                     r.pal === null
+                         ? null
+                         : Number(r.pal),
       observaciones: r.observaciones || '',
       supervisor: r.usuario || '',
       timestamp: r.created_at
@@ -764,8 +772,11 @@ function stockAct(ag, eq){
   }
 
   if(eq === '132'){
-    return Number(ultimo.PAL) || 0;
-  }
+  return ultimo.PAL === null
+    || ultimo.PAL === undefined
+      ? null
+      : Number(ultimo.PAL);
+}
 
   return null;
 }
