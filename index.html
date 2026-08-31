@@ -263,7 +263,7 @@ button[type=submit]:hover{background:#004f8c}
 <div><label>Hasta</label><input type="date" id="fHasta"></div>
 <div><label>Región</label><select id="fRegion"><option value="">Todas</option><option>AMBA</option><option>Interior</option></select></div>
 <div><label>CeVe</label><select id="fCeve"><option value="">Todos</option></select></div>
-<div><label>Equipo</label><select id="fEquipo"><option value="028" selected>BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132" selected>PAL-Pallet</option><option value="">Todos</option></select></div>
+<div><label>Equipo</label><select id="fEquipo"><option value="028" selected>BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132">PAL-Pallet</option><option value="">Todos</option></select></div>
 </div>
 <div class="kpis" id="kpis"></div>
 <div class="grid">
@@ -1291,8 +1291,17 @@ function descargarMov(){
     return true;
   }).map(m=>{
     const ce=MAESTRO.ceves.find(x=>x.agencia===m.agencia);
-    <option value="028">028 - BG Bandeja Grande</option>
-          <option value="031">031 - DO Dolly</option>
+    const row = {
+  Fecha: m.fecha,
+  Region: ce.region,
+  CeVe: ce.nombre,
+  Equipo:
+    m.equipo === '028'
+      ? 'BG-Bandeja Grande'
+      : m.equipo === '031'
+        ? 'DO-Dolly'
+        : 'PAL-Pallet'
+};
     if(t==='ing') row.Ingresos_Planta=m.ingresos_planta;
     else if(t==='egr') row.Egresos_Planta=m.egresos_planta;
     else { row.Ingresos_Planta=m.ingresos_planta; row.Egresos_Planta=m.egresos_planta; row.Saldo_Bruto=m.saldo_bruto; }

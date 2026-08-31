@@ -719,62 +719,6 @@ async function confirmarInventarioRepetido(){
   }
 }
 
-{
-  if(!INVENTARIO_PENDIENTE){
-    return;
-  }
-
-  const motivo =
-    document.getElementById(
-      'motivoNuevaCarga'
-    ).value.trim();
-
-  if(motivo.length < 10){
-    document.getElementById(
-      'msgMotivoInventario'
-    ).innerHTML =
-      '<div class="msg err">' +
-      'Indicá un motivo claro de al menos ' +
-      '10 caracteres.' +
-      '</div>';
-
-    return;
-  }
-
-  const boton =
-    document.getElementById(
-      'btnConfirmarNuevaCarga'
-    );
-
-  boton.disabled = true;
-  boton.textContent = 'Guardando...';
-
-  const payload =
-    INVENTARIO_PENDIENTE;
-
-  payload.motivo_nueva_carga =
-    motivo;
-
-  document.getElementById(
-    'modInventarioRepetido'
-  ).classList.remove('show');
-
-  INVENTARIO_PENDIENTE = null;
-
-  try {
-    await guardar(
-      payload,
-      'msgM',
-      'formM',
-      mostrarExito
-    );
-
-  } finally {
-    boton.disabled = false;
-    boton.textContent =
-      'Confirmar nueva carga';
-  }
-}
 document.querySelectorAll('.acc-header').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
 document.querySelectorAll('.btn-add').forEach(b=>{
   b.addEventListener('click',()=>{
@@ -809,406 +753,102 @@ function msg(id,txt,ok){document.getElementById(id).innerHTML='<div class="msg '
 
 async function guardar(p, mi, fi, cb){
   try {
-    let registroGuardado = null;
-
     if(p.tipo === 'mensual'){
-      if(GUARDANDO_INVENTARIO){
-        return;
-      }
-
+      if(GUARDANDO_INVENTARIO) return;
       GUARDANDO_INVENTARIO = true;
 
-      /*
-      El versionado se realiza completamente
-      dentro de Supabase mediante la RPC.
-
-      La RPC:
-      - calcula la versión;
-      - desactiva la versión anterior;
-      - conserva el historial;
-      - relaciona reemplaza_id;
-      - deja vigente la nueva presentación.
-      */
-      const {
-        *ata: inventarioGuardado,
-        e*ror: errorInventarioMensual
-      * = await supabaseClient.rpc(
+      const { data, error } = await supabaseClient.rpc(
         'registrar_inventario_mensual',
-*       {
-          p_agencia:
-    *       String(p.agencia),
-
-       *  p_ceve:
-            p.ceve,
-
-   *      p_mes:
-            p.mes,
-
- *        p_fecha_conteo:
-          * p.fecha_conteo,
-
-          p_hora*conteo:
-            p.hora_conteo,*
-          p_supervisor:
-         *  p.supervisor,
-
-          p_inven*ario:
-            p.inventario,
-
- *        p_movimientos:
-           *p.movimientos,
-
-          p_firma_op_log:
-            p.firma_op_log || null,
-
-          p_firma_sup_desp:
-            p.firma_sup_desp || null,
-
-          p_firma_contador:
-            p.firma_contador || null,
-
-          p_firma_admin:
-            p.firma_admin || null,
-
-          p_observaciones:
-            p.observaciones || '',
-
-          p_motivo_nueva_carga:
-            p.motivo_nueva_carga || null
-        }
-      );
-
-      if(errorInventarioMensual){
-        throw errorInventarioMensual;
-      }
-
-      /*
-      Dependiendo de la respuesta de PostgREST,
-      una función que devuelve una fila puede
-      recibirse como objeto o como array.
-      */
-      registroGuardado =
-*       Array.isArray(inventarioGua*dado)
-          ? inventarioGuarda*o[0]
-          : inventarioGuardad*;
-
-      if(!registroGuardado){
-  *     throw new Error(
-          'S*pabase no devolvió los datos del i*ventario guardado.'
-        );
-   *  }
-
-      p.id =
-        registro*uardado.id;
-
-      p.version =
-   *    Number(registroGuardado.versio*) || 1;
-
-      p.vigente =
-        registroGuardado.vigente === true;
-
-      p.reemplaza_id =
-        registroGuardado.reemplaza_id || null;
-
-      p.motivo_nueva_carga =
-        registroGuardado.motivo_nueva_carga ||
-        p.motivo_nueva_carga ||
-        null;
-
-      console.log(
-        'Inventario mensual guardado:',
         {
-          id: p.id,
-          ceve: p.ceve,
-          mes: p.mes,
-          version: p.version,
-          vigente: p.vigente,
-          reemplaza_id: p.reemplaza_id
+          p_agencia: String(p.agencia),
+          p_ceve: p.ceve,
+          p_mes: p.mes,
+          p_fecha_conteo: p.fecha_conteo,
+          p_hora_conteo: p.hora_conteo,
+          p_supervisor: p.supervisor,
+          p_inventario: p.inventario,
+          p_movimientos: p.movimientos,
+          p_firma_op_log: p.firma_op_log || null,
+          p_firma_sup_desp: p.firma_sup_desp || null,
+          p_firma_contador: p.firma_contador || null,
+          p_firma_admin: p.firma_admin || null,
+          p_observaciones: p.observaciones || '',
+          p_motivo_nueva_carga: p.motivo_nueva_carga || null
         }
       );
+      if(error) throw error;
 
-      /*
-      Supabase es el registro oficial.
-      Formspree emite únicamente el aviso.
-      */
-      const formData =
-        n*w FormData();
+      const guardado = Array.isArray(data) ? data[0] : data;
+      if(!guardado) throw new Error('Supabase no devolvió el inventario guardado.');
 
-      const tipoPre*entacion =
-        p.version > 1
- *        ? 'RECTIFICACIÓN'
-        * : 'PRIMERA PRESENTACIÓN';
+      p.id = guardado.id;
+      p.version = Number(guardado.version) || 1;
+      p.vigente = guardado.vigente === true;
+      p.reemplaza_id = guardado.reemplaza_id || null;
+      p.motivo_nueva_carga = guardado.motivo_nueva_carga || p.motivo_nueva_carga || null;
 
-      *ormData.append(
-        '_subject'*
-        '📦 Inventario Mensual - * +
-        p.ceve +
-        ' - ' *
-        p.mes +
-        ' - Versi*n ' +
-        p.version
-      );
-
-*     formData.append(
-        'CeV*',
-        p.ceve
-      );
-
-      *ormData.append(
-        'Agencia',*        String(p.agencia)
-      );*
-      formData.append(
-        'R*portado por',
-        p.supervisor*      );
-
-      formData.append(
- *      'Mes',
-       *p*mes
-      );
-
-*    formData.append(
-       *'*ersión',
-        String(p.version)*     *);
-
-     formData.append(
-        'Tipo de prese*tación',
-       *tipoPresentacion
-     *);
-
-     formData.append(
-       *'*igente',
-        p*vigente ? '*í' : 'No'
-      );
-
-    formData.append(
-        '*otivo de la nueva presentación',
- *     *p.motivo_nueva_carga ||
-        'N* aplica. Primera presentación.'
-  *   );
-
-      const bg =
-       *p.inventario.BG
-          ?*p*inventario.BG.total
-          : 0;*
-      const*doG =
-        p.inventario.DOG
-   *      ? p*in*entario.DOG.total
-          : 0;
-
-*     const palletMadera =
-       *p*inventario.PM
-          ? p.invent*rio.PM.total
-         *:*0;
-
-      const palletPlastico =
- *     *p*inventario.PP
-          ? p.invent*rio.PP.total
-         *: 0;
-
-      const pascualineros =
-*       p.inventario.PASC
-         *? p*inventario.PASC.total
-          : *;
-
-      formData.append(
-        'Bandejas (BG-*28)',
-        bg.toLocaleString('e*-AR')
-*     );
-
-      formData.append(
-  *     '*ollys (DO-031)',
-        doG.toLoc*leString('es-AR')
-      );
-
-*    formData.append(
-        'Pallets *adera',
-        pallet*adera.toLocaleString('es-AR')
-    * );
-
-      formData.append(
-      * 'Pallets Plástico',
-        palle*Plastico.toLocaleString('es-AR')
- *    );
-
-*     formData.append(
-       *'Pascualineros',
-*       pascualineros.toLocaleStrin*('es-AR')
-      );
-
-      formData*append(
-        'Ver seguimiento',*        'https://logisticabimbo.github.io/' +
-        'Dashboard-Sald*-Primario/' +
-        'seguimiento*html'
-      );
-
-     *const endpoints = [
-        'https://formspree.io/f/xbdvawyq',
-        'https://formspree.io/f/xrewanng'
-      ];
+      const formData = new FormData();
+      const tipoPresentacion = p.version > 1 ? 'RECTIFICACIÓN' : 'PRIMERA PRESENTACIÓN';
+      formData.append('_subject', '📦 Inventario Mensual - ' + p.ceve + ' - ' + p.mes + ' - Versión ' + p.version);
+      formData.append('CeVe', p.ceve);
+      formData.append('Agencia', String(p.agencia));
+      formData.append('Reportado por', p.supervisor);
+      formData.append('Mes', p.mes);
+      formData.append('Versión', String(p.version));
+      formData.append('Tipo de presentación', tipoPresentacion);
+      formData.append('Vigente', p.vigente ? 'Sí' : 'No');
+      formData.append('Motivo de la nueva presentación', p.motivo_nueva_carga || 'No aplica. Primera presentación.');
+      formData.append('Bandejas (BG-028)', (p.inventario.BG?.total || 0).toLocaleString('es-AR'));
+      formData.append('Dollys (DO-031)', (p.inventario.DOG?.total || 0).toLocaleString('es-AR'));
+      formData.append('Pallets Madera', (p.inventario.PM?.total || 0).toLocaleString('es-AR'));
+      formData.append('Pallets Plástico', (p.inventario.PP?.total || 0).toLocaleString('es-AR'));
+      formData.append('Pascualineros', (p.inventario.PASC?.total || 0).toLocaleString('es-AR'));
+      formData.append('Ver seguimiento', 'https://logisticabimbo.github.io/Dashboard-Saldo-Primario/seguimiento.html');
 
       try {
-     *  const resultados =
-          awa*t Promise.all(
-            endpoin*s.map(
-              url =>
-      *         fetch(
-                  *rl,
-                  {
-          *         method: 'POST',
-         *          body: formData,
-        *           headers: {
-            *         'Accept':
-               *        'application/json'
-       *            }
-                  }
-*               )
-            )
-*         );
-
-        const fallido* =
-          resultados.filter(
-  *         respuesta =>
-            * *respuesta.ok
-          );
-
-       *if(
-          fall*dos.length ===
-*        *endpoints.length
-        ){
-      *   console.warn(
-           *'El inventario quedó guardado, ' +*            'pero no se pudo envia* ningún aviso.'
-          );
-
-    *   } else if(fallidos.length > 0){**        *console.warn(
-            'El inve*tario quedó guardado. ' +
-*          *'Uno de los avisos no pudo enviars*.'
-          );
-
-        } else {
-*         console.log(
-           *'*visos de inventario enviados.'
-   *      );
-        }
-
-*    *} catch(errorCorreo){
-*      *console.warn(
-*        *'El inventario quedó guardado en '*+
-         *'Supabase, pero falló el aviso:',
-*        *errorCorreo
-*      *);
-*    *}
-
-*    */*
-      Copia auxiliar local.
-      No se utiliza como fuente oficial.
-      */
-      try {
-        cons* local =
-          JSON.parse(
-   *        localStorage.getItem(
-    *         'mensuales'
-            )*|| '[]'
-          );
-
-        loca*.push(p);
-
-        localStorage.se*Item(
-          'mensuales',
-     *    JSON.stringify(local)
-        *;
-
-      } catch(errorLocal){
-    *   console.warn(
-          'No se *udo generar la copia local:',
-    *     errorLocal
-        );
-*    *}
-
-*  *} else {
-*    */*
-      Stock diario.
-      Este sí alimenta el Dashboard.
-      */
-      const {
-        error: errorStockDiario
-      } = await supabaseClient
-        .from('stock_diario')
-        .insert({
-          ceve:
-            p.ceve,
-
-          agencia:
-            String(p.agencia),
-
-          fecha_conteo:
-            p.fecha,
-
-          bg:
-            Number(p.BG) || 0,
-
-          do_stock:
-            Number(p.DO) || 0,
-
-          pal:
-            Number(p.PAL) || 0,
-
-          observaciones:
-            p.observaciones || '',
-
-          usuario:
-            p.supervisor || ''
-        });
-
-      if(errorStockDiario){
-        throw errorStockDiario;
+        const respuestas = await Promise.all([
+          fetch('https://formspree.io/f/xbdvawyq', {method:'POST', body:formData, headers:{Accept:'application/json'}}),
+          fetch('https://formspree.io/f/xrewanng', {method:'POST', body:formData, headers:{Accept:'application/json'}})
+        ]);
+        if(respuestas.some(r => !r.ok)) console.warn('Algún aviso de inventario no pudo enviarse.');
+      } catch(errorCorreo){
+        console.warn('Inventario guardado; falló el aviso:', errorCorreo);
       }
+
+      try {
+        const local = JSON.parse(localStorage.getItem('mensuales') || '[]');
+        local.push(p);
+        localStorage.setItem('mensuales', JSON.stringify(local));
+      } catch(errorLocal){
+        console.warn('No se pudo crear la copia local:', errorLocal);
+      }
+    } else {
+      const { error } = await supabaseClient.from('stock_diario').insert({
+        ceve: p.ceve,
+        agencia: String(p.agencia),
+        fecha_conteo: p.fecha,
+        bg: Number(p.BG) || 0,
+        do_stock: Number(p.DO) || 0,
+        pal: Number(p.PAL) || 0,
+        observaciones: p.observaciones || '',
+        usuario: p.supervisor || ''
+      });
+      if(error) throw error;
     }
 
-    msg(
-      mi,
-      p.tipo === 'mensual'
-        ? 'Inventario mensual registrado como versión ' +
-          p.version +
-          '.'
-        : 'Carga registrada correctamente.',
-      true
-    );
-
-    if(cb){
-      cb(p);
-
-    } else {
-      document
-        .getElementById(fi)
-        .reset();
-
+    msg(mi, p.tipo === 'mensual' ? 'Inventario mensual registrado como versión ' + p.version + '.' : 'Carga registrada correctamente.', true);
+    if(cb) cb(p);
+    else {
+      document.getElementById(fi).reset();
       cargar();
     }
-
     return p;
-
   } catch(e){
-    console.error(
-      'Error registrando la carga:',
-      e
-    );
-
-    msg(
-      mi,
-      'Error: ' +
-      (
-        e.message ||
-        'No se pudo registrar la carga.'
-      ),
-      false
-    );
-
+    console.error('Error registrando la carga:', e);
+    msg(mi, 'Error: ' + (e.message || 'No se pudo registrar la carga.'), false);
     throw e;
-
   } finally {
-    if(p.tipo === 'mensual'){
-      GUARDANDO_INVENTARIO = false;
-    }
+    if(p.tipo === 'mensual') GUARDANDO_INVENTARIO = false;
   }
 }
 
@@ -1270,7 +910,6 @@ function enviarD(){
 }
 
 document
-  document
   .getElementById('formM')
   .addEventListener(
     'submit',
@@ -1644,22 +1283,29 @@ if(p.motivo_nueva_carga){
 function descargarPDF(){
   const el = document.getElementById('pdfArea');
   const p = window._pdfPayload;
+  if(!p){ alert('No hay un inventario preparado para descargar.'); return; }
+
   const w = window.open('', '_blank', 'width=900,height=900');
-  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Inventario Mensual - '+p.ceve+' - '+p.mes+' - Version '+p.version+'</title>);
-  w.document.write('<style>body{font-family:Arial,sans-serif;color:#222;padding:20px;max-width:800px;margin:0 auto}'+
-    'h2{color:#003e7e;border-bottom:2px solid #003e7e;padding-bottom:6px;font-size:18px}'+
-    'h3{color:#003e7e;font-size:13px;margin-top:16px;border-bottom:1px solid #ccc;padding-bottom:3px}'+
-    'p{font-size:12px;margin:4px 0}'+
-    'table{width:100%;border-collapse:collapse;margin:8px 0}'+
-    'th{background:#003e7e;color:#fff;padding:6px;font-size:11px;text-align:left}'+
-    'td{border:1px solid #999;padding:5px;font-size:11px}'+
-    '@media print{body{padding:10px}}</style>');
-  w.document.write('</head><body>');
+  if(!w){ alert('Habilitá las ventanas emergentes para descargar el PDF.'); return; }
+
+  w.document.write(
+    '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+    '<title>Inventario Mensual - ' + escaparHtml(p.ceve) + ' - ' +
+    escaparHtml(p.mes) + ' - Versión ' + (Number(p.version) || 1) + '</title>' +
+    '<style>' +
+    'body{font-family:Arial,sans-serif;color:#222;padding:20px;max-width:800px;margin:0 auto}' +
+    'h2{color:#003e7e;border-bottom:2px solid #003e7e;padding-bottom:6px;font-size:18px}' +
+    'h3{color:#003e7e;font-size:13px;margin-top:16px;border-bottom:1px solid #ccc;padding-bottom:3px}' +
+    'p{font-size:12px;margin:4px 0}table{width:100%;border-collapse:collapse;margin:8px 0}' +
+    'th{background:#003e7e;color:#fff;padding:6px;font-size:11px;text-align:left}' +
+    'td{border:1px solid #999;padding:5px;font-size:11px}@media print{body{padding:10px}}' +
+    '</style></head><body>'
+  );
   w.document.write(el.innerHTML);
   w.document.write('<p style="text-align:center;margin-top:20px;font-size:11px;color:#666">Usá Ctrl+P para guardar como PDF</p>');
   w.document.write('</body></html>');
   w.document.close();
-  setTimeout(()=>{ w.focus(); w.print(); }, 500);
+  setTimeout(() => { w.focus(); w.print(); }, 500);
 }
 
 cargar();
