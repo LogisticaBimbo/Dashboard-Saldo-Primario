@@ -257,13 +257,13 @@ button[type=submit]:hover{background:#004f8c}
 }
 </style></head><body>
 <header><h1>📊 Dashboard Saldo Primario - CeVes Argentina</h1><div class="updated" id="lastUpdate">Cargando…</div></header>
-<div class="container"><div class="nav"><a href="index.html" class="active">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html">🧾 Carga Facturaciones</a><a href="seguimiento.html">✅ Seguimiento</a></div>
+<div class="container"><div class="nav"><a href="index.html" class="active">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html">🧾 Carga Facturaciones</a><a href="seguimiento.html">🔐 Acceso Control de Equipos</a></div>
 <div class="filters">
 <div><label>Desde</label><input type="date" id="fDesde"></div>
 <div><label>Hasta</label><input type="date" id="fHasta"></div>
 <div><label>Región</label><select id="fRegion"><option value="">Todas</option><option>AMBA</option><option>Interior</option></select></div>
 <div><label>CeVe</label><select id="fCeve"><option value="">Todos</option></select></div>
-<div><label>Equipo</label><select id="fEquipo"><option value="028" selected>BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132" selected>PAL-Pallet</option><option value="">Todos</option></select></div>
+<div><label>Equipo</label><select id="fEquipo"><option value="028" selected>BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132">PAL-Pallet</option><option value="">Todos</option></select></div>
 </div>
 <div class="kpis" id="kpis"></div>
 <div class="grid">
@@ -339,8 +339,17 @@ button[type=submit]:hover{background:#004f8c}
 <th class="sortableDet" data-col="remito" style="cursor:pointer">Nº Remito ⇅</th>
 <th class="sortableDet" data-col="origen" style="cursor:pointer">Origen ⇅</th>
 <th class="sortableDet" data-col="destino" style="cursor:pointer">Destino ⇅</th>
-<th class="sortableDet num" data-col="bg" style="cursor:pointer">Bandejas (BG) ⇅</th>
-<th class="sortableDet num" data-col="doll" style="cursor:pointer">Dollys (DO) ⇅</th>
+<th class="sortableDet num" data-col="bg" style="cursor:pointer">
+  Bandejas (BG) ⇅
+</th>
+
+<th class="sortableDet num" data-col="doll" style="cursor:pointer">
+  Dollys (DO) ⇅
+</th>
+
+<th class="sortableDet num" data-col="pal" style="cursor:pointer">
+  Pallets (PAL) ⇅
+</th>
 </tr>
 <tr style="background:#f7f9fb">
 <th style="padding:4px"></th>
@@ -349,6 +358,7 @@ button[type=submit]:hover{background:#004f8c}
 <th style="padding:4px"><input type="text" id="fltRemito" placeholder="Filtrar..." style="width:100%;padding:4px;font-size:11px"></th>
 <th style="padding:4px"><select id="fltOrigen" style="width:100%;padding:4px;font-size:11px"><option value="">Todos</option></select></th>
 <th style="padding:4px"><select id="fltDestino" style="width:100%;padding:4px;font-size:11px"><option value="">Todos</option></select></th>
+<th style="padding:4px"></th>
 <th style="padding:4px"></th>
 <th style="padding:4px"></th>
 </tr>
@@ -363,7 +373,14 @@ button[type=submit]:hover{background:#004f8c}
 <p>Filtrá los movimientos a exportar:</p>
 <div class="form-row"><div><label>Desde</label><input type="date" id="movDesde"></div><div><label>Hasta</label><input type="date" id="movHasta"></div></div>
 <div class="form-row"><div><label>Región</label><select id="movRegion"><option value="">Todas</option><option>AMBA</option><option>Interior</option></select></div><div><label>CeVe</label><select id="movCeve"><option value="">Todos</option></select></div></div>
-<div class="form-row"><div><label>Equipo</label><select id="movEquipo"><option value="">Todos</option><option value="028">BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132">PAL-Pallet</option></select></div><div><label>Tipo</label><select id="movTipo"><option value="">Ambos</option><option value="ing">Solo Ingresos</option><option value="egr">Solo Egresos</option></select></div></div>
+<div class="form-row"><div><label>Equipo</label>
+<select id="movEquipo">
+  <option value="">Todos</option>
+  <option value="028" selected>BG-Bandeja Grande</option>
+  <option value="031">DO-Dolly</option>
+  <option value="132">PAL-Pallet</option>
+</select>
+</div><div><label>Tipo</label><select id="movTipo"><option value="">Ambos</option><option value="ing">Solo Ingresos</option><option value="egr">Solo Egresos</option></select></div></div>
 <div class="modal-actions">
 <button type="button" class="btn-cancel" onclick="document.getElementById('modMov').classList.remove('show')">Cancelar</button>
 <button type="button" class="btn-confirm" onclick="descargarMov()">⬇ Descargar Excel</button>
@@ -378,6 +395,7 @@ const supabaseClient = window.supabase.createClient(
    SUPABASE_KEY
 );
 let MAESTRO=null;
+let INVENTARIO_PENDIENTE = null;
 let MOVS=[];
 let DETALLE=[];
 let FACTURACIONES=[ ];
@@ -390,6 +408,113 @@ const AG_ST='14128';
 let sortCol='sn', sortDir='asc';
 let sortColDet='fecha', sortDirDet='asc';
 let sortColSem='variacion', sortDirSem='asc';
+const AJUSTES_CONCILIATORIOS = [{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-25987,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TAB-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-10434,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TAB-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tucumán","fecha":"2026-08-31","equipo":"028","cantidad":1343,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TUC-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tucumán","fecha":"2026-08-31","equipo":"028","cantidad":8458,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TUC-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mar del Plata","fecha":"2026-08-31","equipo":"028","cantidad":-1904,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MDP-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mar del Plata","fecha":"2026-08-31","equipo":"028","cantidad":-37802,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MDP-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Foráneos","fecha":"2026-08-31","equipo":"028","cantidad":-6479,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-FOR-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Foráneos","fecha":"2026-08-31","equipo":"028","cantidad":-10634,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-FOR-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Rosario","fecha":"2026-08-31","equipo":"028","cantidad":-6589,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-ROS-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Rosario","fecha":"2026-08-31","equipo":"028","cantidad":-5518,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-ROS-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mendoza","fecha":"2026-08-31","equipo":"028","cantidad":1585,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MZA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mendoza","fecha":"2026-08-31","equipo":"028","cantidad":939,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MZA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Bahía Blanca","fecha":"2026-08-31","equipo":"028","cantidad":1686,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-BHA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Bahía Blanca","fecha":"2026-08-31","equipo":"028","cantidad":2862,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-BHA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Neuquén","fecha":"2026-08-31","equipo":"028","cantidad":-2041,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-NQN-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Neuquén","fecha":"2026-08-31","equipo":"028","cantidad":-5375,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-NQN-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-08-31","equipo":"028","cantidad":-12909,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-CBA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-08-31","equipo":"028","cantidad":-7099,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-CBA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-01-31","equipo":"028","cantidad":-82005,"tipo":"EGRESO A PLANTA","origen":"CeVe Córdoba","destino":"Planta Córdoba","referencia":"CONC-CBA-003","observacion":"Devolución de 82.005 BG documentada el 31/08/2026 e imputada al cierre de enero 2026. No duplicar al ingresar desde MC1."},{"ceve":"Santa Fe","fecha":"2026-08-31","equipo":"028","cantidad":96,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-SFE-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tesei","fecha":"2026-08-31","equipo":"028","cantidad":423,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TES-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tesei","fecha":"2026-08-31","equipo":"028","cantidad":-14180,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TES-002","observacion":"Diferencia conciliada contra Excel operativo"}];
+
+function normalizarTexto(valor){
+  return String(valor || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase();
+}
+
+function agenciaPorCeve(nombre){
+  const buscado = normalizarTexto(nombre);
+  const alias = {
+    'mar del plata': 'mar del plata',
+    'tesei': 'tesei',
+    'cordoba': 'cordoba',
+    'foraneos': 'foraneos'
+  };
+  const clave = alias[buscado] || buscado;
+  const ceve = MAESTRO.ceves.find(c =>
+    normalizarTexto(c.nombre).includes(clave)
+  );
+  return ceve ? String(ceve.agencia) : null;
+}
+
+function detalleContieneRemitoCordoba(){
+  return DETALLE.some(m => {
+    const texto = normalizarTexto([
+      m.documento, m.remito, m.guia, m.referencia,
+      m.numero_documento, m.numero_remito,
+      m.origen, m.destino, m.motivo
+    ].join('|'));
+    const cantidad = Math.abs(Number(m.cantidad) || 0);
+    return String(m.agencia) === '14120' &&
+      String(m.equipo).padStart(3,'0') === '028' &&
+      cantidad === 82005 &&
+      (
+        texto.includes('d000023543') ||
+        texto.includes('00174491-fr') ||
+        texto.includes('00716-0017449')
+      );
+  });
+}
+
+function reclasificarRemitoCordoba(){
+  if(!detalleContieneRemitoCordoba()) return false;
+  const candidatos = MOVS.filter(m =>
+    String(m.agencia) === '14120' &&
+    String(m.equipo).padStart(3,'0') === '028' &&
+    m.fecha === '2026-08-31' &&
+    (Number(m.egresos_planta) || 0) >= 82005
+  );
+  if(!candidatos.length) return false;
+
+  const exacto = candidatos.find(m =>
+    (Number(m.egresos_planta) || 0) === 82005
+  );
+  if(exacto) {
+    exacto.fecha_original = exacto.fecha;
+    exacto.fecha = '2026-01-31';
+    exacto.ajuste_conciliatorio = 'CONC-CBA-003';
+  } else {
+    const base = candidatos.sort((a,b) =>
+      (Number(b.egresos_planta)||0) - (Number(a.egresos_planta)||0)
+    )[0];
+    base.egresos_planta = (Number(base.egresos_planta)||0) - 82005;
+    base.saldo_bruto = (Number(base.egresos_planta)||0) - (Number(base.ingresos_planta)||0);
+    MOVS.push({
+      agencia:'14120', ceve:'Córdoba', fecha:'2026-01-31',
+      fecha_original:'2026-08-31', equipo:'028', ingresos_planta:0,
+      egresos_planta:82005, saldo_bruto:82005,
+      fuente:'ajuste_conciliatorio', referencia:'CONC-CBA-003'
+    });
+  }
+  return true;
+}
+
+function aplicarAjustesConciliatorios(){
+  const remitoYaEnMc1 = reclasificarRemitoCordoba();
+  AJUSTES_CONCILIATORIOS.forEach(a => {
+    if(a.referencia === 'CONC-CBA-003' && remitoYaEnMc1) return;
+    const agencia = agenciaPorCeve(a.ceve);
+    if(!agencia) {
+      console.warn('CeVe no encontrado para ajuste:', a);
+      return;
+    }
+    const correccion = -Number(a.cantidad || 0);
+    const esIngreso = a.tipo === 'INGRESO A CEVE';
+    const ingreso = esIngreso ? correccion : 0;
+    const egreso = esIngreso ? 0 : correccion;
+    MOVS.push({
+      agencia, ceve:a.ceve, fecha:a.fecha, equipo:a.equipo,
+      ingresos_planta:ingreso, egresos_planta:egreso,
+      saldo_bruto:egreso-ingreso, fuente:'ajuste_conciliatorio',
+      referencia:a.referencia, observacion:a.observacion
+    });
+    DETALLE.push({
+      fecha:a.fecha, agencia, ceve:a.ceve, equipo:a.equipo,
+      motivo:'AJUSTE CONCILIATORIO',
+      tipo:esIngreso ? 'ingreso_planta' : 'egreso_planta',
+      origen:a.origen, destino:a.destino, remito:a.referencia,
+      cantidad:correccion, fuente:'ajuste_conciliatorio'
+    });
+  });
+  console.log('Ajustes conciliatorios aplicados. Remito Córdoba en MC1:', remitoYaEnMc1);
+}
+
 async function cargar(){
   const raw = await fetch(
   'data/ceves_maestro.json?ts=' + Date.now(),
@@ -467,6 +592,7 @@ MAESTRO = {
 });
     DETALLE = det.movimientos.filter(x=>!SUBAG.includes(x.agencia));
   } catch(e){ DETALLE = []; }
+  aplicarAjustesConciliatorios();
 
 /*
 Cargar facturaciones manuales desde Supabase.
@@ -529,12 +655,12 @@ try {
       ) || 0;
 
     if(
-      SUBAG.includes(agencia) ||
-      !['028', '031', '132'].includes(equipo) ||
-      cantidad <= 0
-    ){
-      return;
-    }
+  SUBAG.includes(agencia) ||
+  !['028', '031'].includes(equipo) ||
+  cantidad <= 0
+){
+  return;
+}
 
     MOVS.push({
       agencia: agencia,
@@ -783,7 +909,12 @@ function stockAct(ag, eq){
 
 function calc(ag,eq,d){
   const c=MAESTRO.ceves.find(x=>x.agencia===ag);
-  const inv=eq==='028'?c.inv_inicial_BG:c.inv_inicial_DO;
+  const inv =
+  eq === '028'
+    ? Number(c.inv_inicial_BG) || 0
+    : eq === '031'
+      ? Number(c.inv_inicial_DO) || 0
+      : Number(c.inv_inicial_PAL) || 0;
   const sa=stockAct(ag,eq);
   const vs=sa!==null?sa-inv:0;
   const ms=d.filter(m=>m.agencia===ag&&m.equipo===eq);
@@ -825,10 +956,15 @@ function render(){
     if(cf&&c.agencia!==cf) return false;
     return true;
   }).flatMap(c=>{
-    const eqs = eqF ? [eqF] : ['028','031']
+    const eqs = eqF ? [eqF] : ['028','031','132']
     return eqs.map(eq=>{
       const r=calc(c.agencia,eq,data);
-      return {region:c.region, ceve:c.nombre, eq:eq==='028'?'BG':'DO', inv:r.inv, sa:r.sa, vs:r.vs, ing:r.ing, egr:r.egr, sb:r.sb, sn:r.sn, fl:r.fl};
+      return {region:c.region, ceve:c.nombre, eq:
+  eq === '028'
+    ? 'BG'
+    : eq === '031'
+      ? 'DO'
+      : 'PAL', inv:r.inv, sa:r.sa, vs:r.vs, ing:r.ing, egr:r.egr, sb:r.sb, sn:r.sn, fl:r.fl};
     });
   });
   filas.sort((a,b)=>{
@@ -865,7 +1001,12 @@ function renderResumen(data){
   else MAESTRO.ceves.forEach(c=>{const r=calc(c.agencia,eq,data);inv+=r.inv;vs+=r.vs;ing+=r.ing;egr+=r.egr;if(r.sa!==null)co=(co||0)+r.sa});
   const s=egr-ing, sn=s+vs, fl=ing?sn/ing:0;
   const nom=ag?MAESTRO.ceves.find(c=>c.agencia===ag).nombre:'TODOS LOS CEVES';
-  const en=eq==='028'?'BG-Bandeja Grande':'DO-Dolly';
+  const en =
+  eq === '028'
+    ? 'BG-Bandeja Grande'
+    : eq === '031'
+      ? 'DO-Dolly'
+      : 'PAL-Pallet';
   document.getElementById('resumenContenido').innerHTML =
     '<div class="resumen-row header"><span>'+nom+' — '+en+'</span><span class="v"></span></div>'+
     '<div class="resumen-row"><span>Inventario Inicial 2026</span><span class="v">'+fmt(inv)+'</span></div>'+
@@ -920,7 +1061,12 @@ if(tipo === 'personalizado' && custom.value){
     const msAct = ms.filter(m=>m.fecha <= finActual);
     const ing26 = msAct.reduce((s,m)=>s+m.ingresos_planta,0);
     const egr26 = msAct.reduce((s,m)=>s+m.egresos_planta,0);
-    const inv = eqF==='028' ? c.inv_inicial_BG : c.inv_inicial_DO;
+    const inv =
+  eqF === '028'
+    ? Number(c.inv_inicial_BG) || 0
+    : eqF === '031'
+      ? Number(c.inv_inicial_DO) || 0
+      : Number(c.inv_inicial_PAL) || 0;
     const sa = stockAct(c.agencia, eqF);
     const vs = sa!==null ? sa - inv : 0;
     const sn26 = (egr26 - ing26) + vs;
@@ -1122,16 +1268,32 @@ function renderDetalle(){
       grupos[key] = {
         fecha: m.fecha, ceve: m.ceve, tipo: m.tipo,
         remito: m.remito, origen: m.origen, destino: m.destino,
-        motivos: new Set([motivoLabel(m.motivo)]),
-        bg: 0, doll: 0
+        motivos:
+  new Set([
+    motivoLabel(m.motivo)
+  ]),
+
+bg: 0,
+doll: 0,
+pal: 0
       };
     } else {
       grupos[key].motivos.add(motivoLabel(m.motivo));
       if(!grupos[key].origen && m.origen) grupos[key].origen = m.origen;
       if(!grupos[key].destino && m.destino) grupos[key].destino = m.destino;
     }
-    if(m.equipo === '028') grupos[key].bg += m.cantidad;
-    else if(m.equipo === '031') grupos[key].doll += m.cantidad;
+    if(m.equipo === '028'){
+  grupos[key].bg +=
+    Number(m.cantidad) || 0;
+
+} else if(m.equipo === '031'){
+  grupos[key].doll +=
+    Number(m.cantidad) || 0;
+
+} else if(m.equipo === '132'){
+  grupos[key].pal +=
+    Number(m.cantidad) || 0;
+}
   });
 
   let filas = Object.values(grupos);
@@ -1182,12 +1344,22 @@ function renderDetalle(){
       '<td>'+(f.remito||'—')+'</td>'+
       '<td>'+nodoLabel(f.origen)+'</td>'+
       '<td>'+nodoLabel(f.destino)+'</td>'+
-      '<td class="num">'+(f.bg?fmt(f.bg):'')+'</td>'+
-      '<td class="num">'+(f.doll?fmt(f.doll):'')+'</td>'+
-    '</tr>';
+      '<td class="num">' +
+  (f.bg ? fmt(f.bg) : '') +
+'</td>' +
+
+'<td class="num">' +
+  (f.doll ? fmt(f.doll) : '') +
+'</td>' +
+
+'<td class="num">' +
+  (f.pal ? fmt(f.pal) : '') +
+'</td>' +
+
+'</tr>';
   }).join('');
   if(filas.length > MAX){
-    document.querySelector('#tablaDetalle tbody').innerHTML += '<tr><td colspan="8" style="text-align:center;background:#fef7e0;padding:10px">⚠️ Mostrando los primeros '+MAX+' de '+filas.length.toLocaleString('es-AR')+' movimientos. Descargá el Excel para ver todos.</td></tr>';
+    document.querySelector('#tablaDetalle tbody').innerHTML += '<tr><td colspan="9" style="text-align:center;background:#fef7e0;padding:10px">⚠️ Mostrando los primeros '+MAX+' de '+filas.length.toLocaleString('es-AR')+' movimientos. Descargá el Excel para ver todos.</td></tr>';
   }
   window._detalle = filas;
 }
@@ -1203,7 +1375,8 @@ function exportarDetalle(){
     Origen: nodoLabel(f.origen),
            Destino: nodoLabel(f.destino),
     Bandejas_BG: f.bg,
-    Dollys_DO: f.doll
+    Dollys_DO: f.doll,
+    Pallets_PAL: f.pal
   }));
   const ws=XLSX.utils.json_to_sheet(out);
   const wb=XLSX.utils.book_new();
@@ -1226,7 +1399,17 @@ function descargarMov(){
     return true;
   }).map(m=>{
     const ce=MAESTRO.ceves.find(x=>x.agencia===m.agencia);
-    const row = {Fecha:m.fecha, Region:ce.region, CeVe:ce.nombre, Equipo:m.equipo==='028'?'BG-Bandeja Grande':'DO-Dolly'};
+    const row = {
+  Fecha: m.fecha,
+  Region: ce.region,
+  CeVe: ce.nombre,
+  Equipo:
+    m.equipo === '028'
+      ? 'BG-Bandeja Grande'
+      : m.equipo === '031'
+        ? 'DO-Dolly'
+        : 'PAL-Pallet'
+};
     if(t==='ing') row.Ingresos_Planta=m.ingresos_planta;
     else if(t==='egr') row.Egresos_Planta=m.egresos_planta;
     else { row.Ingresos_Planta=m.ingresos_planta; row.Egresos_Planta=m.egresos_planta; row.Saldo_Bruto=m.saldo_bruto; }
