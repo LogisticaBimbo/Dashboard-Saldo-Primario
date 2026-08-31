@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><title>Acceso Control de Equipos</title>
+<html lang="es"><head><meta charset="UTF-8"><title>Seguimiento de Cargas</title>
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
 <style>
 *{box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
@@ -254,8 +254,8 @@ button[type=submit]:hover{background:#004f8c}
   }
 }
 </style></head><body>
-<header><h1>🔐 Acceso Control de Equipos - CeVes Argentina</h1></header>	
-<div class="container" id="contenidoSeg" style="display:none"><div class="nav"><a href="index.html">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html">🧾 Carga Facturaciones</a><a href="seguimiento.html" class="active">🔐 Acceso Control de Equipos</a></div>
+<header><h1>✅ Seguimiento de Cargas - CeVes Argentina</h1></header>
+<div class="container" id="contenidoSeg" style="display:none"><div class="nav"><a href="index.html">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="seguimiento.html" class="active">✅ Seguimiento</a></div>
 <div class="summary" id="kpis"></div>
 <div class="card"><div style="display:flex;align-items:center;margin-bottom:12px;gap:12px"><h3 style="margin:0">📅 Cumplimiento Diario (últimos 7 días)</h3><button class="download-btn" onclick="exp('d')">⬇ Excel</button></div>
 <table id="tD"><thead><tr><th>CeVe</th><th>Región</th><th>Supervisor</th><th>Última carga</th><th>Hora</th><th>Días sin cargar</th><th>Estado</th></tr></thead><tbody></tbody></table></div>
@@ -267,16 +267,9 @@ button[type=submit]:hover{background:#004f8c}
 <table id="tH"><thead><tr><th>Fecha y hora</th><th>Tipo</th><th>CeVe</th><th>Responsable</th><th>BG</th><th>DO</th><th>Observaciones</th></tr></thead><tbody></tbody></table></div>
 </div>
 
-<div class="modal show" id="modLogin">
-  <div class="modal-box info">
-
-    <h3>🔒 Acceso exclusivo</h3>
-
-    <p>
-      Esta sección está reservada para el equipo de
-      Control de Equipos. Ingresá tu usuario y clave
-      para continuar.
-    </p>
+<div class="modal show" id="modLogin"><div class="modal-box info">
+<h3>🔒 Acceso restringido</h3>
+<p>Esta sección es solo para administradores. Ingresá tu usuario y clave.</p>
 <div class="form-row"><div><label>Usuario</label><input type="text" id="logUsr" placeholder="usuario.apellido"></div><div><label>Clave</label><input type="password" id="logPwd"></div></div>
 <div id="msgLog"></div>
 <div class="modal-actions">

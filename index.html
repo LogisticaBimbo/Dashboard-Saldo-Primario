@@ -257,13 +257,13 @@ button[type=submit]:hover{background:#004f8c}
 }
 </style></head><body>
 <header><h1>📊 Dashboard Saldo Primario - CeVes Argentina</h1><div class="updated" id="lastUpdate">Cargando…</div></header>
-<div class="container"><div class="nav"><a href="index.html" class="active">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html">🧾 Carga Facturaciones</a><a href="seguimiento.html">🔐 Acceso Control de Equipos</a></div>
+<div class="container"><div class="nav"><a href="index.html" class="active">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html">🧾 Carga Facturaciones</a><a href="seguimiento.html">✅ Seguimiento</a></div>
 <div class="filters">
 <div><label>Desde</label><input type="date" id="fDesde"></div>
 <div><label>Hasta</label><input type="date" id="fHasta"></div>
 <div><label>Región</label><select id="fRegion"><option value="">Todas</option><option>AMBA</option><option>Interior</option></select></div>
 <div><label>CeVe</label><select id="fCeve"><option value="">Todos</option></select></div>
-<div><label>Equipo</label><select id="fEquipo"><option value="028" selected>BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132">PAL-Pallet</option><option value="">Todos</option></select></div>
+<div><label>Equipo</label><select id="fEquipo"><option value="028" selected>BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132" selected>PAL-Pallet</option><option value="">Todos</option></select></div>
 </div>
 <div class="kpis" id="kpis"></div>
 <div class="grid">
@@ -339,17 +339,8 @@ button[type=submit]:hover{background:#004f8c}
 <th class="sortableDet" data-col="remito" style="cursor:pointer">Nº Remito ⇅</th>
 <th class="sortableDet" data-col="origen" style="cursor:pointer">Origen ⇅</th>
 <th class="sortableDet" data-col="destino" style="cursor:pointer">Destino ⇅</th>
-<th class="sortableDet num" data-col="bg" style="cursor:pointer">
-  Bandejas (BG) ⇅
-</th>
-
-<th class="sortableDet num" data-col="doll" style="cursor:pointer">
-  Dollys (DO) ⇅
-</th>
-
-<th class="sortableDet num" data-col="pal" style="cursor:pointer">
-  Pallets (PAL) ⇅
-</th>
+<th class="sortableDet num" data-col="bg" style="cursor:pointer">Bandejas (BG) ⇅</th>
+<th class="sortableDet num" data-col="doll" style="cursor:pointer">Dollys (DO) ⇅</th>
 </tr>
 <tr style="background:#f7f9fb">
 <th style="padding:4px"></th>
@@ -358,7 +349,6 @@ button[type=submit]:hover{background:#004f8c}
 <th style="padding:4px"><input type="text" id="fltRemito" placeholder="Filtrar..." style="width:100%;padding:4px;font-size:11px"></th>
 <th style="padding:4px"><select id="fltOrigen" style="width:100%;padding:4px;font-size:11px"><option value="">Todos</option></select></th>
 <th style="padding:4px"><select id="fltDestino" style="width:100%;padding:4px;font-size:11px"><option value="">Todos</option></select></th>
-<th style="padding:4px"></th>
 <th style="padding:4px"></th>
 <th style="padding:4px"></th>
 </tr>
@@ -373,14 +363,7 @@ button[type=submit]:hover{background:#004f8c}
 <p>Filtrá los movimientos a exportar:</p>
 <div class="form-row"><div><label>Desde</label><input type="date" id="movDesde"></div><div><label>Hasta</label><input type="date" id="movHasta"></div></div>
 <div class="form-row"><div><label>Región</label><select id="movRegion"><option value="">Todas</option><option>AMBA</option><option>Interior</option></select></div><div><label>CeVe</label><select id="movCeve"><option value="">Todos</option></select></div></div>
-<div class="form-row"><div><label>Equipo</label>
-<select id="movEquipo">
-  <option value="">Todos</option>
-  <option value="028" selected>BG-Bandeja Grande</option>
-  <option value="031">DO-Dolly</option>
-  <option value="132">PAL-Pallet</option>
-</select>
-</div><div><label>Tipo</label><select id="movTipo"><option value="">Ambos</option><option value="ing">Solo Ingresos</option><option value="egr">Solo Egresos</option></select></div></div>
+<div class="form-row"><div><label>Equipo</label><select id="movEquipo"><option value="">Todos</option><option value="028">BG-Bandeja Grande</option><option value="031">DO-Dolly</option><option value="132">PAL-Pallet</option></select></div><div><label>Tipo</label><select id="movTipo"><option value="">Ambos</option><option value="ing">Solo Ingresos</option><option value="egr">Solo Egresos</option></select></div></div>
 <div class="modal-actions">
 <button type="button" class="btn-cancel" onclick="document.getElementById('modMov').classList.remove('show')">Cancelar</button>
 <button type="button" class="btn-confirm" onclick="descargarMov()">⬇ Descargar Excel</button>
@@ -395,7 +378,6 @@ const supabaseClient = window.supabase.createClient(
    SUPABASE_KEY
 );
 let MAESTRO=null;
-let INVENTARIO_PENDIENTE = null;
 let MOVS=[];
 let DETALLE=[];
 let FACTURACIONES=[ ];
@@ -547,12 +529,12 @@ try {
       ) || 0;
 
     if(
-  SUBAG.includes(agencia) ||
-  !['028', '031'].includes(equipo) ||
-  cantidad <= 0
-){
-  return;
-}
+      SUBAG.includes(agencia) ||
+      !['028', '031', '132'].includes(equipo) ||
+      cantidad <= 0
+    ){
+      return;
+    }
 
     MOVS.push({
       agencia: agencia,
@@ -801,12 +783,7 @@ function stockAct(ag, eq){
 
 function calc(ag,eq,d){
   const c=MAESTRO.ceves.find(x=>x.agencia===ag);
-  const inv =
-  eq === '028'
-    ? Number(c.inv_inicial_BG) || 0
-    : eq === '031'
-      ? Number(c.inv_inicial_DO) || 0
-      : Number(c.inv_inicial_PAL) || 0;
+  const inv=eq==='028'?c.inv_inicial_BG:c.inv_inicial_DO;
   const sa=stockAct(ag,eq);
   const vs=sa!==null?sa-inv:0;
   const ms=d.filter(m=>m.agencia===ag&&m.equipo===eq);
@@ -848,15 +825,10 @@ function render(){
     if(cf&&c.agencia!==cf) return false;
     return true;
   }).flatMap(c=>{
-    const eqs = eqF ? [eqF] : ['028','031','132']
+    const eqs = eqF ? [eqF] : ['028','031']
     return eqs.map(eq=>{
       const r=calc(c.agencia,eq,data);
-      return {region:c.region, ceve:c.nombre, eq:
-  eq === '028'
-    ? 'BG'
-    : eq === '031'
-      ? 'DO'
-      : 'PAL', inv:r.inv, sa:r.sa, vs:r.vs, ing:r.ing, egr:r.egr, sb:r.sb, sn:r.sn, fl:r.fl};
+      return {region:c.region, ceve:c.nombre, eq:eq==='028'?'BG':'DO', inv:r.inv, sa:r.sa, vs:r.vs, ing:r.ing, egr:r.egr, sb:r.sb, sn:r.sn, fl:r.fl};
     });
   });
   filas.sort((a,b)=>{
@@ -893,12 +865,7 @@ function renderResumen(data){
   else MAESTRO.ceves.forEach(c=>{const r=calc(c.agencia,eq,data);inv+=r.inv;vs+=r.vs;ing+=r.ing;egr+=r.egr;if(r.sa!==null)co=(co||0)+r.sa});
   const s=egr-ing, sn=s+vs, fl=ing?sn/ing:0;
   const nom=ag?MAESTRO.ceves.find(c=>c.agencia===ag).nombre:'TODOS LOS CEVES';
-  const en =
-  eq === '028'
-    ? 'BG-Bandeja Grande'
-    : eq === '031'
-      ? 'DO-Dolly'
-      : 'PAL-Pallet';
+  const en=eq==='028'?'BG-Bandeja Grande':'DO-Dolly';
   document.getElementById('resumenContenido').innerHTML =
     '<div class="resumen-row header"><span>'+nom+' — '+en+'</span><span class="v"></span></div>'+
     '<div class="resumen-row"><span>Inventario Inicial 2026</span><span class="v">'+fmt(inv)+'</span></div>'+
@@ -953,12 +920,7 @@ if(tipo === 'personalizado' && custom.value){
     const msAct = ms.filter(m=>m.fecha <= finActual);
     const ing26 = msAct.reduce((s,m)=>s+m.ingresos_planta,0);
     const egr26 = msAct.reduce((s,m)=>s+m.egresos_planta,0);
-    const inv =
-  eqF === '028'
-    ? Number(c.inv_inicial_BG) || 0
-    : eqF === '031'
-      ? Number(c.inv_inicial_DO) || 0
-      : Number(c.inv_inicial_PAL) || 0;
+    const inv = eqF==='028' ? c.inv_inicial_BG : c.inv_inicial_DO;
     const sa = stockAct(c.agencia, eqF);
     const vs = sa!==null ? sa - inv : 0;
     const sn26 = (egr26 - ing26) + vs;
@@ -1160,32 +1122,16 @@ function renderDetalle(){
       grupos[key] = {
         fecha: m.fecha, ceve: m.ceve, tipo: m.tipo,
         remito: m.remito, origen: m.origen, destino: m.destino,
-        motivos:
-  new Set([
-    motivoLabel(m.motivo)
-  ]),
-
-bg: 0,
-doll: 0,
-pal: 0
+        motivos: new Set([motivoLabel(m.motivo)]),
+        bg: 0, doll: 0
       };
     } else {
       grupos[key].motivos.add(motivoLabel(m.motivo));
       if(!grupos[key].origen && m.origen) grupos[key].origen = m.origen;
       if(!grupos[key].destino && m.destino) grupos[key].destino = m.destino;
     }
-    if(m.equipo === '028'){
-  grupos[key].bg +=
-    Number(m.cantidad) || 0;
-
-} else if(m.equipo === '031'){
-  grupos[key].doll +=
-    Number(m.cantidad) || 0;
-
-} else if(m.equipo === '132'){
-  grupos[key].pal +=
-    Number(m.cantidad) || 0;
-}
+    if(m.equipo === '028') grupos[key].bg += m.cantidad;
+    else if(m.equipo === '031') grupos[key].doll += m.cantidad;
   });
 
   let filas = Object.values(grupos);
@@ -1236,22 +1182,12 @@ pal: 0
       '<td>'+(f.remito||'—')+'</td>'+
       '<td>'+nodoLabel(f.origen)+'</td>'+
       '<td>'+nodoLabel(f.destino)+'</td>'+
-      '<td class="num">' +
-  (f.bg ? fmt(f.bg) : '') +
-'</td>' +
-
-'<td class="num">' +
-  (f.doll ? fmt(f.doll) : '') +
-'</td>' +
-
-'<td class="num">' +
-  (f.pal ? fmt(f.pal) : '') +
-'</td>' +
-
-'</tr>';
+      '<td class="num">'+(f.bg?fmt(f.bg):'')+'</td>'+
+      '<td class="num">'+(f.doll?fmt(f.doll):'')+'</td>'+
+    '</tr>';
   }).join('');
   if(filas.length > MAX){
-    document.querySelector('#tablaDetalle tbody').innerHTML += '<tr><td colspan="9" style="text-align:center;background:#fef7e0;padding:10px">⚠️ Mostrando los primeros '+MAX+' de '+filas.length.toLocaleString('es-AR')+' movimientos. Descargá el Excel para ver todos.</td></tr>';
+    document.querySelector('#tablaDetalle tbody').innerHTML += '<tr><td colspan="8" style="text-align:center;background:#fef7e0;padding:10px">⚠️ Mostrando los primeros '+MAX+' de '+filas.length.toLocaleString('es-AR')+' movimientos. Descargá el Excel para ver todos.</td></tr>';
   }
   window._detalle = filas;
 }
@@ -1267,8 +1203,7 @@ function exportarDetalle(){
     Origen: nodoLabel(f.origen),
            Destino: nodoLabel(f.destino),
     Bandejas_BG: f.bg,
-    Dollys_DO: f.doll,
-    Pallets_PAL: f.pal
+    Dollys_DO: f.doll
   }));
   const ws=XLSX.utils.json_to_sheet(out);
   const wb=XLSX.utils.book_new();
@@ -1291,17 +1226,7 @@ function descargarMov(){
     return true;
   }).map(m=>{
     const ce=MAESTRO.ceves.find(x=>x.agencia===m.agencia);
-    const row = {
-  Fecha: m.fecha,
-  Region: ce.region,
-  CeVe: ce.nombre,
-  Equipo:
-    m.equipo === '028'
-      ? 'BG-Bandeja Grande'
-      : m.equipo === '031'
-        ? 'DO-Dolly'
-        : 'PAL-Pallet'
-};
+    const row = {Fecha:m.fecha, Region:ce.region, CeVe:ce.nombre, Equipo:m.equipo==='028'?'BG-Bandeja Grande':'DO-Dolly'};
     if(t==='ing') row.Ingresos_Planta=m.ingresos_planta;
     else if(t==='egr') row.Egresos_Planta=m.egresos_planta;
     else { row.Ingresos_Planta=m.ingresos_planta; row.Egresos_Planta=m.egresos_planta; row.Saldo_Bruto=m.saldo_bruto; }
