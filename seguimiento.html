@@ -8,7 +8,7 @@ header{background:linear-gradient(90deg,#0066b3,#003e7e);color:#fff;padding:18px
 header h1{margin:0;font-size:22px}
 header .updated{font-size:12px;opacity:.85}
 .container{padding:20px 28px}
-.nav{display:flex;gap:14px;margin-bottom:18px}
+.nav{display:flex;gap:14px;margin-bottom:18px;flex-wrap:wrap}
 .nav a{background:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;color:#003e7e;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .nav a:hover,.nav a.active{background:#0066b3;color:#fff}
 .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:18px}
@@ -255,7 +255,7 @@ button[type=submit]:hover{background:#004f8c}
 }
 </style></head><body>
 <header><h1>✅ Seguimiento de Cargas - CeVes Argentina</h1></header>
-<div class="container" id="contenidoSeg" style="display:none"><div class="nav"><a href="index.html">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="seguimiento.html" class="active">✅ Seguimiento</a></div>
+<div class="container" id="contenidoSeg" style="display:none"><div class="nav"><a href="index.html">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html">🧾 Carga Facturaciones y Bandejeros</a><a href="seguimiento.html" class="active">🔐 Acceso Control de Equipos</a></div>
 <div class="summary" id="kpis"></div>
 <div class="card"><div style="display:flex;align-items:center;margin-bottom:12px;gap:12px"><h3 style="margin:0">📅 Cumplimiento Diario (últimos 7 días)</h3><button class="download-btn" onclick="exp('d')">⬇ Excel</button></div>
 <table id="tD"><thead><tr><th>CeVe</th><th>Región</th><th>Supervisor</th><th>Última carga</th><th>Hora</th><th>Días sin cargar</th><th>Estado</th></tr></thead><tbody></tbody></table></div>

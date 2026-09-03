@@ -12,7 +12,7 @@ header{background:linear-gradient(90deg,#0066b3,#003e7e);color:#fff;padding:18px
 header h1{margin:0;font-size:22px}
 header .updated{font-size:12px;opacity:.85}
 .container{padding:20px 28px}
-.nav{display:flex;gap:14px;margin-bottom:18px}
+.nav{display:flex;gap:14px;margin-bottom:18px;flex-wrap:wrap}
 .nav a{background:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;color:#003e7e;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .nav a:hover,.nav a.active{background:#0066b3;color:#fff}
 .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:18px}
@@ -273,528 +273,115 @@ button[type=submit]:hover{background:#004f8c}
 .fact-summary strong{
   color:#003e7e
 }
-</style>
-</head>
 
+.container{max-width:1100px;margin:0 auto}
+.fact-summary{background:#e8f0fe;color:#003e7e;padding:14px;border-radius:8px;margin-bottom:16px;font-size:13px}
+.fact-summary strong{color:#003e7e}
+.tabs{display:flex;gap:0}
+.tab-btn{flex:1;background:#e9eef3;border:none;padding:14px;cursor:pointer;font-weight:600;color:#555;border-radius:10px 10px 0 0;font-size:14px}
+.tab-btn.active{background:#fff;color:#003e7e;border-bottom:3px solid #0066b3}
+.tab-content{background:#fff;padding:24px;border-radius:0 0 10px 10px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:none}
+.tab-content.active{display:block}
+</style></head>
 <body>
-
-<header>
-  <h1>🧾 Carga de Facturaciones - Saldo Primario</h1>
-</header>
-
+<header><h1>🧾 Carga Facturaciones y Bandejeros - Saldo Primario</h1></header>
 <div class="container">
-<div class="nav"><a href="index.html">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html" class="active">🧾 Carga Facturaciones</a><a href="seguimiento.html">🔐 Acceso Control de Equipos</a></div>
+<div class="nav"><a href="index.html">📊 Dashboard</a><a href="carga.html">📝 Carga Stock</a><a href="facturacion.html" class="active">🧾 Carga Facturaciones y Bandejeros</a><a href="seguimiento.html">🔐 Acceso Control de Equipos</a></div>
+<div class="tabs"><button class="tab-btn active" id="btnFact">🧾 Ingreso Facturaciones</button><button class="tab-btn" id="btnBand">📥 Ingreso Bandejero</button></div>
 
-<div class="card">
+<div id="tab-facturacion" class="tab-content active">
+<div class="info">Registrá las bandejas o dollys facturados a clientes, QSR o transportes.</div>
+<div class="warning">⚠️ <b>Importante:</b> la cantidad facturada se incorpora al Saldo Primario como una devolución manual a Planta Pilar y se suma a los egresos del CeVe seleccionado.</div>
+<div id="msgF"></div>
+<form id="formF">
+<div class="section-title">📍 Datos de la facturación</div>
+<div class="form-row"><div><label>CeVe</label><select id="fFacCeve" required></select></div><div><label>Fecha de facturación</label><input type="date" id="fFacFecha" required></div></div>
+<div class="form-row"><div><label>Nº de factura</label><input type="text" id="fFacNumero" required placeholder="Ej.: 0005-00012345"></div><div><label>Cliente</label><input type="text" id="fFacCliente" required placeholder="Cliente, QSR o transporte"></div></div>
+<div class="section-title">📦 Equipo facturado</div>
+<div class="form-row"><div><label>Cód. facturado</label><select id="fFacCodigo" required><option value="028">028 - BG Bandeja Grande</option><option value="031">031 - DO Dolly</option></select></div><div><label>Cantidad facturada</label><input type="number" id="fFacCantidad" min="1" step="1" value="1" required></div></div>
+<div class="fact-summary" id="resumenFacturacion">Completá los datos para registrar la facturación.</div>
+<button type="submit">💾 Guardar facturación</button>
+</form>
+</div>
 
-  <h3>🧾 Carga Facturaciones</h3>
-
-  <div class="info">
-    Registrá las bandejas o dollys facturados a clientes,
-    QSR o transportes.
-  </div>
-
-  <div class="warning">
-    ⚠️ <b>Importante:</b>
-    la cantidad facturada será incorporada al Saldo Primario
-    como una devolución manual a Planta Pilar y se sumará a
-    los egresos del CeVe seleccionado. Verificá cuidadosamente
-    el CeVe, el número de factura, el código y la cantidad.
-  </div>
-
-  <div id="msgF"></div>
-
-  <form id="formF">
-
-    <div class="section-title">
-      📍 Datos de la facturación
-    </div>
-
-    <div class="form-row">
-
-      <div>
-        <label>CeVe</label>
-        <select id="fFacCeve" required></select>
-      </div>
-
-      <div>
-        <label>Fecha de facturación</label>
-        <input
-          type="date"
-          id="fFacFecha"
-          required
-        >
-      </div>
-
-    </div>
-
-    <div class="form-row">
-
-      <div>
-        <label>Nº de factura</label>
-        <input
-          type="text"
-          id="fFacNumero"
-          required
-          placeholder="Ej.: 0005-00012345"
-        >
-      </div>
-
-      <div>
-        <label>Cliente</label>
-        <input
-          type="text"
-          id="fFacCliente"
-          required
-          placeholder="Cliente, QSR o transporte"
-        >
-      </div>
-
-    </div>
-
-    <div class="section-title">
-      📦 Equipo facturado
-    </div>
-
-    <div class="form-row">
-
-      <div>
-        <label>Cód. facturado</label>
-        <select id="fFacCodigo" required>
-          <option value="028">
-            028 - BG Bandeja Grande
-          </option>
-          <option value="031">
-            031 - DO Dolly
-          </option>
-        </select>
-      </div>
-
-      <div>
-        <label>Cantidad facturada</label>
-        <input
-          type="number"
-          id="fFacCantidad"
-          min="1"
-          step="1"
-          value="1"
-          required
-        >
-      </div>
-
-    </div>
-
-    <div class="fact-summary" id="resumenFacturacion">
-      Completá los datos para registrar la facturación.
-    </div>
-
-    <button type="submit">
-      💾 Guardar facturación
-    </button>
-
-  </form>
-
+<div id="tab-bandejero" class="tab-content">
+<div class="info">Registrá el ingreso de bandejas o dollys transportados por un bandejero mediante un viaje spot.</div>
+<div class="warning">⚠️ <b>Importante:</b> este movimiento suma a los ingresos del CeVe. Verificá la fecha, el CONEQUIP, el equipo y la cantidad antes de guardar.</div>
+<div id="msgB"></div>
+<form id="formB">
+<div class="section-title">📍 Datos del ingreso</div>
+<div class="form-row"><div><label>CeVe destino</label><select id="bCeve" required></select></div><div><label>Fecha de ingreso</label><input type="date" id="bFecha" required></div></div>
+<div class="form-row"><div><label>Nombre del bandejero</label><input type="text" id="bNombre" required placeholder="Nombre y apellido"></div><div><label>Nº de CONEQUIP</label><input type="text" id="bConequip" required placeholder="Ej.: 123456"></div></div>
+<div class="section-title">📦 Equipo ingresado</div>
+<div class="form-row"><div><label>Equipo</label><select id="bEquipo" required><option value="028">028 - BG Bandeja Grande</option><option value="031">031 - DO Dolly</option></select></div><div><label>Cantidad</label><input type="number" id="bCantidad" min="1" step="1" value="1" required></div></div>
+<div class="form-row full"><div><label>Observaciones</label><textarea id="bObs" placeholder="Opcional"></textarea></div></div>
+<div class="fact-summary" id="resumenBandejero">Completá los datos para registrar el ingreso.</div>
+<button type="submit">💾 Guardar ingreso de bandejero</button>
+</form>
 </div>
 </div>
 
-<div class="modal" id="modFacturacion">
-  <div class="modal-box info">
-
-    <h3>🧾 Confirmar facturación</h3>
-
-    <p>
-      Esta carga será incorporada al Saldo Primario
-      como egreso manual a Planta Pilar.
-    </p>
-
-    <div id="confirmacionFacturacion"></div>
-
-    <p>
-      <b>¿Querés continuar?</b>
-    </p>
-
-    <div class="modal-actions">
-      <button
-        type="button"
-        class="btn-cancel"
-        onclick="cerrarFacturacion()"
-      >
-        Cancelar
-      </button>
-
-      <button
-        type="button"
-        class="btn-confirm"
-        id="btnConfirmarFacturacion"
-      >
-        Sí, guardar
-      </button>
-    </div>
-
-  </div>
-</div>
+<div class="modal" id="modFacturacion"><div class="modal-box info"><h3>🧾 Confirmar facturación</h3><div id="confirmacionFacturacion"></div><p><b>¿Querés continuar?</b></p><div class="modal-actions"><button type="button" class="btn-cancel" onclick="cerrarModal('modFacturacion')">Cancelar</button><button type="button" class="btn-confirm" id="btnConfirmarFacturacion">Sí, guardar</button></div></div></div>
+<div class="modal" id="modBandejero"><div class="modal-box info"><h3>📥 Confirmar ingreso de bandejero</h3><div id="confirmacionBandejero"></div><p><b>¿Querés continuar?</b></p><div class="modal-actions"><button type="button" class="btn-cancel" onclick="cerrarModal('modBandejero')">Cancelar</button><button type="button" class="btn-confirm" id="btnConfirmarBandejero">Sí, guardar</button></div></div></div>
 
 <script>
+const SUBAG=['14267','14128'];
+const SUPABASE_URL='https://chdteugdydnftkysgfmo.supabase.co';
+const SUPABASE_KEY='sb_publishable_yrrkBwZ_N6m1WEKID0AqTg_pZLPFwRX';
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let MAESTRO=null, FACTURA_PENDIENTE=null, BANDEJERO_PENDIENTE=null;
 
-const SUBAG = ['14267','14128'];
-
-const SUPABASE_URL = 'https://chdteugdydnftkysgfmo.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_yrrkBwZ_N6m1WEKID0AqTg_pZLPFwRX';
-
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-let MAESTRO = null;
-let FACTURA_PENDIENTE = null;
-
+function activarTab(tipo){
+  const fac=tipo==='fact';
+  document.getElementById('btnFact').classList.toggle('active',fac);
+  document.getElementById('btnBand').classList.toggle('active',!fac);
+  document.getElementById('tab-facturacion').classList.toggle('active',fac);
+  document.getElementById('tab-bandejero').classList.toggle('active',!fac);
+}
+document.getElementById('btnFact').addEventListener('click',()=>activarTab('fact'));
+document.getElementById('btnBand').addEventListener('click',()=>activarTab('band'));
+function nombreEquipo(c){return c==='028'?'BG - Bandeja Grande':'DO - Dolly'}
+function cerrarModal(id){document.getElementById(id).classList.remove('show')}
+function mensaje(id,texto,ok){document.getElementById(id).innerHTML='<div class="msg '+(ok?'ok':'err')+'">'+texto+'</div>'}
 
 async function cargar(){
-  const raw = await fetch(
-    'data/ceves_maestro.json?ts=' + Date.now(),
-    { cache: 'no-store' }
-  ).then(r => r.json());
-
-  const cevesBase = raw.ceves.map(
-    c => ({...c})
-  );
-
-  const mdp = cevesBase.find(
-    c =>
-      String(c.nombre)
-        .trim()
-        .toLowerCase() === 'mar del plata'
-  );
-
-  if(mdp){
-    mdp.nombre = 'Mar del Plata + ST';
-  }
-
-  MAESTRO = {
-    ...raw,
-    ceves: cevesBase.filter(
-      c =>
-        !SUBAG.includes(
-          String(c.agencia)
-        )
-    )
-  };
-
-  const selector =
-    document.getElementById('fFacCeve');
-
-  selector.innerHTML = '';
-
-  MAESTRO.ceves.forEach(c => {
-    selector.innerHTML +=
-      '<option value="' +
-      c.agencia +
-      '">' +
-      c.nombre +
-      '</option>';
+  const raw=await fetch('data/ceves_maestro.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json());
+  const ceves=raw.ceves.map(c=>({...c}));
+  const mdp=ceves.find(c=>String(c.nombre).trim().toLowerCase()==='mar del plata');
+  if(mdp) mdp.nombre='Mar del Plata + ST';
+  MAESTRO={...raw,ceves:ceves.filter(c=>!SUBAG.includes(String(c.agencia)))};
+  ['fFacCeve','bCeve'].forEach(id=>{
+    const sel=document.getElementById(id); sel.innerHTML='';
+    MAESTRO.ceves.forEach(c=>sel.innerHTML+='<option value="'+c.agencia+'">'+c.nombre+'</option>');
   });
-
-  document.getElementById(
-    'fFacFecha'
-  ).value =
-    new Date()
-      .toISOString()
-      .slice(0,10);
-
-  actualizarResumen();
+  const hoy=new Date().toISOString().slice(0,10);
+  document.getElementById('fFacFecha').value=hoy;
+  document.getElementById('bFecha').value=hoy;
+  actualizarResumenFact(); actualizarResumenBand();
 }
+function ceveSeleccionado(id){const ag=document.getElementById(id).value;return MAESTRO.ceves.find(c=>String(c.agencia)===String(ag))}
+function datosFactura(){const c=ceveSeleccionado('fFacCeve');return {agencia:String(c.agencia),ceve:c.nombre,fecha_facturacion:document.getElementById('fFacFecha').value,numero_factura:document.getElementById('fFacNumero').value.trim(),cliente:document.getElementById('fFacCliente').value.trim(),codigo_facturado:document.getElementById('fFacCodigo').value,cantidad_facturada:Number(document.getElementById('fFacCantidad').value)||0}}
+function datosBandejero(){const c=ceveSeleccionado('bCeve');return {agencia:String(c.agencia),ceve:c.nombre,fecha_ingreso:document.getElementById('bFecha').value,nombre_bandejero:document.getElementById('bNombre').value.trim(),numero_conequip:document.getElementById('bConequip').value.trim(),equipo:document.getElementById('bEquipo').value,cantidad:Number(document.getElementById('bCantidad').value)||0,observaciones:document.getElementById('bObs').value.trim(),usuario:''}}
+function actualizarResumenFact(){if(!MAESTRO)return;const f=datosFactura();document.getElementById('resumenFacturacion').innerHTML='<strong>CeVe:</strong> '+f.ceve+' | <strong>Equipo:</strong> '+nombreEquipo(f.codigo_facturado)+' | <strong>Cantidad:</strong> '+f.cantidad_facturada.toLocaleString('es-AR')}
+function actualizarResumenBand(){if(!MAESTRO)return;const b=datosBandejero();document.getElementById('resumenBandejero').innerHTML='<strong>Destino:</strong> '+b.ceve+' | <strong>Equipo:</strong> '+nombreEquipo(b.equipo)+' | <strong>Cantidad:</strong> '+b.cantidad.toLocaleString('es-AR')}
+['fFacCeve','fFacFecha','fFacNumero','fFacCliente','fFacCodigo','fFacCantidad'].forEach(id=>document.getElementById(id).addEventListener('input',actualizarResumenFact));
+['bCeve','bFecha','bNombre','bConequip','bEquipo','bCantidad','bObs'].forEach(id=>document.getElementById(id).addEventListener('input',actualizarResumenBand));
 
+document.getElementById('formF').addEventListener('submit',e=>{e.preventDefault();if(!e.currentTarget.checkValidity()){e.currentTarget.reportValidity();return}FACTURA_PENDIENTE=datosFactura();document.getElementById('confirmacionFacturacion').innerHTML='<div class="fact-summary"><b>CeVe:</b> '+FACTURA_PENDIENTE.ceve+'<br><b>Fecha:</b> '+FACTURA_PENDIENTE.fecha_facturacion.split('-').reverse().join('/')+'<br><b>Factura:</b> '+FACTURA_PENDIENTE.numero_factura+'<br><b>Cliente:</b> '+FACTURA_PENDIENTE.cliente+'<br><b>Equipo:</b> '+nombreEquipo(FACTURA_PENDIENTE.codigo_facturado)+'<br><b>Cantidad:</b> '+FACTURA_PENDIENTE.cantidad_facturada.toLocaleString('es-AR')+'<br><b>Destino:</b> Planta Pilar</div>';document.getElementById('modFacturacion').classList.add('show')});
 
-function datosFormulario(){
-  const agencia =
-    document.getElementById(
-      'fFacCeve'
-    ).value;
+document.getElementById('formB').addEventListener('submit',e=>{e.preventDefault();if(!e.currentTarget.checkValidity()){e.currentTarget.reportValidity();return}BANDEJERO_PENDIENTE=datosBandejero();document.getElementById('confirmacionBandejero').innerHTML='<div class="fact-summary"><b>Fecha:</b> '+BANDEJERO_PENDIENTE.fecha_ingreso.split('-').reverse().join('/')+'<br><b>Motivo:</b> Bandejero<br><b>Origen:</b> '+BANDEJERO_PENDIENTE.nombre_bandejero+'<br><b>Destino:</b> '+BANDEJERO_PENDIENTE.ceve+'<br><b>CONEQUIP:</b> '+BANDEJERO_PENDIENTE.numero_conequip+'<br><b>Equipo:</b> '+nombreEquipo(BANDEJERO_PENDIENTE.equipo)+'<br><b>Cantidad:</b> '+BANDEJERO_PENDIENTE.cantidad.toLocaleString('es-AR')+'</div>';document.getElementById('modBandejero').classList.add('show')});
 
-  const ceve =
-    MAESTRO.ceves.find(
-      c =>
-        String(c.agencia) ===
-        String(agencia)
-    );
+document.getElementById('btnConfirmarFacturacion').addEventListener('click',async()=>{if(!FACTURA_PENDIENTE)return;const btn=document.getElementById('btnConfirmarFacturacion');btn.disabled=true;btn.textContent='Guardando...';try{const{error}=await supabaseClient.from('facturaciones').insert(FACTURA_PENDIENTE);if(error)throw error;cerrarModal('modFacturacion');mensaje('msgF','✅ Facturación registrada correctamente.',true);document.getElementById('formF').reset();FACTURA_PENDIENTE=null;await cargar()}catch(error){cerrarModal('modFacturacion');mensaje('msgF','❌ No se pudo guardar: '+error.message,false)}finally{btn.disabled=false;btn.textContent='Sí, guardar'}});
 
-  return {
-    agencia: String(agencia),
-    ceve: ceve ? ceve.nombre : '',
-    fecha_facturacion:
-      document.getElementById(
-        'fFacFecha'
-      ).value,
-    numero_factura:
-      document.getElementById(
-        'fFacNumero'
-      ).value.trim(),
-    cliente:
-      document.getElementById(
-        'fFacCliente'
-      ).value.trim(),
-    codigo_facturado:
-      document.getElementById(
-        'fFacCodigo'
-      ).value,
-    cantidad_facturada:
-      Number(
-        document.getElementById(
-          'fFacCantidad'
-        ).value
-      ) || 0
-  };
-}
-
-
-function nombreEquipo(codigo){
-  return codigo === '028'
-    ? 'BG - Bandeja Grande'
-    : 'DO - Dolly';
-}
-
-
-function actualizarResumen(){
-  if(!MAESTRO) return;
-
-  const factura = datosFormulario();
-
-  document.getElementById(
-    'resumenFacturacion'
-  ).innerHTML =
-    '<strong>CeVe:</strong> ' +
-    (factura.ceve || '—') +
-    '   |   ' +
-    '<strong>Equipo:</strong> ' +
-    nombreEquipo(
-      factura.codigo_facturado
-    ) +
-    '   |   ' +
-    '<strong>Cantidad:</strong> ' +
-    factura.cantidad_facturada
-      .toLocaleString('es-AR');
-}
-
-
-document.querySelectorAll(
-  '#fFacCeve, #fFacFecha, ' +
-  '#fFacNumero, #fFacCliente, ' +
-  '#fFacCodigo, #fFacCantidad'
-).forEach(elemento => {
-  elemento.addEventListener(
-    'input',
-    actualizarResumen
-  );
-
-  elemento.addEventListener(
-    'change',
-    actualizarResumen
-  );
-});
-
-
-document
-  .getElementById('formF')
-  .addEventListener(
-    'submit',
-    evento => {
-      evento.preventDefault();
-
-      const formulario =
-        document.getElementById('formF');
-
-      if(!formulario.checkValidity()){
-        formulario.reportValidity();
-        return;
-      }
-
-      FACTURA_PENDIENTE =
-        datosFormulario();
-
-      document.getElementById(
-        'confirmacionFacturacion'
-      ).innerHTML =
-        '<div class="fact-summary">' +
-
-        '<div><b>CeVe:</b> ' +
-        FACTURA_PENDIENTE.ceve +
-        '</div>' +
-
-        '<div><b>Fecha:</b> ' +
-        FACTURA_PENDIENTE
-          .fecha_facturacion
-          .split('-')
-          .reverse()
-          .join('/') +
-        '</div>' +
-
-        '<div><b>Factura:</b> ' +
-        FACTURA_PENDIENTE.numero_factura +
-        '</div>' +
-
-        '<div><b>Cliente:</b> ' +
-        FACTURA_PENDIENTE.cliente +
-        '</div>' +
-
-        '<div><b>Equipo:</b> ' +
-        nombreEquipo(
-          FACTURA_PENDIENTE
-            .codigo_facturado
-        ) +
-        '</div>' +
-
-        '<div><b>Cantidad:</b> ' +
-        FACTURA_PENDIENTE
-          .cantidad_facturada
-          .toLocaleString('es-AR') +
-        '</div>' +
-
-        '<div><b>Destino:</b> ' +
-        'Planta Pilar' +
-        '</div>' +
-
-        '</div>';
-
-      document.getElementById(
-        'modFacturacion'
-      ).classList.add('show');
-    }
-  );
-
-
-function cerrarFacturacion(){
-  document.getElementById(
-    'modFacturacion'
-  ).classList.remove('show');
-
-  FACTURA_PENDIENTE = null;
-}
-
-
-function mostrarMensaje(texto, correcto){
-  document.getElementById(
-    'msgF'
-  ).innerHTML =
-    '<div class="msg ' +
-    (correcto ? 'ok' : 'err') +
-    '">' +
-    texto +
-    '</div>';
-}
-
-
-document.getElementById(
-  'btnConfirmarFacturacion'
-).addEventListener(
-  'click',
-  async () => {
-    if(!FACTURA_PENDIENTE) return;
-
-    const boton =
-      document.getElementById(
-        'btnConfirmarFacturacion'
-      );
-
-    boton.disabled = true;
-    boton.textContent =
-      'Guardando...';
-
-    try {
-      const { error } =
-        await supabaseClient
-          .from('facturaciones')
-          .insert({
-            agencia:
-              FACTURA_PENDIENTE.agencia,
-
-            ceve:
-              FACTURA_PENDIENTE.ceve,
-
-            fecha_facturacion:
-              FACTURA_PENDIENTE
-                .fecha_facturacion,
-
-            numero_factura:
-              FACTURA_PENDIENTE
-                .numero_factura,
-
-            cliente:
-              FACTURA_PENDIENTE.cliente,
-
-            codigo_facturado:
-              FACTURA_PENDIENTE
-                .codigo_facturado,
-
-            cantidad_facturada:
-              FACTURA_PENDIENTE
-                .cantidad_facturada
-          });
-
-      if(error) throw error;
-
-      document.getElementById(
-        'modFacturacion'
-      ).classList.remove('show');
-
-      mostrarMensaje(
-        '✅ Facturación registrada ' +
-        'correctamente.',
-        true
-      );
-
-      document.getElementById(
-        'formF'
-      ).reset();
-
-      document.getElementById(
-        'fFacFecha'
-      ).value =
-        new Date()
-          .toISOString()
-          .slice(0,10);
-
-      FACTURA_PENDIENTE = null;
-
-      cargar();
-
-    } catch(error) {
-      console.error(
-        'Error guardando facturación:',
-        error
-      );
-
-      document.getElementById(
-        'modFacturacion'
-      ).classList.remove('show');
-
-      const duplicada =
-        String(error.message || '')
-          .toLowerCase()
-          .includes('duplicate');
-
-      mostrarMensaje(
-        duplicada
-          ? '❌ Esta factura ya fue ' +
-            'registrada para el CeVe ' +
-            'y el equipo seleccionados.'
-          : '❌ No se pudo guardar: ' +
-            error.message,
-        false
-      );
-
-    } finally {
-      boton.disabled = false;
-      boton.textContent =
-        'Sí, guardar';
-    }
-  }
-);
-
+document.getElementById('btnConfirmarBandejero').addEventListener('click',async()=>{if(!BANDEJERO_PENDIENTE)return;const btn=document.getElementById('btnConfirmarBandejero');btn.disabled=true;btn.textContent='Guardando...';try{
+  const b=BANDEJERO_PENDIENTE;
+  const{data:existentes,error:errorConsulta}=await supabaseClient.from('ingresos_bandejeros').select('id').eq('agencia',b.agencia).eq('fecha_ingreso',b.fecha_ingreso).eq('numero_conequip',b.numero_conequip).eq('equipo',b.equipo).limit(1);
+  if(errorConsulta)throw errorConsulta;
+  if(existentes&&existentes.length)throw new Error('Este ingreso de bandejero ya fue registrado para el CeVe, fecha, CONEQUIP y equipo seleccionados.');
+  const{error}=await supabaseClient.from('ingresos_bandejeros').insert(b);if(error)throw error;
+  cerrarModal('modBandejero');mensaje('msgB','✅ Ingreso de bandejero registrado correctamente.',true);document.getElementById('formB').reset();BANDEJERO_PENDIENTE=null;await cargar();activarTab('band');
+}catch(error){cerrarModal('modBandejero');mensaje('msgB','❌ No se pudo guardar: '+error.message,false)}finally{btn.disabled=false;btn.textContent='Sí, guardar'}});
 
 cargar();
-
 </script>
-</body>
-</html>
+</body></html>

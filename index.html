@@ -10,7 +10,7 @@ header{background:linear-gradient(90deg,#0066b3,#003e7e);color:#fff;padding:18px
 header h1{margin:0;font-size:22px}
 header .updated{font-size:12px;opacity:.85}
 .container{padding:20px 28px}
-.nav{display:flex;gap:14px;margin-bottom:18px}
+.nav{display:flex;gap:14px;margin-bottom:18px;flex-wrap:wrap}
 .nav a{background:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;color:#003e7e;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .nav a:hover,.nav a.active{background:#0066b3;color:#fff}
 .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:18px}
@@ -261,7 +261,7 @@ button[type=submit]:hover{background:#004f8c}
   <div class="nav">
     <a href="index.html" class="active">📊 Dashboard</a>
     <a href="carga.html">📝 Carga Stock</a>
-    <a href="facturacion.html">🧾 Carga Facturaciones</a>
+    <a href="facturacion.html">🧾 Carga Facturaciones y Bandejeros</a>
     <a href="seguimiento.html">🔐 Acceso Control de Equipos</a>
     <a href="Guia_Uso.mp4">🎬 Guía de uso</a>
   </div>
@@ -406,6 +406,7 @@ let INVENTARIO_PENDIENTE = null;
 let MOVS=[];
 let DETALLE=[];
 let FACTURACIONES=[ ];
+let BANDEJEROS=[ ];
 let STOCK={
       registros_diarios:[ ]
 };
@@ -719,6 +720,29 @@ try {
   );
 
   FACTURACIONES = [];
+}
+
+/* Cargar ingresos manuales de bandejeros. */
+try {
+  const { data: bandejerosSupabase, error: errorBandejeros } = await supabaseClient
+    .from('ingresos_bandejeros')
+    .select('id, created_at, fecha_ingreso, agencia, ceve, nombre_bandejero, numero_conequip, equipo, cantidad, observaciones, usuario')
+    .order('fecha_ingreso', { ascending: true })
+    .order('created_at', { ascending: true });
+  if(errorBandejeros) throw errorBandejeros;
+  BANDEJEROS = bandejerosSupabase || [];
+  BANDEJEROS.forEach(ingreso => {
+    const agencia=String(ingreso.agencia);
+    const equipo=String(ingreso.equipo).padStart(3,'0');
+    const cantidad=Number(ingreso.cantidad)||0;
+    if(SUBAG.includes(agencia)||!['028','031'].includes(equipo)||cantidad<=0) return;
+    MOVS.push({agencia,ceve:ingreso.ceve,fecha:ingreso.fecha_ingreso,equipo,ingresos_planta:cantidad,egresos_planta:0,saldo_bruto:-cantidad,fuente:'ingreso_bandejero',id_bandejero:ingreso.id});
+    DETALLE.push({fecha:ingreso.fecha_ingreso,agencia,ceve:ingreso.ceve,equipo,motivo:'Bandejero',tipo:'ingreso_planta',origen:ingreso.nombre_bandejero,destino:ingreso.ceve,remito:ingreso.numero_conequip,cantidad,fuente:'ingreso_bandejero',id_bandejero:ingreso.id,timestamp:ingreso.created_at,observaciones:ingreso.observaciones||''});
+  });
+  console.log('Ingresos de bandejeros cargados:',BANDEJEROS.length);
+} catch(e) {
+  console.error('Error cargando ingresos de bandejeros:',e);
+  BANDEJEROS=[];
 }
 
 try {
