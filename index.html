@@ -393,6 +393,8 @@ button[type=submit]:hover{background:#004f8c}
 <button type="button" class="btn-confirm" onclick="descargarMov()">⬇ Descargar Excel</button>
 </div></div></div>
 
+<div class="modal" id="modObs"><div class="modal-box info" id="modObsBody"></div></div>
+
 <script>
 const SUBAG = ['14267','14128'];
 const SUPABASE_URL = 'https://chdteugdydnftkysgfmo.supabase.co';
@@ -416,7 +418,7 @@ const AG_ST='14128';
 let sortCol='sn', sortDir='asc';
 let sortColDet='fecha', sortDirDet='asc';
 let sortColSem='variacion', sortDirSem='asc';
-const AJUSTES_CONCILIATORIOS = [{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-25987,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TAB-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-10434,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TAB-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tucumán","fecha":"2026-08-31","equipo":"028","cantidad":1343,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TUC-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tucumán","fecha":"2026-08-31","equipo":"028","cantidad":8458,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TUC-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mar del Plata","fecha":"2026-08-31","equipo":"028","cantidad":-1904,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MDP-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mar del Plata","fecha":"2026-08-31","equipo":"028","cantidad":-37802,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MDP-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Foráneos","fecha":"2026-08-31","equipo":"028","cantidad":-6479,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-FOR-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Foráneos","fecha":"2026-08-31","equipo":"028","cantidad":-10634,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-FOR-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Rosario","fecha":"2026-08-31","equipo":"028","cantidad":-6589,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-ROS-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Rosario","fecha":"2026-08-31","equipo":"028","cantidad":-5518,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-ROS-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mendoza","fecha":"2026-08-31","equipo":"028","cantidad":1585,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MZA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mendoza","fecha":"2026-08-31","equipo":"028","cantidad":939,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MZA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Bahía Blanca","fecha":"2026-08-31","equipo":"028","cantidad":1686,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-BHA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Bahía Blanca","fecha":"2026-08-31","equipo":"028","cantidad":2862,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-BHA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Neuquén","fecha":"2026-08-31","equipo":"028","cantidad":-2041,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-NQN-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Neuquén","fecha":"2026-08-31","equipo":"028","cantidad":-5375,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-NQN-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-08-31","equipo":"028","cantidad":-12909,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-CBA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-08-31","equipo":"028","cantidad":-7099,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-CBA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-01-31","equipo":"028","cantidad":-82005,"tipo":"EGRESO A PLANTA","origen":"CeVe Córdoba","destino":"Planta Córdoba","referencia":"CONC-CBA-003","observacion":"Devolución de 82.005 BG documentada el 31/08/2026 e imputada al cierre de enero 2026. No duplicar al ingresar desde MC1."},{"ceve":"Santa Fe","fecha":"2026-08-31","equipo":"028","cantidad":96,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-SFE-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tesei","fecha":"2026-08-31","equipo":"028","cantidad":423,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TES-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tesei","fecha":"2026-08-31","equipo":"028","cantidad":-14180,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TES-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-43483,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC2-TAB-ING","observacion":"Diferencia residual de entradas conciliada hasta el 30/08/2026"},{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-13500,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC2-TAB-EGR","observacion":"Diferencia residual de devoluciones conciliada hasta el 30/08/2026"}];
+const AJUSTES_CONCILIATORIOS = [{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-25987,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TAB-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-10434,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TAB-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tucumán","fecha":"2026-08-31","equipo":"028","cantidad":1343,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TUC-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tucumán","fecha":"2026-08-31","equipo":"028","cantidad":8458,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TUC-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mar del Plata","fecha":"2026-08-31","equipo":"028","cantidad":-1904,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MDP-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mar del Plata","fecha":"2026-08-31","equipo":"028","cantidad":-37802,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MDP-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Foráneos","fecha":"2026-08-31","equipo":"028","cantidad":-6479,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-FOR-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Foráneos","fecha":"2026-08-31","equipo":"028","cantidad":-10634,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-FOR-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Rosario","fecha":"2026-08-31","equipo":"028","cantidad":-6589,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-ROS-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Rosario","fecha":"2026-08-31","equipo":"028","cantidad":-5518,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-ROS-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mendoza","fecha":"2026-08-31","equipo":"028","cantidad":1585,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MZA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Mendoza","fecha":"2026-08-31","equipo":"028","cantidad":939,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-MZA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Bahía Blanca","fecha":"2026-08-31","equipo":"028","cantidad":1686,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-BHA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Bahía Blanca","fecha":"2026-08-31","equipo":"028","cantidad":2862,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-BHA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Neuquén","fecha":"2026-08-31","equipo":"028","cantidad":-2041,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-NQN-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Neuquén","fecha":"2026-08-31","equipo":"028","cantidad":-5375,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-NQN-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-08-31","equipo":"028","cantidad":-12909,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-CBA-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-08-31","equipo":"028","cantidad":-7099,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-CBA-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Córdoba","fecha":"2026-01-31","equipo":"028","cantidad":-82005,"tipo":"EGRESO A PLANTA","origen":"CeVe Córdoba","destino":"Planta Córdoba","referencia":"CONC-CBA-003","observacion":"Devolución de 82.005 BG documentada el 31/08/2026 e imputada al cierre de enero 2026. No duplicar al ingresar desde MC1."},{"ceve":"Santa Fe","fecha":"2026-08-31","equipo":"028","cantidad":96,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-SFE-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tesei","fecha":"2026-08-31","equipo":"028","cantidad":423,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TES-001","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tesei","fecha":"2026-08-31","equipo":"028","cantidad":-14180,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"CONC-TES-002","observacion":"Diferencia conciliada contra Excel operativo"},{"ceve":"Tablada","fecha":"2026-08-31","equipo":"028","cantidad":-46783,"tipo":"INGRESO A CEVE","origen":"Ajuste","destino":"Ajuste","referencia":"CONC2-TAB-ING","observacion":"Diferencia residual de ingresos conciliada contra Excel operativo al cierre del 31/08/2026."},{"ceve":"Mar del Plata","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":532,"tipo":"INGRESO A CEVE","referencia":"CIERRE-3108-MDP-ING"},{"ceve":"Mar del Plata","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":360,"tipo":"EGRESO A PLANTA","referencia":"CIERRE-3108-MDP-EGR"},{"ceve":"Foráneos","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":7264,"tipo":"INGRESO A CEVE","referencia":"CIERRE-3108-FOR-ING"},{"ceve":"Foráneos","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":3536,"tipo":"EGRESO A PLANTA","referencia":"CIERRE-3108-FOR-EGR"},{"ceve":"Rosario","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":2158,"tipo":"INGRESO A CEVE","referencia":"CIERRE-3108-ROS-ING"},{"ceve":"Rosario","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":742,"tipo":"EGRESO A PLANTA","referencia":"CIERRE-3108-ROS-EGR"},{"ceve":"Mendoza","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":1870,"tipo":"INGRESO A CEVE","referencia":"CIERRE-3108-MZA-ING"},{"ceve":"Neuquén","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":2387,"tipo":"INGRESO A CEVE","referencia":"CIERRE-3108-NQN-ING"},{"ceve":"Neuquén","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":-2260,"tipo":"EGRESO A PLANTA","referencia":"CIERRE-3108-NQN-EGR"},{"ceve":"Córdoba","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":1878,"tipo":"INGRESO A CEVE","referencia":"CIERRE-3108-CBA-ING"},{"ceve":"Córdoba","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":2422,"tipo":"EGRESO A PLANTA","referencia":"CIERRE-3108-CBA-EGR"},{"ceve":"Tesei","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":-116,"tipo":"INGRESO A CEVE","referencia":"CIERRE-3108-TES-ING"},{"ceve":"Tesei","fecha":"2026-08-31","equipo":"028","origen":"Ajuste","destino":"Ajuste","observacion":"Ajuste residual de cierre conciliado contra Excel operativo al 31/08/2026.","cantidad":-5417,"tipo":"EGRESO A PLANTA","referencia":"CIERRE-3108-TES-EGR"},{"ceve":"Tablada","fecha":"2026-09-04","equipo":"028","cantidad":1980,"tipo":"EGRESO A PLANTA","origen":"Ajuste","destino":"Ajuste","referencia":"DUP-REM-807861","observacion":"Remito 807861 duplicado en sistema por error de despacho. Confirmado por Ignacio Cespa, CeVe La Tablada, correo 08/09/2026."}];
 
 function normalizarTexto(valor){
   return String(valor || '')
@@ -784,6 +786,28 @@ try {
   console.error('Error cargando stock desde Supabase:', e);
   STOCK = { registros_diarios: [] };
 }
+
+/* Incorporar cada conteo de stock al Detalle de Movimientos.
+   Motivo: Carga Stock. Fuente: conteo_stock.
+   No entra en MOVS, por lo que NO afecta Ingresos ni Egresos. */
+(STOCK.registros_diarios || []).forEach(reg => {
+  const agencia = String(reg.agencia);
+  if(SUBAG.includes(agencia)) return;
+  const ce = MAESTRO.ceves.find(x => x.agencia === agencia);
+  const nombre = ce ? ce.nombre : (reg.ceve || agencia);
+  const obs = reg.observaciones || '';
+  const equipos = [['028', reg.BG], ['031', reg.DO], ['132', reg.PAL]];
+  equipos.forEach(([equipo, valor]) => {
+    if(valor === null || valor === undefined) return;
+    DETALLE.push({
+      fecha: reg.fecha, agencia: agencia, ceve: nombre, equipo: equipo,
+      motivo: 'Carga Stock', tipo: 'conteo_stock',
+      origen: 'Conteo físico', destino: nombre, remito: '',
+      cantidad: Number(valor) || 0, fuente: 'conteo_stock',
+      observaciones: obs, supervisor: reg.supervisor || '', timestamp: reg.timestamp || ''
+    });
+  });
+});
   document.getElementById('lastUpdate').textContent='Actualizado: '+new Date(m.actualizado).toLocaleString('es-AR');
   MAESTRO.ceves.forEach(c=>{
     document.getElementById('fCeve').innerHTML += '<option value="'+c.agencia+'">'+c.nombre+'</option>';
@@ -1299,6 +1323,7 @@ function renderDetalle(){
       grupos[key] = {
         fecha: m.fecha, ceve: m.ceve, tipo: m.tipo,
         remito: m.remito, origen: m.origen, destino: m.destino,
+        obs: m.observaciones || '', sup: m.supervisor || '',
         motivos:
   new Set([
     motivoLabel(m.motivo)
@@ -1312,6 +1337,8 @@ pal: 0
       grupos[key].motivos.add(motivoLabel(m.motivo));
       if(!grupos[key].origen && m.origen) grupos[key].origen = m.origen;
       if(!grupos[key].destino && m.destino) grupos[key].destino = m.destino;
+      if(!grupos[key].obs && m.observaciones) grupos[key].obs = m.observaciones;
+      if(!grupos[key].sup && m.supervisor) grupos[key].sup = m.supervisor;
     }
     if(m.equipo === '028'){
   grupos[key].bg +=
@@ -1362,16 +1389,22 @@ pal: 0
   document.getElementById('detalleContador').textContent = filas.length.toLocaleString('es-AR') + ' movimientos';
   const MAX = 500;
   const mostrar = filas.slice(0, MAX);
+  window._detObs = [];
   document.querySelector('#tablaDetalle tbody').innerHTML = mostrar.map(f=>{
-    const tipoColor = f.tipo==='ingreso_planta' ? '#1e8e3e' : '#d93025';
+    const tipoColor = f.tipo==='conteo_stock' ? '#0066b3' : (f.tipo==='ingreso_planta' ? '#1e8e3e' : '#d93025');
     const motivosArr = Array.from(f.motivos);
     let motivo = motivosArr.join(' + ');
     if(motivo.length>40) motivo = motivo.slice(0,40)+'…';
+    let obsIcon = '';
+    if(f.obs && f.obs.trim()){
+      const oi = window._detObs.push({obs:f.obs, ceve:f.ceve, fecha:f.fecha, sup:f.sup||''}) - 1;
+      obsIcon = ' <span style="cursor:pointer" title="Ver observación" onclick="verObs('+oi+')">📝</span>';
+    }
     const fechaFmt = f.fecha.split('-').reverse().join('/');
     return '<tr>'+
       '<td>'+fechaFmt+'</td>'+
       '<td>'+f.ceve+'</td>'+
-      '<td style="font-size:11px;color:'+tipoColor+'">'+motivo+'</td>'+
+      '<td style="font-size:11px;color:'+tipoColor+'">'+motivo+obsIcon+'</td>'+
       '<td>'+(f.remito||'—')+'</td>'+
       '<td>'+nodoLabel(f.origen)+'</td>'+
       '<td>'+nodoLabel(f.destino)+'</td>'+
@@ -1413,6 +1446,18 @@ function exportarDetalle(){
   const wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,ws,'Detalle Movimientos');
   XLSX.writeFile(wb,'DetalleMovimientos_'+new Date().toISOString().slice(0,10)+'.xlsx');
+}
+function verObs(i){
+  const o = (window._detObs || [])[i];
+  if(!o) return;
+  const fechaFmt = (o.fecha||'').split('-').reverse().join('/');
+  let html = '<h3>📝 Observación de la carga</h3>';
+  html += '<p><b>CeVe:</b> '+o.ceve+' &nbsp; <b>Fecha:</b> '+fechaFmt+'</p>';
+  if(o.sup) html += '<p><b>Supervisor:</b> '+o.sup+'</p>';
+  html += '<p style="white-space:pre-wrap">'+o.obs+'</p>';
+  html += '<div class="modal-actions"><button type="button" class="btn-cancel" onclick="document.getElementById(\'modObs\').classList.remove(\'show\')">Cerrar</button></div>';
+  document.getElementById('modObsBody').innerHTML = html;
+  document.getElementById('modObs').classList.add('show');
 }
 function abrirModalMov(){ document.getElementById('modMov').classList.add('show'); }
 function descargarMov(){
