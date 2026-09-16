@@ -1324,14 +1324,17 @@ function renderDetalle(){
   // Agrupar por (fecha+ceve+remito) o (fecha+ceve+motivo si no hay remito)
   const grupos = {};
   filtradas.forEach(m=>{
-    const key = m.remito
-      ? m.fecha+'|'+m.agencia+'|'+m.remito
-      : m.fecha+'|'+m.agencia+'|SIN_REMITO|'+m.motivo;
+    const key = m.fuente === 'conteo_stock'
+      ? 'STOCK|'+m.agencia+'|'+(m.timestamp || (m.fecha+'|'+m.motivo))
+      : (m.remito
+          ? m.fecha+'|'+m.agencia+'|'+m.remito
+          : m.fecha+'|'+m.agencia+'|SIN_REMITO|'+m.motivo);
     if(!grupos[key]){
       grupos[key] = {
         fecha: m.fecha, ceve: m.ceve, tipo: m.tipo,
         remito: m.remito, origen: m.origen, destino: m.destino,
         obs: m.observaciones || '', sup: m.supervisor || '',
+        fuente: m.fuente || '', timestamp: m.timestamp || '',
         motivos:
   new Set([
     motivoLabel(m.motivo)
@@ -1408,7 +1411,11 @@ pal: 0
       const oi = window._detObs.push({obs:f.obs, ceve:f.ceve, fecha:f.fecha, sup:f.sup||''}) - 1;
       obsIcon = ' <span style="cursor:pointer" title="Ver observación" onclick="verObs('+oi+')">📝</span>';
     }
-    const fechaFmt = f.fecha.split('-').reverse().join('/');
+    let fechaFmt = f.fecha.split('-').reverse().join('/');
+    if(f.fuente==='conteo_stock' && f.timestamp){
+      const _hh = new Date(f.timestamp).toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+      fechaFmt += ' <span style=\"color:#0066b3;font-size:10px\">'+_hh+'</span>';
+    }
     return '<tr>'+
       '<td>'+fechaFmt+'</td>'+
       '<td>'+f.ceve+'</td>'+
