@@ -505,12 +505,17 @@ document.getElementById('formD').addEventListener('submit',e=>{
   if(!document.getElementById('formD').checkValidity()) return;
   document.getElementById('modD').classList.add('show');
 });
+let _guardandoDiario=false;
 function enviarD(){
+  if(_guardandoDiario) return;          // evita el doble-clic instantaneo
+  _guardandoDiario=true;
   cerrar('modD');
   const a=document.getElementById('dCeve').value, c=MAESTRO.ceves.find(x=>x.agencia===a);
   const fecha=document.getElementById('dFecha').value, hora=document.getElementById('dHora').value;
   const ts = fecha+'T'+hora+':00';
-  guardar({tipo:'diario',agencia:c.agencia,ceve:c.nombre,fecha:fecha,hora:hora,supervisor:document.getElementById('dSup').value,BG:+document.getElementById('dBG').value||0,DO:+document.getElementById('dDO').value||0,PAL:+document.getElementById('dPAL').value||0,observaciones:document.getElementById('dObs').value,timestamp:ts},'msgD','formD');
+  Promise.resolve(
+    guardar({tipo:'diario',agencia:c.agencia,ceve:c.nombre,fecha:fecha,hora:hora,supervisor:document.getElementById('dSup').value,BG:+document.getElementById('dBG').value||0,DO:+document.getElementById('dDO').value||0,PAL:+document.getElementById('dPAL').value||0,observaciones:document.getElementById('dObs').value,timestamp:ts},'msgD','formD')
+  ).finally(()=>{ _guardandoDiario=false; });
 }
 
 document.getElementById('formM').addEventListener('submit',e=>{

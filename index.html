@@ -910,7 +910,14 @@ function fmt(n){return(n||0).toLocaleString('es-AR')}
 function fmtP(n){return(n*100).toFixed(2)+'%'}
 function fmtPSigned(n){const v=(n*100).toFixed(2);return (n>=0?'+':'')+v+'%'}
 
-function stockAct(ag, eq){
+function stockAct(ag, eq, hasta){
+  /* Si no se pasa 'hasta', usa el filtro global "Hasta" del dashboard.
+     Asi el conteo fisico corresponde al ultimo stock cargado
+     DENTRO del rango de fechas elegido. */
+  if(hasta === undefined){
+    const _h = document.getElementById('fHasta');
+    hasta = _h ? _h.value : '';
+  }
   /*
   Mar del Plata + ST registra un único
   stock consolidado bajo la agencia
@@ -922,7 +929,8 @@ function stockAct(ag, eq){
   )
     .filter(
       s =>
-        String(s.agencia) === String(ag)
+        String(s.agencia) === String(ag) &&
+        (!hasta || (s.fecha || '') <= hasta)
     )
     .sort((a,b) => {
       const claveA =
