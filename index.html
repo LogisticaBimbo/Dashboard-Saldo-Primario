@@ -1008,10 +1008,25 @@ function isoWeek(fecha){
 }
 function render(){
   const data=filtrar();
-  let tI=0,tE=0,tVS=0;
-  const gr={};
-  data.forEach(m=>{const k=m.agencia+'|'+m.equipo;if(!gr[k])gr[k]={ag:m.agencia,eq:m.equipo}});
-  Object.values(gr).forEach(g=>{const r=calc(g.ag,g.eq,data);tI+=r.ing;tE+=r.egr;tVS+=r.vs});
+  const regionF = document.getElementById('fRegion').value;
+  const ceveF = document.getElementById('fCeve').value;
+  const eqF = document.getElementById('fEquipo').value;
+
+  /* Los KPI, el Resumen Detallado y la Tabla Maestra deben usar
+     exactamente el mismo universo de CeVes/equipos seleccionados.
+     El stock se toma con la ultima carga disponible hasta la fecha Hasta. */
+  const cevesSeleccionados = MAESTRO.ceves.filter(c=>{
+    if(regionF && c.region!==regionF) return false;
+    if(ceveF && c.agencia!==ceveF) return false;
+    return true;
+  });
+  const equiposSeleccionados = eqF ? [eqF] : ['028','031','132'];
+
+  const tI = data.reduce((s,m)=>s+(Number(m.ingresos_planta)||0),0);
+  const tE = data.reduce((s,m)=>s+(Number(m.egresos_planta)||0),0);
+  const tVS = cevesSeleccionados.reduce((total,c)=>
+    total + equiposSeleccionados.reduce((sub,eq)=>sub+calc(c.agencia,eq,data).vs,0)
+  ,0);
   const tSB=tE-tI, tSN=tSB+tVS, tF=tI?tSN/tI:0;
   document.getElementById('kpis').innerHTML =
     '<div class="kpi"><div class="label">Ingresos Planta</div><div class="value">'+fmt(tI)+'</div></div>'+
@@ -1023,15 +1038,8 @@ function render(){
   renderSemanal(data);
   renderDetalle();
 
-  const eqF = document.getElementById('fEquipo').value;
-  const filas = MAESTRO.ceves.filter(c=>{
-    const r=document.getElementById('fRegion').value, cf=document.getElementById('fCeve').value;
-    if(r&&c.region!==r) return false;
-    if(cf&&c.agencia!==cf) return false;
-    return true;
-  }).flatMap(c=>{
-    const eqs = eqF ? [eqF] : ['028','031','132']
-    return eqs.map(eq=>{
+  const filas = cevesSeleccionados.flatMap(c=>{
+    return equiposSeleccionados.map(eq=>{
       const r=calc(c.agencia,eq,data);
       return {region:c.region, ceve:c.nombre, eq:
   eq === '028'
@@ -1072,7 +1080,12 @@ function renderResumen(data){
   const eq=document.getElementById('fEquipo').value || '028';
   let inv=0,co=null,vs=0,ing=0,egr=0;
   if(ag){const r=calc(ag,eq,data);inv=r.inv;co=r.sa;vs=r.vs;ing=r.ing;egr=r.egr}
-  else MAESTRO.ceves.forEach(c=>{const r=calc(c.agencia,eq,data);inv+=r.inv;vs+=r.vs;ing+=r.ing;egr+=r.egr;if(r.sa!==null)co=(co||0)+r.sa});
+  else {
+    const region = document.getElementById('fRegion').value;
+    MAESTRO.ceves
+      .filter(c=>!region || c.region===region)
+      .forEach(c=>{const r=calc(c.agencia,eq,data);inv+=r.inv;vs+=r.vs;ing+=r.ing;egr+=r.egr;if(r.sa!==null)co=(co||0)+r.sa});
+  }
   const s=egr-ing, sn=s+vs, fl=ing?sn/ing:0;
   const nom=ag?MAESTRO.ceves.find(c=>c.agencia===ag).nombre:'TODOS LOS CEVES';
   const en =
