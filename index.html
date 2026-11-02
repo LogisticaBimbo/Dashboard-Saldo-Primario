@@ -1040,11 +1040,11 @@ function render(){
   ,0);
   const tSB=tE-tI, tSN=tSB+tVS, tF=tI?tSN/tI:0;
   document.getElementById('kpis').innerHTML =
-    '<div class="kpi"><div class="label info-tip" title="Suma de ingresos a CeVe dentro del período seleccionado.">Ingresos Planta ⓘ</div><div class="value">'+fmt(tI)+'</div></div>'+
-    '<div class="kpi"><div class="label info-tip" title="Suma de egresos a Planta dentro del período seleccionado.">Egresos Planta ⓘ</div><div class="value">'+fmt(tE)+'</div></div>'+
-    '<div class="kpi '+(tSB<0?'negative':'positive')+'"><div class="label info-tip" title="Egresos del período menos Ingresos del período. No incluye stock.">Saldo Bruto ⓘ</div><div class="value">'+fmt(tSB)+'</div></div>'+
-    '<div class="kpi '+(tSN<0?'negative':'positive')+'"><div class="label info-tip" title="Saldo Bruto más Variación de Stock del Período. La variación anual acumulada no impacta aquí.">Saldo Neto del Período ⓘ</div><div class="value">'+fmt(tSN)+'</div></div>'+
-    '<div class="kpi '+(tF<0?'negative':'positive')+'"><div class="label info-tip" title="Saldo Neto del Período dividido por los Ingresos del mismo período.">% Flujo ⓘ</div><div class="value">'+fmtP(tF)+'</div></div>';
+    '<div class="kpi"><div class="label info-tip" title="Suma de ingresos a CeVe dentro del período seleccionado.">Ingresos Planta</div><div class="value">'+fmt(tI)+'</div></div>'+
+    '<div class="kpi"><div class="label info-tip" title="Suma de egresos a Planta dentro del período seleccionado.">Egresos Planta</div><div class="value">'+fmt(tE)+'</div></div>'+
+    '<div class="kpi '+(tSB<0?'negative':'positive')+'"><div class="label info-tip" title="Egresos del período menos Ingresos del período. No incluye stock.">Saldo Bruto</div><div class="value">'+fmt(tSB)+'</div></div>'+
+    '<div class="kpi '+(tSN<0?'negative':'positive')+'"><div class="label info-tip" title="Saldo Bruto más Variación de Stock del Período. La variación anual acumulada no impacta aquí.">Saldo Neto</div><div class="value">'+fmt(tSN)+'</div></div>'+
+    '<div class="kpi '+(tF<0?'negative':'positive')+'"><div class="label info-tip" title="Saldo Neto del Período dividido por los Ingresos del mismo período.">% Flujo</div><div class="value">'+fmtP(tF)+'</div></div>';
   renderResumen(data);
   renderSemanal(data);
   renderDetalle();
@@ -1105,7 +1105,7 @@ function renderResumen(data){
   const tipVar='Stock Fin ('+fmt(stockFin)+') menos Stock Inicio ('+fmt(stockInicio)+'). Esta variación impacta en el Saldo Neto.';
   const tipAcum='Stock Fin ('+fmt(stockFin)+') menos Inventario Inicial 2026 ('+fmt(invAnual)+'). Es informativa y no impacta en el Saldo Neto del Período.';
   document.getElementById('resumenContenido').innerHTML=
-    '<div class="resumen-row header"><span>'+nom+' — '+en+'</span><span class="v"></span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipInicio+'">Stock Inicio del Período ⓘ</span><span class="v">'+fmt(stockInicio)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipFin+'">Stock Fin del Período ⓘ</span><span class="v">'+fmt(stockFin)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipVar+'">Variación de Stock del Período ⓘ</span><span class="v '+(vs<0?'neg':'pos')+'">'+fmt(vs)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipAcum+'">Variación Acumulada Anual ⓘ</span><span class="v '+(vsAcum<0?'neg':'pos')+'">'+fmt(vsAcum)+'</span></div>'+    '<div class="resumen-row"><span>Ingresos de Planta</span><span class="v">'+fmt(ing)+'</span></div>'+    '<div class="resumen-row"><span>Egresos a Planta</span><span class="v">'+fmt(egr)+'</span></div>'+    '<div class="resumen-row total"><span class="info-tip" title="Egresos del período menos Ingresos del período. No incluye stock.">Saldo Bruto ⓘ</span><span class="v '+(sb<0?'neg':'pos')+'">'+fmt(sb)+'</span></div>'+    '<div class="resumen-row total"><span class="info-tip" title="Saldo Bruto más Variación de Stock del Período. La variación acumulada anual no se suma.">Saldo Neto del Período ⓘ</span><span class="v '+(sn<0?'neg':'pos')+'">'+fmt(sn)+'</span></div>'+    '<div class="resumen-row final"><span class="info-tip" title="Saldo Neto del Período dividido por los Ingresos del mismo período.">Saldo Neto / Flujo del CV ⓘ</span><span class="v">'+fmtP(fl)+'</span></div>';
+    '<div class="resumen-row header"><span>'+nom+' — '+en+'</span><span class="v"></span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipInicio+'">Stock Inicio</span><span class="v">'+fmt(stockInicio)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipFin+'">Stock Fin</span><span class="v">'+fmt(stockFin)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipVar+'">Variación Stock</span><span class="v '+(vs<0?'neg':'pos')+'">'+fmt(vs)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipAcum+'">Variación Anual</span><span class="v '+(vsAcum<0?'neg':'pos')+'">'+fmt(vsAcum)+'</span></div>'+    '<div class="resumen-row"><span>Ingresos de Planta</span><span class="v">'+fmt(ing)+'</span></div>'+    '<div class="resumen-row"><span>Egresos a Planta</span><span class="v">'+fmt(egr)+'</span></div>'+    '<div class="resumen-row total"><span class="info-tip" title="Egresos del período menos Ingresos del período. No incluye stock.">Saldo Bruto</span><span class="v '+(sb<0?'neg':'pos')+'">'+fmt(sb)+'</span></div>'+    '<div class="resumen-row total"><span class="info-tip" title="Saldo Bruto más Variación de Stock del Período. La variación acumulada anual no se suma.">Saldo Neto</span><span class="v '+(sn<0?'neg':'pos')+'">'+fmt(sn)+'</span></div>'+    '<div class="resumen-row final"><span class="info-tip" title="Saldo Neto del Período dividido por los Ingresos del mismo período.">Saldo Neto / Flujo del CV</span><span class="v">'+fmtP(fl)+'</span></div>';
 }
 
 function renderSemanal(data){
@@ -1232,8 +1232,9 @@ let chC,chE;
 function renderCharts(filas,data){
   const pC={};
   filas.forEach(f=>{pC[f.ceve]=(pC[f.ceve]||0)+f.sn});
+  const ranking=Object.entries(pC).sort((a,b)=>a[1]-b[1]);
   if(chC) chC.destroy();
-  chC = new Chart(document.getElementById('chartCeves'),{type:'bar',data:{labels:Object.keys(pC),datasets:[{label:'Saldo Neto',data:Object.values(pC),backgroundColor:Object.values(pC).map(v=>v<0?'#d93025':'#1e8e3e')}]},options:{responsive:true,plugins:{legend:{display:false}}}});
+  chC = new Chart(document.getElementById('chartCeves'),{type:'bar',data:{labels:ranking.map(x=>x[0]),datasets:[{label:'Saldo Neto',data:ranking.map(x=>x[1]),backgroundColor:ranking.map(x=>x[1]<0?'#d93025':'#1e8e3e')}]},options:{responsive:true,plugins:{legend:{display:false}}}});
   const per=document.getElementById('fPeriodo').value, pP={};
   data.forEach(m=>{const k=bucket(m.fecha,per);if(!pP[k])pP[k]={i:0,e:0};pP[k].i+=m.ingresos_planta;pP[k].e+=m.egresos_planta});
   const ks=Object.keys(pP).sort();
