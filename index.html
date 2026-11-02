@@ -257,6 +257,7 @@ button[type=submit]:hover{background:#004f8c}
 }
 #tabla tbody td:nth-child(2){font-size:14px;font-weight:600;color:#003e7e}
 .info-tip{cursor:help;text-decoration:underline dotted;text-underline-offset:3px}
+.stock-viejo{color:#b06000;font-size:11px;cursor:help;margin-left:4px}
 </style></head><body>
 <header><h1>📊 Dashboard Saldo Primario - CeVes Argentina</h1><div class="updated" id="lastUpdate">Cargando…</div></header>
 <div class="container">
@@ -315,8 +316,8 @@ button[type=submit]:hover{background:#004f8c}
 <thead><tr>
 <th class="sortable" data-col="region">Región<span class="arrow">⇅</span></th>
 <th class="sortable" data-col="ceve">CeVe<span class="arrow">⇅</span></th>
-<th class="sortable num info-tip" data-col="inv" title="Último stock disponible anterior a la fecha Desde. Si no existe, se utiliza el inventario inicial 2026.">Stock Inicio<span class="arrow">⇅</span></th>
-<th class="sortable num info-tip" data-col="sa" title="Último stock disponible hasta la fecha Hasta seleccionada.">Stock Fin<span class="arrow">⇅</span></th>
+<th class="sortable num info-tip" data-col="inv" title="Último stock reportado antes de la fecha Desde.">Stock Inicio<span class="arrow">⇅</span></th>
+<th class="sortable num info-tip" data-col="sa" title="Último stock reportado hasta la fecha Hasta. Si tiene ⚠️, el último conteo tiene más de 2 días de antigüedad.">Stock Fin<span class="arrow">⇅</span></th>
 <th class="sortable num info-tip" data-col="vs" title="Stock Fin menos Stock Inicio. Esta variación del período impacta en el Saldo Neto.">Var. Período<span class="arrow">⇅</span></th>
 <th class="sortable num" data-col="ing">Ingresos<span class="arrow">⇅</span></th>
 <th class="sortable num" data-col="egr">Egresos<span class="arrow">⇅</span></th>
@@ -982,6 +983,17 @@ function stockAct(ag, eq, hasta){
   return null;
 }
 
+function fechaStock(ag, hasta){
+  const regs=(STOCK.registros_diarios||[]).filter(s=>String(s.agencia)===String(ag)&&(!hasta||(s.fecha||'')<=hasta));
+  if(!regs.length) return null;
+  return regs.map(s=>s.fecha).sort().pop();
+}
+function diasEntre(a,b){
+  if(!a||!b) return null;
+  const pa=a.split('-').map(Number), pb=b.split('-').map(Number);
+  return Math.round((new Date(pb[0],pb[1]-1,pb[2])-new Date(pa[0],pa[1]-1,pa[2]))/86400000);
+}
+function fmtFechaCorta(f){ return f ? f.split('-').reverse().slice(0,2).join('/') : '—'; }
 function diaAnteriorISO(fecha){
   if(!fecha) return '';
   const p=fecha.split('-').map(Number);
@@ -1006,7 +1018,9 @@ function calc(ag,eq,d){
   const ing=ms.reduce((sum,m)=>sum+(Number(m.ingresos_planta)||0),0);
   const egr=ms.reduce((sum,m)=>sum+(Number(m.egresos_planta)||0),0);
   const sb=egr-ing, sn=sb+vs, fl=ing?sn/ing:0;
-  return {ceve:c,inv:stockInicio,sa:stockFin,vs,vsAcum,invAnual,ing,egr,sb,sn,fl,corteInicio,desde,hasta};
+  const fechaFin=fechaStock(ag,hasta);
+  const diasSinCargar=fechaFin?diasEntre(fechaFin,hasta):null;
+  return {ceve:c,inv:stockInicio,sa:stockFin,vs,vsAcum,invAnual,ing,egr,sb,sn,fl,corteInicio,desde,hasta,fechaFin,diasSinCargar};
 }
 function isoWeek(fecha){
   const d=new Date(fecha), t=new Date(d.valueOf()), dn=(d.getDay()+6)%7;
@@ -1057,7 +1071,7 @@ function render(){
     ? 'BG'
     : eq === '031'
       ? 'DO'
-      : 'PAL', inv:r.inv, sa:r.sa, vs:r.vs, vsAcum:r.vsAcum, invAnual:r.invAnual, ing:r.ing, egr:r.egr, sb:r.sb, sn:r.sn, fl:r.fl};
+      : 'PAL', inv:r.inv, sa:r.sa, vs:r.vs, vsAcum:r.vsAcum, invAnual:r.invAnual, fechaFin:r.fechaFin, dias:r.diasSinCargar, ing:r.ing, egr:r.egr, sb:r.sb, sn:r.sn, fl:r.fl};
     });
   });
   filas.sort((a,b)=>{
@@ -1073,7 +1087,8 @@ function render(){
   document.querySelector('#tabla tbody').innerHTML = filas.map(f=>
     '<tr><td>'+f.region+'</td><td>'+f.ceve+'</td>'+
     '<td class="num">'+fmt(f.inv)+'</td>'+
-    '<td class="num">'+(f.sa!==null?fmt(f.sa):'—')+'</td>'+
+    '<td class="num">'+(f.sa!==null?fmt(f.sa):'—')+
+      ((f.dias!==null&&f.dias>2)?'<span class="stock-viejo" title="Último conteo reportado el '+fmtFechaCorta(f.fechaFin)+'. Hace '+f.dias+' días sin cargar stock.">⚠️</span>':'')+'</td>'+
     '<td class="num '+(f.vs<0?'neg':'pos')+'">'+fmt(f.vs)+'</td>'+
     '<td class="num">'+fmt(f.ing)+'</td><td class="num">'+fmt(f.egr)+'</td>'+
     '<td class="num '+(f.sb<0?'neg':'pos')+'">'+fmt(f.sb)+'</td>'+
@@ -1100,12 +1115,15 @@ function renderResumen(data){
   const sb=egr-ing, sn=sb+vs, fl=ing?sn/ing:0;
   const nom=ag?MAESTRO.ceves.find(c=>c.agencia===ag).nombre:'TODOS LOS CEVES';
   const en=eq==='028'?'BG-Bandeja Grande':eq==='031'?'DO-Dolly':'PAL-Pallet';
-  const tipInicio='Último conteo disponible hasta '+(corteInicio||'el día anterior al inicio')+'. Si no existe, se usa el inventario inicial 2026.';
-  const tipFin='Último conteo disponible hasta '+(hasta||'la fecha Hasta')+'.';
+  const tipInicio='Último stock reportado hasta el '+(corteInicio?fmtFechaCorta(corteInicio):'día anterior al inicio')+'.';
+  let fechaFinRes=null, diasRes=null;
+    if(ag){ fechaFinRes=fechaStock(ag,hasta); diasRes=fechaFinRes?diasEntre(fechaFinRes,hasta):null; }
+    const tipFin='Último stock reportado hasta el '+(hasta?fmtFechaCorta(hasta):'la fecha Hasta')+'.'+(fechaFinRes?' Último conteo: '+fmtFechaCorta(fechaFinRes)+'.':'')+((diasRes!==null&&diasRes>2)?' Hace '+diasRes+' días sin cargar stock.':'');
+    const finLbl = fmt(stockFin) + (fechaFinRes?' <span style="font-size:11px;color:#666">(al '+fmtFechaCorta(fechaFinRes)+')</span>':'') + ((diasRes!==null&&diasRes>2)?'<span class="stock-viejo">⚠️</span>':'');
   const tipVar='Stock Fin ('+fmt(stockFin)+') menos Stock Inicio ('+fmt(stockInicio)+'). Esta variación impacta en el Saldo Neto.';
   const tipAcum='Stock Fin ('+fmt(stockFin)+') menos Inventario Inicial 2026 ('+fmt(invAnual)+'). Es informativa y no impacta en el Saldo Neto del Período.';
   document.getElementById('resumenContenido').innerHTML=
-    '<div class="resumen-row header"><span>'+nom+' — '+en+'</span><span class="v"></span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipInicio+'">Stock Inicio</span><span class="v">'+fmt(stockInicio)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipFin+'">Stock Fin</span><span class="v">'+fmt(stockFin)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipVar+'">Variación Stock</span><span class="v '+(vs<0?'neg':'pos')+'">'+fmt(vs)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipAcum+'">Variación Anual</span><span class="v '+(vsAcum<0?'neg':'pos')+'">'+fmt(vsAcum)+'</span></div>'+    '<div class="resumen-row"><span>Ingresos de Planta</span><span class="v">'+fmt(ing)+'</span></div>'+    '<div class="resumen-row"><span>Egresos a Planta</span><span class="v">'+fmt(egr)+'</span></div>'+    '<div class="resumen-row total"><span class="info-tip" title="Egresos del período menos Ingresos del período. No incluye stock.">Saldo Bruto</span><span class="v '+(sb<0?'neg':'pos')+'">'+fmt(sb)+'</span></div>'+    '<div class="resumen-row total"><span class="info-tip" title="Saldo Bruto más Variación de Stock del Período. La variación acumulada anual no se suma.">Saldo Neto</span><span class="v '+(sn<0?'neg':'pos')+'">'+fmt(sn)+'</span></div>'+    '<div class="resumen-row final"><span class="info-tip" title="Saldo Neto del Período dividido por los Ingresos del mismo período.">Saldo Neto / Flujo del CV</span><span class="v">'+fmtP(fl)+'</span></div>';
+    '<div class="resumen-row header"><span>'+nom+' — '+en+'</span><span class="v"></span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipInicio+'">Stock Inicio</span><span class="v">'+fmt(stockInicio)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipFin+'">Stock Fin</span><span class="v">'+finLbl+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipVar+'">Variación Stock</span><span class="v '+(vs<0?'neg':'pos')+'">'+fmt(vs)+'</span></div>'+    '<div class="resumen-row"><span class="info-tip" title="'+tipAcum+'">Variación Anual</span><span class="v '+(vsAcum<0?'neg':'pos')+'">'+fmt(vsAcum)+'</span></div>'+    '<div class="resumen-row"><span>Ingresos de Planta</span><span class="v">'+fmt(ing)+'</span></div>'+    '<div class="resumen-row"><span>Egresos a Planta</span><span class="v">'+fmt(egr)+'</span></div>'+    '<div class="resumen-row total"><span class="info-tip" title="Egresos del período menos Ingresos del período. No incluye stock.">Saldo Bruto</span><span class="v '+(sb<0?'neg':'pos')+'">'+fmt(sb)+'</span></div>'+    '<div class="resumen-row total"><span class="info-tip" title="Saldo Bruto más Variación de Stock del Período. La variación acumulada anual no se suma.">Saldo Neto</span><span class="v '+(sn<0?'neg':'pos')+'">'+fmt(sn)+'</span></div>'+    '<div class="resumen-row final"><span class="info-tip" title="Saldo Neto del Período dividido por los Ingresos del mismo período.">Saldo Neto / Flujo del CV</span><span class="v">'+fmtP(fl)+'</span></div>';
 }
 
 function renderSemanal(data){
