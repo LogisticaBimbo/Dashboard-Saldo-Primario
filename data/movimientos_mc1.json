@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-03T10:55:43",
-  "total_registros": 7626,
+  "actualizado": "2026-11-04T08:46:31",
+  "total_registros": 7657,
   "movimientos": [
     {
       "agencia": "14120",
@@ -68635,6 +68635,285 @@
       "ingresos_planta": 6,
       "egresos_planta": 0,
       "saldo_bruto": -6
+    },
+    {
+      "agencia": "14118",
+      "ceve": "Bahía Blanca",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 1163,
+      "egresos_planta": 540,
+      "saldo_bruto": -623
+    },
+    {
+      "agencia": "14118",
+      "ceve": "Bahía Blanca",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 34,
+      "egresos_planta": 9,
+      "saldo_bruto": -25
+    },
+    {
+      "agencia": "14118",
+      "ceve": "Bahía Blanca",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 7,
+      "egresos_planta": 0,
+      "saldo_bruto": -7
+    },
+    {
+      "agencia": "14120",
+      "ceve": "Córdoba",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 3603,
+      "egresos_planta": 9303,
+      "saldo_bruto": 5700
+    },
+    {
+      "agencia": "14120",
+      "ceve": "Córdoba",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 117,
+      "egresos_planta": 0,
+      "saldo_bruto": -117
+    },
+    {
+      "agencia": "14120",
+      "ceve": "Córdoba",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 10,
+      "egresos_planta": 0,
+      "saldo_bruto": -10
+    },
+    {
+      "agencia": "14263",
+      "ceve": "Foráneos",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 5305,
+      "egresos_planta": 8642,
+      "saldo_bruto": 3337
+    },
+    {
+      "agencia": "14263",
+      "ceve": "Foráneos",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 177,
+      "egresos_planta": 235,
+      "saldo_bruto": 58
+    },
+    {
+      "agencia": "14263",
+      "ceve": "Foráneos",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 15,
+      "egresos_planta": 0,
+      "saldo_bruto": -15
+    },
+    {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 3204,
+      "egresos_planta": 3257,
+      "saldo_bruto": 53
+    },
+    {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 36,
+      "egresos_planta": 64,
+      "saldo_bruto": 28
+    },
+    {
+      "agencia": "14122",
+      "ceve": "Mar del Plata + ST",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 7,
+      "egresos_planta": 26,
+      "saldo_bruto": 19
+    },
+    {
+      "agencia": "14123",
+      "ceve": "Mendoza",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 1411,
+      "egresos_planta": 1080,
+      "saldo_bruto": -331
+    },
+    {
+      "agencia": "14123",
+      "ceve": "Mendoza",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 44,
+      "egresos_planta": 18,
+      "saldo_bruto": -26
+    },
+    {
+      "agencia": "14123",
+      "ceve": "Mendoza",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 2,
+      "egresos_planta": 0,
+      "saldo_bruto": -2
+    },
+    {
+      "agencia": "14126",
+      "ceve": "Neuquén",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 3875,
+      "egresos_planta": 3480,
+      "saldo_bruto": -395
+    },
+    {
+      "agencia": "14126",
+      "ceve": "Neuquén",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 116,
+      "egresos_planta": 96,
+      "saldo_bruto": -20
+    },
+    {
+      "agencia": "14126",
+      "ceve": "Neuquén",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 11,
+      "egresos_planta": 17,
+      "saldo_bruto": 6
+    },
+    {
+      "agencia": "14125",
+      "ceve": "Rosario",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 1129,
+      "egresos_planta": 1980,
+      "saldo_bruto": 851
+    },
+    {
+      "agencia": "14125",
+      "ceve": "Rosario",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 35,
+      "egresos_planta": 33,
+      "saldo_bruto": -2
+    },
+    {
+      "agencia": "14125",
+      "ceve": "Rosario",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 5,
+      "egresos_planta": 0,
+      "saldo_bruto": -5
+    },
+    {
+      "agencia": "14127",
+      "ceve": "Santa Fe",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 2392,
+      "egresos_planta": 1800,
+      "saldo_bruto": -592
+    },
+    {
+      "agencia": "14127",
+      "ceve": "Santa Fe",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 79,
+      "egresos_planta": 60,
+      "saldo_bruto": -19
+    },
+    {
+      "agencia": "14127",
+      "ceve": "Santa Fe",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 8,
+      "egresos_planta": 0,
+      "saldo_bruto": -8
+    },
+    {
+      "agencia": "14117",
+      "ceve": "Tablada",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 21749,
+      "egresos_planta": 19080,
+      "saldo_bruto": -2669
+    },
+    {
+      "agencia": "14117",
+      "ceve": "Tablada",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 746,
+      "egresos_planta": 702,
+      "saldo_bruto": -44
+    },
+    {
+      "agencia": "14117",
+      "ceve": "Tablada",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 36,
+      "egresos_planta": 0,
+      "saldo_bruto": -36
+    },
+    {
+      "agencia": "14272",
+      "ceve": "Tesei",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 2658,
+      "egresos_planta": 9930,
+      "saldo_bruto": 7272
+    },
+    {
+      "agencia": "14129",
+      "ceve": "Tucumán",
+      "fecha": "2026-11-03",
+      "equipo": "028",
+      "ingresos_planta": 1432,
+      "egresos_planta": 720,
+      "saldo_bruto": -712
+    },
+    {
+      "agencia": "14129",
+      "ceve": "Tucumán",
+      "fecha": "2026-11-03",
+      "equipo": "031",
+      "ingresos_planta": 43,
+      "egresos_planta": 52,
+      "saldo_bruto": 9
+    },
+    {
+      "agencia": "14129",
+      "ceve": "Tucumán",
+      "fecha": "2026-11-03",
+      "equipo": "132",
+      "ingresos_planta": 2,
+      "egresos_planta": 0,
+      "saldo_bruto": -2
     }
   ]
 }
